@@ -3,11 +3,15 @@ class DashboardController < ApplicationController
 
   def home
     @missions = Mission
+      .paginate(:page => params[:page], :per_page => 5)
+      .todo_missions(current_user)
       .includes(:comments)
-      .order('begin_date ASC')
-      .where('id in (?)', current_user.missions.map(&:id))
-      .paginate(:page => params[:page], :per_page => 5)      
-  end
 
+    @waiting_missions = Mission
+      .paginate(:page => params[:page], :per_page => 5)      
+      .waiting_missions(current_user)
+      .includes(:comments)
+      
+  end
   
 end

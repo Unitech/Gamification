@@ -4,13 +4,13 @@
     <div class="inner">
       <ul class="list">
 	
-	<% if @missions.count == 0 %>
+	<% if missions.count == 0 %>
 	  <center id="no-mission">
 	    
 	    Vous n'avez pas encore de missions en cours, <b><u><%= link_to "Postulez !", mission_available_path %></u></b>
 	  </center>
 	<% end %>
-	<% @missions.each do |m| %>
+	<% missions.each do |m| %>
           <li>
             <div class="left left-resume-mission">
 	      
@@ -46,7 +46,7 @@
       </ul>
       
       <div class="actions-bar wat-cf">
-	<%= will_paginate @missions %>
+	<%= will_paginate missions %>
       </div>
       
     </div>

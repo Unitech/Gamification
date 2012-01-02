@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+Mission:
+  fields:
+    default: amount, title, resume, description, state, image, begin_date, end_date
+    form: 
+  relationships: comments, entr_mission_users, users
+  application: Application

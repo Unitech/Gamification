@@ -16,6 +16,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'execjs'
+
 gem 'web-app-theme', '~> 0.8.0'
 gem 'will_paginate'
 gem 'simple-navigation'
@@ -24,6 +26,7 @@ gem 'faker'
 gem 'paperclip'
 gem 'devise'
 gem 'basic_active_model'
+gem 'typus'
 
 gem 'jquery-rails'
 

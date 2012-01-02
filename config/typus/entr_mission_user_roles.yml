@@ -1,0 +1,4 @@
+# Use the README file as a reference to customize settings.
+
+admin:
+  EntrMissionUser: create, read, update, delete

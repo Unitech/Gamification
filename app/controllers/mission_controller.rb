@@ -18,11 +18,10 @@ class MissionController < ApplicationController
   end
 
   def waiting_missions
-    @missions = Mission
-      .includes(:comments)
-      .order('begin_date ASC')
-      .where('id in (?)', current_user.missions.map(&:id))
+    @waiting_missions = Mission
       .paginate(:page => params[:page], :per_page => 5)      
+      .waiting_missions(current_user)
+      .includes(:comments)
   end
 
   def available_missions

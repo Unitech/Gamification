@@ -26,15 +26,24 @@
   <div class="content mission-descr">
     <h2 class="title"><%= @mission.title %></h2>
 
-
+    
     <div class="inner">
+      <% if @mission.image? %>
+	<center>
+	  <%= image_tag @mission.image.url(:big) %>
+	</center>
+      <% end %>
+
+      <br/>
+      <br/>
+
       Reward : <b><%= @mission.amount %> Euros</b>
       <br/>
       Début : <b><%= @mission.begin_date.strftime('%d/%m/%Y %H:%M') %></b>
       <br/>
       Fin : <b><%= @mission.end_date.strftime('%d/%m/%Y %H:%M') %></b>
-
-
+      <br/>
+      
 
       <p>
 	<%= @mission.description %>

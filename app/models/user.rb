@@ -1,3 +1,6 @@
+require 'typus/orm/active_record/user/instance_methods'
+require 'typus/orm/active_record/user/instance_methods_more'
+
 class User < ActiveRecord::Base
   before_create :default_values
 
@@ -5,6 +8,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable#, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :f_name, :l_name, :username, :website
+
+  #attr_accessible :email, :password, :password_confirmation, :remember_me, :f_name, :l_name, :username, :website, :as => :admin
+
+  include Typus::Orm::ActiveRecord::User::InstanceMethods
+  include Typus::Orm::ActiveRecord::User::InstanceMethodsMore
   
   has_many :comments
 
@@ -13,12 +21,22 @@ class User < ActiveRecord::Base
 
   has_one :user_ressource
 
+
+
+  # Some validations
+  validates_uniqueness_of :username
+
+  # Some Methods
   def has_link_with_mission mission_id
     entr = EntrMissionUser.where("user_id = ? AND mission_id = ?", self.id, mission_id)
     if entr.empty?
       return false
     end
     return true
+  end
+
+  def is_admin?
+    self.admin || false
   end
 
   protected

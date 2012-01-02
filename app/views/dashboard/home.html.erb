@@ -10,7 +10,9 @@
 
 <%= render :partial => 'shared/rewards' %>
 
-<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions en cours'} %>
+<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions en cours', :missions => @missions} %>
+
+<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions en attente de confirmation', :missions => @waiting_missions} %>
 
 
 <%#= render :partial => 'shared/mission_listing', :locals => {:title => 'Missions en attente de confirmation'} %>
