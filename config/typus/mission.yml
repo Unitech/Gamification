@@ -1,8 +1,14 @@
 # Use the README file as a reference to customize settings.
 
 Mission:
+  order_by: -created_at
   fields:
-    default: amount, title, resume, description, state, image, begin_date, end_date
+    default: category, state, euros, epices, points, title, resume, description, image, begin_date, end_date, euros, epices, points
     form: 
+    options:
+      selectors: category, state
   relationships: comments, entr_mission_users, users
   application: Application
+  actions:
+    index : show_pending_missions
+  

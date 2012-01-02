@@ -1,0 +1,14 @@
+<% chosen_class = "chzn-select-#{attribute_id}" %>
+
+<li id="<%= attribute_id %>_li">
+  <%= form.label attribute, label_text %>
+  <% if values.any? %>
+    <%= form.select related_fk, values, options, html_options.merge(:class => chosen_class, :style => "width: 350px;") %>
+  <% else %>
+    <%= Typus::I18n.t("No %{resources} found.", :resources => related.model_name.human.downcase.pluralize) %>
+  <% end %>
+</li>
+
+<script type="text/javascript">
+  $(document).ready(function () { $(".<%= chosen_class %>").chosen(); });
+</script>

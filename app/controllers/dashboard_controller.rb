@@ -4,12 +4,12 @@ class DashboardController < ApplicationController
   def home
     @missions = Mission
       .paginate(:page => params[:page], :per_page => 5)
-      .todo_missions(current_user)
+      .user_todo_missions(current_user)
       .includes(:comments)
 
     @waiting_missions = Mission
       .paginate(:page => params[:page], :per_page => 5)      
-      .waiting_missions(current_user)
+      .user_pending_missions(current_user)
       .includes(:comments)
       
   end

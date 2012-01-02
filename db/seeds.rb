@@ -13,13 +13,16 @@ end
 missions = []
 
 12.times do 
-  missions << Mission.create(:amount => rand(500),
-                             :title => Faker::Lorem.sentence,
+  missions << Mission.create(:title => Faker::Lorem.sentence,
+                             :euros => rand(500),
+                             :points => rand(500),
+                             :epices => rand(50),
                              :resume => Faker::Lorem.paragraph,
                              :description => Faker::Lorem.paragraphs(6),
                              :begin_date => time_rand(Time.now, 2.days.from_now),
                              :end_date => time_rand(Time.now, 10.days.from_now),
                              :state => rand(2),
+                             :category => rand(5),
                              :image => File.open(File.join(Rails.root, '/db/seed_sample/' + (rand(3) + 1).to_s + '.jpg')))
 end
 

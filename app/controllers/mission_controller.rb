@@ -9,7 +9,8 @@ class MissionController < ApplicationController
 
   def apply_for_mission
     @entr = EntrMissionUser.new(:user => current_user,
-                               :mission_id => params[:mission_id].to_i)
+                                :mission_id => params[:mission_id].to_i,
+                                :state => EntrMissionUser::STATES[0][1])
     if @entr.save
       render :json => {:success => true}
     else
@@ -20,7 +21,14 @@ class MissionController < ApplicationController
   def waiting_missions
     @waiting_missions = Mission
       .paginate(:page => params[:page], :per_page => 5)      
-      .waiting_missions(current_user)
+      .user_waiting_missions(current_user)
+      .includes(:comments)
+  end
+
+  def finished_missions
+    @finished_missions = Mission
+      .paginate(:page => params[:page], :per_page => 5)
+      .user_finished_missions(current_user)
       .includes(:comments)
   end
 

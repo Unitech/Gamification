@@ -1,0 +1,41 @@
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+    var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+  </script>
+
+  <%= javascript_include_tag 'ckeditor/ckeditor' %>
+  <%= javascript_include_tag 'ckeditor/adapters/jquery' %>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      // var config = { toolbar: 'Basic', };
+      // var config = { toolbar: 'Full', };
+      var config = { toolbar: [['Source', '-', 'Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList', '-', 'Undo', 'Redo', '-', 'Maximize']] };
+      $(".rich_text").ckeditor(config);
+    });
+  </script>
+<% end %>
+
+<%
+  custom = { :rows => @resource.typus_options_for(:form_rows), :class => "rich_text" }
+  options = options.merge!(custom)
+%>
+
+<%
+  unless params[:_popup] || options[:disabled] == true
+    input = "#{@resource.model_name.underscore.gsub("/", "_")}_#{attribute}"
+    insert_picture = <<-DATA
+  <small>
+    #{link_to "Insert picture",
+              {:controller => "/admin/assets", :_popup => true, :_input => input},
+              {:class => "iframe", :style => "font-size: 10px; background: black; color: white; padding: 2px 5px; -moz-border-radius: 3px; -webkit-border-radius: 3px;"}}
+  </small>
+    DATA
+    label_text << insert_picture.html_safe
+  end
+%>
+
+<li id="<%= attribute_id %>">
+  <%= form.label attribute, label_text.html_safe %>
+  <%= form.text_area attribute, options %>
+</li>

@@ -9,6 +9,7 @@ Gamification::Application.routes.draw do
   scope :controller => :mission, :as => :mission, :path => '/mission/' do
     get '/waiting_missions' => :waiting_missions, :as => :waiting
     get '/available_missions' => :available_missions, :as => :available
+    get '/finished_missions' => :finished_missions, :as => :finished
     get '/details/:mission_id' => :mission_detail, :as => :detail
     post '/comment' => :submit_comment, :as => :submit_comment
     post '/apply_for_mission/:mission_id' => :apply_for_mission, :as => :apply

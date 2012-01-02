@@ -1,0 +1,6 @@
+<li id="<%= attribute_id %>">
+  <%= form.label attribute, link_to_detach_attribute_for_dragonfly(attribute) %>
+  <%= typus_dragonfly_form_preview(@item, attribute) %>
+  <%= form.file_field attribute, options %>
+  <%= form.hidden_field "retained_#{attribute}" %>
+</li>

@@ -1,0 +1,12 @@
+<%
+  page_title = Typus::I18n.t("Dashboard")
+  title(page_title)
+%>
+
+<div class="grid_2">
+  <%= render 'admin/dashboard/sidebar' %>
+</div>
+
+<div class="grid_10">
+  <%= render 'admin/dashboard/widgets/applications' %>
+</div>

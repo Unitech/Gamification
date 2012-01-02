@@ -1,0 +1,11 @@
+<%
+  unless @item.new_record?
+    text = link_to(Typus::I18n.t("Preview"), send("#{@item.class.model_name.downcase}_path",@item.to_param), :target => "_blank")
+    label_text << "<small>#{text}</small>"
+  end
+%>
+
+<li id="<%= attribute_id %>">
+  <%= form.label attribute, raw(label_text) %>
+  <%= form.text_field attribute, options %>
+</li>

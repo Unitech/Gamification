@@ -26,7 +26,7 @@ gem 'faker'
 gem 'paperclip'
 gem 'devise'
 gem 'basic_active_model'
-gem 'typus'
+gem 'typus', :branch => 'master'
 
 gem 'jquery-rails'
 

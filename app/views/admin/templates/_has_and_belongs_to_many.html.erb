@@ -1,0 +1,17 @@
+<% chosen_class = "chzn-select-#{attribute_id}" %>
+
+<li id="<%= attribute_id %>_field">
+  <%= form.label attribute, label_text %>
+  <%= hidden_field_tag related_ids %>
+  <%= select_tag related_ids,
+                 options_from_collection_for_select(values.all, "id", "to_label", related_items.map(&:id)),
+                 html_options.merge(:multiple => true,
+                                    :id => attribute_id,
+                                    :class => chosen_class,
+                                    :style => "width: 550px;",
+                                    "data-placeholder" => Typus::I18n.t("Select Some Options")) %>
+</li>
+
+<script type="text/javascript">
+  $(document).ready(function () { $(".<%= chosen_class %>").chosen(); });
+</script>

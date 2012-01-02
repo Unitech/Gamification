@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
     self.admin || false
   end
 
+
   protected
   
   def default_values
