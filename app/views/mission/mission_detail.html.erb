@@ -1,0 +1,103 @@
+
+<% content_for :page_title do %>
+  Mission detail
+<% end %>
+
+<% content_for :sidebar do %>
+  
+<% end %>
+
+<% content_for :ext_javascript do %>
+  
+  $('.apply-action').click(function(e) {
+  e.preventDefault();
+  $.ajax({
+  url : '<%= mission_apply_path(@mission) %>',
+  type : 'POST',
+  success : function(data) {
+  $('.apply-btn').html('Votre demande a bien été prise en compte');
+  }
+  
+  });
+  });
+<% end %>
+
+<div class="block" id="block-text">
+  <div class="content mission-descr">
+    <h2 class="title"><%= @mission.title %></h2>
+
+
+    <div class="inner">
+      Reward : <b><%= @mission.amount %> Euros</b>
+      <br/>
+      Début : <b><%= @mission.begin_date.strftime('%d/%m/%Y %H:%M') %></b>
+      <br/>
+      Fin : <b><%= @mission.end_date.strftime('%d/%m/%Y %H:%M') %></b>
+
+
+
+      <p>
+	<%= @mission.description %>
+      </p>
+
+      
+      <% if current_user.has_link_with_mission @mission.id %>
+	<%= link_to 'Déjà apply', '#/', :class => 'button apply-btn' %>
+      <% else %>
+	<%= link_to 'Postuler', '#/apply', :class => 'button apply-btn apply-action' %>
+      <% end %>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="block" id="block-text">
+  <div class="content sized-content">
+    <h2 class="title">Commentaires</h2>
+
+
+    <div class="inner">
+      <ul class="list">
+	
+	<% @mission.comments.each do |c| %>
+	  <li class="comment">
+	    <div class="left">
+	      
+	    </div>
+            <div class="item">
+	      Par <b><%= c.user.username %></b> <i>le <%= c.created_at.strftime('%d/%m/%Y à %H:%M') %></i>
+	      <br/>
+	      <br/>
+	      <%= c.content %>
+	    </div>
+	  </li>
+	<% end %>
+      </ul>
+
+      <br/>
+      <h3>Postez un commentaire</h3>
+      
+      <%= form_for :comment, :url => mission_submit_comment_path do |f| %>
+      
+	<%= f.hidden_field :mission, :value => @mission.id %>
+	
+        <div class="columns wat-cf">
+          <div class="column left">
+            <div class="group">
+	      <%= f.text_area :content, :rows => 10, :cols => 80, :class => 'text_area' %>
+            </div>
+          </div>
+        </div>
+	  
+        <div class="group navform wat-cf">
+	  <%= f.submit "Poster", :class => 'button' %>
+	</div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+

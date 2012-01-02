@@ -1,0 +1,50 @@
+<div class="block  rank">
+  <h3>Leaderboard</h3>
+  <div class="content">
+    <p>
+      <!-- En ajax ? -->
+      <h4>Utilisateur les plus actifs</h4>
+      <ol>
+	<% @u = User.limit(5).order('points DESC') %>
+	<% @u.each do |u| %>
+	  <li><%= u.username %> <span style="float : right"><%= u.points %></span></li>
+	<% end %>
+      </ol>
+
+      <h4>Les nouveaux</h4>
+      <ol>
+      <% User.limit(5).order('created_at ASC').each do |u| %>
+	<li><%= u.username %></li>
+      <% end %>
+      </ol>
+    </p>
+  </div>
+
+</div>
+
+
+<div class="block rank">
+  <h3>Web Lab Mission</h3>
+  <div class="content">
+    <p>	
+      Postulez pour les missions et <b>gagnez des points/épices/argent</b> !
+    </p>
+  </div>
+
+
+  <h3>Comment ca marche ?</h3>
+  <div class="content">
+    <p>
+      Authentifiez vous avec vos identifiants p3ee.com et choisissez la mission qu vous intéresse !
+    </p>
+  </div>
+
+  <h3>Comment je me fais payer ?</h3>
+  <div class="content">
+    <p>
+      Ajoutez votre RIB et votre SIRET à votre compte et tous les mois vous recevrez vos gains !
+    </p>
+  </div>
+  
+</div>
+

@@ -1,0 +1,29 @@
+<div class="block" id="block-text">
+  <div class="content reward-dashboard">
+    <div class="inner">
+      
+      <table>
+	<tr>
+	  <th>Euro</th>
+	  <th>Epices</th>
+	  <th>Points</th>
+	  <th>Badges</th>
+	</tr>
+	<tr>
+	  <td><span id="val"><%= current_user.cash %></span> <%= image_tag 'coin.png' %></td>
+	  <td><%= current_user.epices %> <%= image_tag 'spice.png' %></td>
+	  
+	  <td><%= current_user.points %> <%= image_tag 'gift.png' %></td>	  
+
+	  <td class="medals">
+	    <%= image_tag 'medals/medal-bronze-1-icon.png', :title => 'Meilleur conférencier de la semaine' %>
+	    <%= image_tag 'medals/medal-bronze-2-icon.png', :title => 'Missionaire' %>
+	    <%= image_tag 'medals/medal-silver-1-icon.png', :title => 'Chercheur de tête' %>
+	  </td>
+
+	</tr>
+      </table>
+      
+    </div>
+  </div>
+</div>

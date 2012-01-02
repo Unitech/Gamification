@@ -1,0 +1,176 @@
+/* 
+ * This css will include all web-app-theme css you need
+ *
+ *= require web-app-theme/base
+ *= require web-app-theme/themes/default/style.css
+ *= require_self
+ */
+
+/* Write here your css for overriding the theme's rules */
+
+#header {
+    height : 65px;
+    h1 {
+	font-family: helvetica, arial, sans-serif;
+	font-size : 30px;
+    }
+    #user-navigation {
+	top : 22px;
+    }
+    #main-navigation {
+	padding-top : 20px;
+    }
+}
+
+#sidebar {
+    ol {
+	li {
+	    border : none;
+	    margin-left : 17px;
+	    background-image : none;
+
+	    font-size : 15px;
+	}
+    }
+    .rank {
+	padding-top: 0px;
+	background-color: white;
+	text-shadow: 0 1px 0 white;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+	
+    }
+}
+
+.sized-content {
+    min-height : 300px;
+    #no-mission {
+	font-size : 16px;
+	margin-top : 108px;
+    }
+}
+
+.content {
+    font-family: helvetica, arial, sans-serif;
+    ul {
+	a {
+	    text-decoration : none;
+	}
+    }
+    
+    ul.list li {
+	min-height : 95px;
+
+	padding-right : 10px;
+	.avatar {
+	    //padding-top : 10px;
+	}
+	&:hover {
+	    #cursor : pointer;
+	}
+    }
+
+    .left-resume-mission {
+	#reward {
+	    text-align : center;
+	    padding-top : 7px;
+	    
+	    font-weight : bold;
+	    font-size : 12px;
+	    #amount {
+		font-size : 17px;
+	    }
+	}
+    }
+
+
+
+    .item {
+	h4 {
+	    margin-bottom : 1px;
+	    text-decoration : underline;
+	}
+    }
+
+    .comment {
+	padding-top : 8px;
+	padding-bottom : 6px;
+	min-height : 30px !important;
+    }
+    .pagination {
+	float : left;
+	em.current {
+	    border: 1px solid #C3C4BA;
+	    -moz-border-radius: 2px;
+	    -webkit-border-radius: 2px;
+	    border-radius: 2px;
+	    margin-right: 5px;
+	    padding: 6px;
+	    min-width: 15px;
+	    text-align: center;
+	    background: #DDD;	    
+	    color: #111;
+	}
+    }
+}
+
+
+.mission-descr {
+    min-height : 400px;
+    position : relative;
+    .apply-btn {
+	position : absolute;
+	bottom : 25px;
+	height : 24px;
+	width : 700px;
+	text-align : center;
+	font-size : 20px !important;
+	left : 50%;
+	margin-left : -350px !important;
+    }
+}
+
+.my-dashboard-menu {
+    height : 30px;
+    
+    ul {
+	font-family : "MuseoSans500";
+	font-size : 16px;
+	padding-top : 6px;
+	li {
+	    margin-left : 10px;
+	    display : inline-block;
+	    list-style-type : none;
+	    .selected {
+		border-top : 2px solid #111;
+		padding-top : 5px;
+	    }
+	}
+    }
+}
+
+.reward-dashboard {
+    padding-top : 10px !important;
+    table {
+	width : 100%;
+	text-align : center;
+	th {
+	    font-size : 14px;
+	    padding-bottom : 10px;
+	}
+	td {
+	    font-size : 30px;
+	    #val {
+		display : inline-block;
+
+	    }
+	}
+	.medals {
+	    padding-top : 8px;
+	}
+    }
+}

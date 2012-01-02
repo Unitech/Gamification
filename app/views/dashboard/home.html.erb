@@ -1,0 +1,17 @@
+<% content_for :page_title do %>
+  Dashboard
+<% end %>
+
+<% content_for :sidebar do %>
+  
+<% end %>
+
+<%= render :partial => 'shared/menu_my_dashboard' %>
+
+<%= render :partial => 'shared/rewards' %>
+
+<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions en cours'} %>
+
+
+<%#= render :partial => 'shared/mission_listing', :locals => {:title => 'Missions en attente de confirmation'} %>
+

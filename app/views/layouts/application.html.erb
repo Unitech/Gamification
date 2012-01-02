@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebLab Missions</title>
+    <%= stylesheet_link_tag 'web_app_theme' %>
+    <%= javascript_include_tag :application %>
+    <script>
+      $(document).ready(function() {
+      <%= yield :ext_javascript %>
+      });
+    </script>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+	
+	<h1>
+	  <%= link_to 'Web Lab Missions' , root_path %> | 
+	  <%= yield :page_title %>
+	</h1> 
+	
+	<div id="main-navigation">
+	  <% if user_signed_in? %>
+	    <ul class="wat-cf">
+	      <li class="first">
+		<a href="<%= dashboard_home_path %>">
+		  Vous êtes loggé en tant que <b><%= current_user.username %></b>
+		</a>
+	      </li>
+	    </ul>
+	  <% end %>
+	</div>
+	
+	<div id="user-navigation">
+	  <%= render_navigation :level => 1 %>
+	</div>
+      </div>  
+  
+      <div id="wrapper" class="wat-cf">
+	<div class="flash">
+          <% flash.each do |type, message| -%>
+            <div class="message <%= type %>">
+              <p><%= message %></p>
+            </div>
+          <% end -%>
+	</div>
+	<div id="main">
+          <%= yield %>
+          <div id="footer">
+            <div class="block notice">
+              <p>Copyright &copy; <%= Time.now.year %> Web Lab</p>
+            </div>      
+          </div>
+	</div>
+	<div id="sidebar">
+	  <%= yield :sidebar %>
+	  <%= render :partial => 'shared/sidebar' %>
+	</div>
+      </div>    
+    </div>
+  </body>
+</html>
