@@ -1,3 +1,4 @@
+
 Typus.setup do |config|
 
 
@@ -42,3 +43,4 @@ Typus.setup do |config|
                         :next_label => Typus::I18n.t("Next") + " &rarr;" }
 
 end
+

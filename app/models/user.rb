@@ -26,9 +26,26 @@ class User < ActiveRecord::Base
   def to_label
     "#{self.f_name} #{self.l_name}"
   end
+
+  alias :to_s :to_label
+
+  def missions_applied
+    self.entr_mission_users.where(:state => EntrMissionUser::Status::APPLIED).count
+  end
+
+  def missions_todo
+    self.entr_mission_users.where(:state => EntrMissionUser::Status::CONFIRMED).count
+  end
+
+  def missions_done
+    self.entr_mission_users.where(:state => EntrMissionUser::Status::DONE).count
+  end
+
+  def missions_refused
+    self.entr_mission_users.where(:state => EntrMissionUser::Status::CANCELED).count
+  end
+
   
-
-
   # Some validations
   validates_uniqueness_of :username
 

@@ -1,28 +1,21 @@
 # Use the README file as a reference to customize settings.
 
 Mission:
-  order_by: -created_at
+  order_by: -missions.created_at
   fields:
     default: category, state, euros, epices, points, title, resume, description, image, begin_date, end_date, euros, epices, points
-    list: category, state, user_interested, title, begin_date, end_date, euros, epices, points
-    show: category, state, user_interested, euros, epices, points, title, resume, description, begin_date, end_date, euros, epices, points
-    comment_form : id
-    user_index : id
+    list: title, category, state, user_interested, begin_date, end_date, euros, epices, points
+    show: title, category, state, user_interested, euros, epices, points
     form:
     options:
       selectors: category, state
       templates:
-        begin_date: datetime
-  relationships: users, comments, entr_mission_users
+        begin_date: date
+  relationships: entr_mission_users
   description : Manage Missions
   application: Missions Management
   actions:
-    edit : send_mail_to_users, choose_user
+    show : send_mail_to_users, choose_user
   filters: begin_date, category, state
   search: title, description, resume
-  exports: csv
-  
-
-User:
-  fields:
-    default: id
+  scopes: pending_missions, processing_missions, finished_missions

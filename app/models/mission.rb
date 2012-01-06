@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Mission < ActiveRecord::Base
   has_attached_file :image, :styles => { :small => "50x50#", :big => "500x500>" }
 
@@ -6,8 +7,11 @@ class Mission < ActiveRecord::Base
   has_many :entr_mission_users
   has_many :users, :through => :entr_mission_users
 
-  # class Status < ReferenceData
-  # end
+  class Status < ReferenceData
+    NEW = 0
+    CONFIRMED = 1
+    FINISHED = 2
+  end
 
   CATEGORY = [['Mission', 0], 
               ['Meeting', 1], 
@@ -66,20 +70,25 @@ class Mission < ActiveRecord::Base
 
   alias_method_chain :initialize, :defaults
   
-  
+  # Missions that have already people who applied to it
+  scope :pending_missions,
+        includes(:entr_mission_users)
+    .where('entr_mission_users.state = ?', EntrMissionUser::Status::APPLIED)
+
+  scope :processing_missions,
+        where('missions.state = ?', Mission::Status::CONFIRMED)
+
+  scope :finished_missions,
+        where('missions.state = ?', Mission::Status::FINISHED)
+
+
   # Select all pending missions of the user that are not alredy confirmed
   scope :user_pending_missions, lambda { |user|
     order('begin_date ASC')
       .where('missions.id in (?) AND state = ?', 
              user.missions.map(&:id), 
              Mission::STATES[0][1])
-  }
-
-  # Missions that have already people who applied to it
-  scope :pending_missions, 
-        includes(:entr_mission_users)
-    .where('entr_mission_users.state = ?', EntrMissionUser::STATES[0][1])
-  
+  }  
   
   scope :user_todo_missions, lambda { |user|
     includes(:entr_mission_users)
@@ -96,5 +105,11 @@ class Mission < ActiveRecord::Base
   def to_param
     self.id.to_s + '-' + self.title.parameterize
   end
+
+  def to_label
+    "#{self.title}"
+  end
+
+  alias :to_s :to_label
 
 end

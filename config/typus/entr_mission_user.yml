@@ -1,10 +1,14 @@
 # Use the README file as a reference to customize settings.
 
 EntrMissionUser:
+  order_by: -created_at
   fields:
-    default: user, mission, state
-    form: 
+    default: user, mission, state, user.missions_applied, user.missions_todo, user.missions_done, user.missions_refused
+    list: user, mission, state
+    edit :  user, mission, state
+    form: user, mission, state
     options:
       selectors: state
   relationships: user, mission
-  application: User Management
+  application: Missions Management
+  

@@ -31,7 +31,7 @@
             <div class="actions">
                 <% table_actions(model, item, association_name).each_with_index do |action, index| %>
                   <%= "/" unless index.zero? %>
-                  <%= link_to action[:message], action[:url], action[:options] %>
+                  <%= link_to action[:message], action[:url], action[:options] %>		  
                 <% end %>
             </div>
           <% end %>
