@@ -1,0 +1,18 @@
+
+<%
+  @mail_title = 'Confirmation'
+  @mail_mini_text = 'Postulation pour mission confirmée - EWTL'
+  @mail_full_url = @url_site + mission_detail_path(@mission)
+%>
+
+<h2 class="h2">Vous avez bien postulé pour <%= @mission.title %></h2>
+Vous recevrez la décision du laboratoire dans les prochains jours.
+<br/><br/>
+<center>
+  <h4 class="h4">
+    <a href="<%= @mail_full_url %>" target="_blank">
+      Revoir la mission
+    </a>
+  </h4>
+</center>
+

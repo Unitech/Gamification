@@ -22,6 +22,12 @@ class User < ActiveRecord::Base
   has_one :user_ressource
 
 
+  # Typus
+  def to_label
+    "#{self.f_name} #{self.l_name}"
+  end
+  
+
 
   # Some validations
   validates_uniqueness_of :username

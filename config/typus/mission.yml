@@ -4,11 +4,25 @@ Mission:
   order_by: -created_at
   fields:
     default: category, state, euros, epices, points, title, resume, description, image, begin_date, end_date, euros, epices, points
-    form: 
+    list: category, state, user_interested, title, begin_date, end_date, euros, epices, points
+    show: category, state, user_interested, euros, epices, points, title, resume, description, begin_date, end_date, euros, epices, points
+    comment_form : id
+    user_index : id
+    form:
     options:
       selectors: category, state
-  relationships: comments, entr_mission_users, users
-  application: Application
+      templates:
+        begin_date: datetime
+  relationships: users, comments, entr_mission_users
+  description : Manage Missions
+  application: Missions Management
   actions:
-    index : show_pending_missions
+    edit : send_mail_to_users, choose_user
+  filters: begin_date, category, state
+  search: title, description, resume
+  exports: csv
   
+
+User:
+  fields:
+    default: id

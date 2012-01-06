@@ -8,10 +8,15 @@ class MissionController < ApplicationController
   end
 
   def apply_for_mission
+    mission_id = params[:mission_id].to_i
+
     @entr = EntrMissionUser.new(:user => current_user,
-                                :mission_id => params[:mission_id].to_i,
+                                :mission_id => mission_id,
                                 :state => EntrMissionUser::STATES[0][1])
+
     if @entr.save
+      MissionMailer.apply_confirmation(current_user, 
+                                       Mission.find(mission_id)).deliver
       render :json => {:success => true}
     else
       render :json => {:success => false}

@@ -2,7 +2,9 @@
 
 User:
   fields:
-    default:
+    default: username, f_name, l_name, grade, email, points, epices, cash, technologies_known, technologies_want
+    list : username, f_name, l_name, grade
     form: 
-  relationships: comments, entr_mission_users, missions, user_ressource
-  application: Application
+  relationships: comments, entr_mission_users, missions
+  application: User Management
+

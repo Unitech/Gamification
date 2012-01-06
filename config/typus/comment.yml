@@ -2,7 +2,7 @@
 
 Comment:
   fields:
-    default:
+    default: content, user, mission
     form: 
   relationships: 
-  application: Application
+  application: Missions Management

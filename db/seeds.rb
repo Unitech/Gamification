@@ -12,18 +12,20 @@ end
 
 missions = []
 
-12.times do 
-  missions << Mission.create(:title => Faker::Lorem.sentence,
-                             :euros => rand(500),
-                             :points => rand(500),
-                             :epices => rand(50),
-                             :resume => Faker::Lorem.paragraph,
-                             :description => Faker::Lorem.paragraphs(6),
-                             :begin_date => time_rand(Time.now, 2.days.from_now),
-                             :end_date => time_rand(Time.now, 10.days.from_now),
-                             :state => rand(2),
-                             :category => rand(5),
-                             :image => File.open(File.join(Rails.root, '/db/seed_sample/' + (rand(3) + 1).to_s + '.jpg')))
+7.times do 
+  missone = Mission.new(:title => Faker::Lorem.sentence,
+                        :euros => rand(500),
+                        :points => rand(500),
+                        :epices => rand(50),
+                        :resume => Faker::Lorem.paragraph,
+                        :description => Faker::Lorem.paragraphs(6),
+                        :begin_date => time_rand(Time.now, 2.days.from_now),
+                        :end_date => time_rand(Time.now, 10.days.from_now),
+                        :state => rand(2),
+                        :category => rand(5),
+                        :image => File.open(File.join(Rails.root, '/db/seed_sample/' + (rand(3) + 1).to_s + '.jpg')))
+  missone.save
+  missions << missone
 end
 
 users = []
@@ -38,7 +40,7 @@ end
 
 
 missions.each do |m|
-  2.times do
+  5.times do
     Comment.create(:content => Faker::Lorem.paragraph,
                    :user_id => users[rand(users.length)].id,
                    :mission_id => missions[rand(missions.length)].id)

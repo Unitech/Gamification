@@ -2,7 +2,9 @@
 
 EntrMissionUser:
   fields:
-    default:
+    default: user, mission, state
     form: 
-  relationships: 
-  application: Application
+    options:
+      selectors: state
+  relationships: user, mission
+  application: User Management

@@ -1,0 +1,25 @@
+
+<%
+  @mail_title = 'New mission'
+  @mail_mini_text = 'Nouvelle mission pour le EWTL'
+  @mail_full_url = @url_site + mission_detail_path(@mission)
+%>
+
+<h2 class="h2">Nouvelle mission - <%= @mission.title %></h2>
+
+<h4 class="h4">Résumé</h4>
+<%= @mission.resume %>
+
+<br/><br/>
+<h4 class="h4">Description</h4>
+<%= @mission.description %>
+
+<br/><br/>
+<center>
+  <h4 class="h4">
+    <a href="<%= @mail_full_url %>" target="_blank">
+      Voir la mission
+    </a>
+  </h4>
+</center>
+
