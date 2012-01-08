@@ -23,6 +23,16 @@
 <% end %>
 
 <div class="block" id="block-text">
+  <div class="content my-dashboard-menu">
+    <ul>
+      <li><a href="/">Back</a></li>
+      <li><a href="#comments-anchor">Commentaires</a></li>
+      <li><a href="#post-comments-anchor">Poster un commentaire</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="block" id="block-text">
   <div class="content mission-descr">
     <h2 class="title"><%= @mission.title %></h2>
 
@@ -63,6 +73,7 @@
 
 
 <div class="block" id="block-text">
+  <div id="comments-anchor"></div>
   <div class="content sized-content">
     <h2 class="title">Commentaires</h2>
 
@@ -86,6 +97,7 @@
       </ul>
 
       <br/>
+      <div id="post-comments-anchor"></div>
       <h3>Postez un commentaire</h3>
       
       <%= form_for :comment, :url => mission_submit_comment_path do |f| %>

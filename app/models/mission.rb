@@ -119,6 +119,13 @@ class Mission < ActiveRecord::Base
       .where("entr_mission_users.user_id = ? AND entr_mission_users.state = ?", user.id, EntrMissionUser::Status::APPLIED)
       .collect { |l| l.mission }
   }  
+
+  scope :user_canceled_missions, lambda { |user|
+    EntrMissionUser
+      .includes(:mission, {:mission => :comments})
+      .where("entr_mission_users.user_id = ? AND entr_mission_users.state = ?", user.id, EntrMissionUser::Status::CANCELED)
+      .collect { |l| l.mission }
+  }
   
   scope :user_finished_missions, lambda { |user|
     EntrMissionUser
@@ -127,11 +134,4 @@ class Mission < ActiveRecord::Base
       .collect { |l| l.mission }
   }
   
-
-  scope :available_for_user, lambda { |user|
-    EntrMissionUser
-      .includes(:mission, {:mission => :comments})
-      .where("entr_mission_users.user_id != ? AND missions.state != ?", user.id, Mission::Status::FINISHED)
-      .collect { |l| l.mission }
-  }
 end

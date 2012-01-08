@@ -27,22 +27,24 @@ class MissionController < ApplicationController
   end
 
   def finished_missions
-    @finished_missions = Mission
-      .paginate(:page => params[:page], :per_page => 5)
-      .user_finished_missions(current_user)
-      .includes(:comments)
+    @finished_missions = Mission.user_finished_missions current_user
+    @finished_missions = @finished_missions.paginate(:page => params[:page], :per_page => 5)
   end
 
   def available_missions
-    #if current_user.missions.present?
-      @missions = Mission.available_for_user current_user
-      @missions = @missions.paginate(:page => params[:page], :per_page => 5) 
-    #   else
-    #   @missions = Mission
-    #     .includes(:comments)
-    #     .order('begin_date ASC')
-    #     .paginate(:page => params[:page], :per_page => 5) 
-    # end
+    if current_user.missions.present?
+      @missions = Mission
+        .includes(:comments)
+        .order('begin_date ASC')
+        .where('id not in (?) AND state = ?', current_user.missions.map(&:id), Mission::Status::NEW)
+        .paginate(:page => params[:page], :per_page => 5) 
+      else
+      @missions = Mission
+        .includes(:comments)
+        .order('begin_date ASC')
+        .where('state = ?', Mission::Status::NEW)
+        .paginate(:page => params[:page], :per_page => 5) 
+    end
   end
   
   def submit_comment

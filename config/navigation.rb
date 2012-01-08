@@ -58,10 +58,6 @@ SimpleNavigation::Configuration.run do |navigation|
       my_dash.item :missions_todo, 'Dashboard', root_path
       my_dash.item :missions_waiting, 'Missions disponibles', mission_available_path
       my_dash.item :missions_waiting, 'Missions terminées', mission_finished_path
-      #my_dash.item :missions_waiting, 'Missions en attente de confirmation', mission_waiting_path
-      # my_dash.item :missions_waiting, 'Missions terminées ', user_dashboard_path
-     # my_dash.item :missions_waiting, 'Apercu des prix', user_dashboard_path
-      
     end
 
     primary.item :logout, 'Comment ca marche ?', '#'
