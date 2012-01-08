@@ -22,6 +22,11 @@ class Mission < ActiveRecord::Base
   STATES = [['New', 0], 
             ['Confirmed', 1], 
             ['Finished', 2]]
+
+  # Validators
+  validates_presence_of :title
+  validates_presence_of :resume
+  validates_presence_of :description
   
   #
   # Typus
@@ -37,7 +42,7 @@ class Mission < ActiveRecord::Base
   def duration
     (end_date - begin_date) / 1.day
   end
-
+  
   def user_interested
     EntrMissionUser.where('mission_id = ?', self.id).count
   end
@@ -45,15 +50,17 @@ class Mission < ActiveRecord::Base
   def to_label
     "#{self.title}"
   end
-  
 
-  # Validators
-  # validates_inclusion_of :category, :in => CATEGORY
-  # validates_inclusion_of :state, :in => STATES
-  validates_presence_of :title
-  validates_presence_of :resume
-  validates_presence_of :description
-  
+  def attach_new_user user
+    link = EntrMissionUser.new(:user => user,
+                               :mission_id => self.id,
+                               :state => EntrMissionUser::STATES[0][1])
+    if link.save
+      true
+    else
+      false
+    end
+  end
   
   # Typus default
   def initialize_with_defaults(attributes = nil, &block)
@@ -69,39 +76,7 @@ class Mission < ActiveRecord::Base
   end
 
   alias_method_chain :initialize, :defaults
-  
-  # Missions that have already people who applied to it
-  scope :pending_missions,
-        includes(:entr_mission_users)
-    .where('entr_mission_users.state = ?', EntrMissionUser::Status::APPLIED)
 
-  scope :processing_missions,
-        where('missions.state = ?', Mission::Status::CONFIRMED)
-
-  scope :finished_missions,
-        where('missions.state = ?', Mission::Status::FINISHED)
-
-
-  # Select all pending missions of the user that are not alredy confirmed
-  scope :user_pending_missions, lambda { |user|
-    order('begin_date ASC')
-      .where('missions.id in (?) AND state = ?', 
-             user.missions.map(&:id), 
-             Mission::STATES[0][1])
-  }  
-  
-  scope :user_todo_missions, lambda { |user|
-    includes(:entr_mission_users)
-      .order('begin_date ASC')
-      .where('missions.id in (?) AND entr_mission_users.state = ?', user.missions.map(&:id), EntrMissionUser::STATES[1][1])
-  }
-
-  scope :user_finished_missions, lambda { |user|
-    includes(:entr_mission_users)
-      .order('begin_date ASC')
-      .where('id in (?) AND state = ?', user.missions.map(&:id), Mission::STATES[2][1])
-  }
-  
   def to_param
     self.id.to_s + '-' + self.title.parameterize
   end
@@ -112,4 +87,51 @@ class Mission < ActiveRecord::Base
 
   alias :to_s :to_label
 
+  ####################
+  #
+  # Some Scopes
+  #
+  ####################
+
+  # Missions that have already people who applied to it
+  scope :pending_missions,
+        includes(:entr_mission_users)
+    .where('entr_mission_users.state = ?', EntrMissionUser::Status::APPLIED)
+  
+  scope :processing_missions,
+        where('missions.state = ?', Mission::Status::CONFIRMED)
+
+  scope :finished_missions,
+        where('missions.state = ?', Mission::Status::FINISHED)
+
+
+  # Select all pending missions of the user that are not alredy confirmed
+  scope :user_todo_missions, lambda { |user|
+    EntrMissionUser
+      .includes(:mission, {:mission => :comments})
+      .where("entr_mission_users.user_id = ? AND entr_mission_users.state = ?", user.id, EntrMissionUser::Status::CONFIRMED)
+      .collect { |l| l.mission }
+  }
+
+  scope :user_pending_missions, lambda { |user|
+    EntrMissionUser
+      .includes(:mission, {:mission => :comments})
+      .where("entr_mission_users.user_id = ? AND entr_mission_users.state = ?", user.id, EntrMissionUser::Status::APPLIED)
+      .collect { |l| l.mission }
+  }  
+  
+  scope :user_finished_missions, lambda { |user|
+    EntrMissionUser
+      .includes(:mission, {:mission => :comments})
+      .where("entr_mission_users.user_id = ? AND entr_mission_users.state = ?", user.id, EntrMissionUser::Status::DONE)
+      .collect { |l| l.mission }
+  }
+  
+
+  scope :available_for_user, lambda { |user|
+    EntrMissionUser
+      .includes(:mission, {:mission => :comments})
+      .where("entr_mission_users.user_id != ? AND missions.state != ?", user.id, Mission::Status::FINISHED)
+      .collect { |l| l.mission }
+  }
 end

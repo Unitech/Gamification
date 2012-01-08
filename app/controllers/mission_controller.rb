@@ -8,15 +8,11 @@ class MissionController < ApplicationController
   end
 
   def apply_for_mission
-    mission_id = params[:mission_id].to_i
+    mission = Mission.find(params[:mission_id].to_i)
 
-    @entr = EntrMissionUser.new(:user => current_user,
-                                :mission_id => mission_id,
-                                :state => EntrMissionUser::STATES[0][1])
-
-    if @entr.save
+    if mission.attach_new_user current_user
       MissionMailer.apply_confirmation(current_user, 
-                                       Mission.find(mission_id)).deliver
+                                       Mission.find(mission.id)).deliver
       render :json => {:success => true}
     else
       render :json => {:success => false}
@@ -38,18 +34,15 @@ class MissionController < ApplicationController
   end
 
   def available_missions
-    if current_user.missions.present?
-      @missions = Mission
-        .includes(:comments)
-        .order('begin_date ASC')
-        .where('id not in (?)', current_user.missions.map(&:id))
-        .paginate(:page => params[:page], :per_page => 5) 
-      else
-      @missions = Mission
-        .includes(:comments)
-        .order('begin_date ASC')
-        .paginate(:page => params[:page], :per_page => 5) 
-    end
+    #if current_user.missions.present?
+      @missions = Mission.available_for_user current_user
+      @missions = @missions.paginate(:page => params[:page], :per_page => 5) 
+    #   else
+    #   @missions = Mission
+    #     .includes(:comments)
+    #     .order('begin_date ASC')
+    #     .paginate(:page => params[:page], :per_page => 5) 
+    # end
   end
   
   def submit_comment

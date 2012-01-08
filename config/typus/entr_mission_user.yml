@@ -6,6 +6,7 @@ EntrMissionUser:
     default: user, mission, state, user.missions_applied, user.missions_todo, user.missions_done, user.missions_refused
     list: user, mission, state
     edit :  user, mission, state
+    show: user, mission, state
     form: user, mission, state
     options:
       selectors: state

@@ -46,4 +46,7 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
+  gem 'spork', '~> 0.9.0.rc'
+  gem 'webrat'
+  gem 'factory_girl'
 end

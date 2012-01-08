@@ -63,8 +63,24 @@ class User < ActiveRecord::Base
   end
 
 
-  protected
+  # def todo_mission
+    
+  #   Mission
+  #     .includes(:entr_mission_users)
+  #     .where('entr_mission_users.user_id = ? AND entr_mission_users.state = ?', 
+  #            self.id, EntrMissionUser::Status::CONFIRMED)
+    
+  # end
+
+# scope :user_todo_missions, lambda { |user|
+#     includes(:entr_mission_users)
+#       .order('begin_date ASC')
+#       .where('missions.id in (?) AND entr_mission_users.state = ?', user.missions.map(&:id), EntrMissionUser::STATES[1][1])
+#   }
+
   
+
+  protected  
   def default_values
     self.cash = 0
     self.epices = 0
