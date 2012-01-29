@@ -1,0 +1,18 @@
+<div style="margin: 0 0 0.5em 0;">
+
+  <div style="float: left;">
+    <%= link_to preview, :class => "fancybox" do %>
+      <%= image_tag thumb, options.merge(:alt => preview) %>
+    <% end %>
+  </div>
+
+  <div style="float: left;">
+    <ul style="margin: 0 0 0 15px!important;">
+      <li><strong>File name:</strong> <%= attachment.name %></li>
+      <li><strong>File type:</strong> <%= attachment.mime_type %></li>
+      <li><strong>Dimensions:</strong> <%= attachment.width %> x <%= attachment.height %></li>
+    </ul>
+  </div>
+
+  <div class="clear"></div>
+</div>

@@ -1,0 +1,46 @@
+table {
+  width: 100%;
+  text-align: left;
+}
+
+table a {
+  text-decoration: none;
+}
+
+table th {
+  background: #242527;
+  color: #FFF;
+  padding: 6px;
+}
+
+table th a {
+  color: #FFF!important;
+  text-decoration: none;
+}
+
+table th a:hover {
+  text-decoration: underline;
+}
+
+table td.right {
+  text-align: right;
+}
+
+table tr.even {
+  background: #FFF!important;
+}
+
+table tr.even:hover,
+table tr.odd:hover {
+  background: #E4E4E4!important;
+}
+
+table tr.odd {
+  background: #F3F3F3;
+}
+
+table td {
+  border: none;
+  padding: 5px;
+  vertical-align: top;
+}

@@ -1,0 +1,21 @@
+admin:
+  Article::Entry: all
+  Asset: all
+  Case: all
+  Comment: all
+  Order:
+  Page: all, rebuild, rebuild_all
+  Post: all
+  EntryDefault: all
+  ReadOnlyEntry: all
+  Category: all
+  EntryBulk: all
+  EntryTrash: all
+
+editor:
+  Comment: read, update, delete
+  Post: create, read, update
+
+designer:
+  Comment: read
+  Post: read, update

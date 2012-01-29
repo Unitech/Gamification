@@ -1,0 +1,8 @@
+#footer {
+  padding: 1em;
+}
+
+#footer .copyright {
+  display: none;
+  font-size: 0.80em;
+}

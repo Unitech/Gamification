@@ -1,0 +1,13 @@
+<% content_for :main_grid do %>
+  <h2><%= resource.titleize %></h2>
+
+  <p>Find me in app/views/<%= resource.underscore %>/index.html.erb</p>
+<% end %>
+
+<div class="grid_2">
+  <%= sidebar %>
+</div>
+
+<div class="grid_8">
+  <%= yield :main_grid %>
+</div>

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+bundle install --binstubs=bin
+bundle exec rake db:setup

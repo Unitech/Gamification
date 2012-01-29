@@ -1,0 +1,2 @@
+class EntryBulk < Entry
+end

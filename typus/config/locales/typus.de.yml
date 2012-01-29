@@ -1,0 +1,84 @@
+# German (de) translations for Typus by:
+# - Michael Grunewalder <http://michael.grunewalder.com>
+# - Thomas von Deyen <http://thomas.vondeyen.com>
+
+de:
+  "Actions": "Aktionen"
+  "Active": "Aktiv"
+  "List" : 'Liste'
+  "Add": "Hinzufügen"
+  "Add New": "Erstellen"
+  "All" : 'Alle'
+  "Are you sure?": "Sind Sie sicher?"
+  "Are you sure you want to sign out and end your session?": "Wollen Sie sich abmelden und die Sitzung beenden?"
+  "Assign": "Zuweisen"
+
+  "Change %{attribute}?": "%{attribute} ändern?"
+  "Create %{resource}": "%{resource} erstellen"
+
+  "Dashboard": "Dashboard"
+  "Down": "Runter"
+
+  "Edit": "Bearbeiten"
+  "Edit %{resource}": "%{resource} bearbeiten"
+  "Enter your email below to create the first user": "Geben Sie Ihre Email Adresse unten ein, um den ersten Benutzer zu erstellen"
+
+  "False": "Nein"
+  "Filter": "Filter"
+
+  "I remember my password": "Ich erinnere mein Passwort"
+  "If you didn't request a password update, you can ignore this message": "Falls Sie keine Passwort Änderung beantragt haben, können Sie diese Nachricht ignorieren"
+  "If you have made any changes to the fields without clicking the Save/Update entry button, your changes will be lost": "Wenn Sie Änderungen an Feldern vorgenommen haben, ohne den Speichern/Bearbeiten Knopf gedrückt zu haben, gehen diese Änderungen verloren"
+  "Inactive":
+
+  "Last few days": "Letzten Tage"
+  "Last 30 days": "Letzten 30 Tage"
+  "Last 7 days": "Letzten 7 Tage"
+  "List" : "Liste"
+  "Logged in as": "Angemeldet als"
+  "Login": "Anmelden"
+
+  "New": "Neu"
+  "New %{resource}": "%{resource} erstellen"
+  "Next": "Nächste"
+  "No %{resources} found": "Keine %{resources} gefunden"
+
+  "Password recovery link sent to your email": "Der Link zur Wiederherstelllung Ihres Passworts wurde an Ihre Email Adresse geschickt"
+  "Previous": "Vorheriger"
+
+  "Record moved %{to}": "Datensatz wurde verschoben nach %{to}"
+  "Recover password": "Passwort vergessen?"
+  "Remove": "Eintrag"
+  "Remove %{resource}?": "%{resource} entfernen?"
+  "Reset password": "Passwort zurücksetzen"
+  "Resources": "Resourcen"
+
+  "Save %{resource}": "%{resource} speichern"
+  "Search": "Suchen"
+  "Show": "Anzeigen"
+  "Show all dates": "Alle anzeigen"
+  "Show by %{attribute}": "An Hand von %{attribute} anzeigen"
+  "Show %{resource}": "%{resource} anzeigen"
+  "Sign in": "Anmelden"
+  "Sign out": "Abmelden"
+  "Sign up": "Konto erstellen"
+  "System Users Administration": "Admin Benutzer Verwaltung"
+
+  "Today": "Heute"
+  "Trash": "Löschen"
+  "True": "Ja"
+
+  "Unrelate": "Trennen"
+  "Up": "Hoch"
+
+  "View all %{attribute}": "Alle %{attribute} anzeigen"
+  "View site": "Webseite anzeigen"
+
+  "You can update your password at": "Sie können Ihr Passwort ändern unter"
+  "You can't change your role": "Sie können Ihre Rolle nicht ändern"
+  "You can't toggle your status": "Sie können Ihren Status nicht umschalten"
+
+  "%{errors} prohibited this page from being saved:": "%{errors} haben diese Seite davon abgehalten gespeichert zu werden:"
+  "%{model} successfully created": "%{model} wurde erfolgreich erstellt"
+  "%{model} successfully removed": "%{model} wurde erfolgreich gelöscht"
+  "%{model} successfully updated": "%{model} wurde erfolgreich geändert"

@@ -1,0 +1,35 @@
+#sidebar ul li.header {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: #242527;
+  color: #FFF;
+  font-size: 1.20em;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  margin: 0.5em 0;
+}
+
+#sidebar ul {
+  margin: 0;
+}
+
+#sidebar ul li {
+  line-height: 1.5em;
+}
+
+#sidebar ul ul li {
+  list-style: none;
+  padding-left: 0.5em;
+}
+
+#sidebar ul li a {
+  color: white;
+}
+
+#sidebar ul ul li a {
+  color: black;
+}
+
+#sidebar a {
+  text-decoration: none;
+}

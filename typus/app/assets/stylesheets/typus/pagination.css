@@ -1,0 +1,42 @@
+.pagination {
+  border-top: 1px solid #D3D3D3;
+  margin: 1em auto;
+  padding: 1em 0;
+  text-align: center;
+}
+
+.pagination em {
+  font-style: normal!important;
+}
+
+.pagination em,
+.pagination a {
+  padding: 3px 5px;
+  text-decoration: none;
+}
+
+.pagination a:hover,
+.pagination em {
+  background: #000;
+  color: #FFF;
+}
+
+.pagination span.disabled {
+  color: #D3D3D3;
+  margin: 2px;
+  padding: 2px 3px; }
+
+.pagination .prev {
+  float: left;
+}
+
+.pagination .next {
+  float: right;
+}
+
+.pagination .first,
+.pagination .last,
+.pagination .current,
+.pagination .gap {
+  display: none;
+}

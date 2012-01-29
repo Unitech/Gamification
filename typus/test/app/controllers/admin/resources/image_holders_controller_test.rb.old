@@ -1,0 +1,55 @@
+require "test_helper"
+
+=begin
+
+  What's being tested here?
+
+    - Polymorphic associations.
+
+=end
+
+class Admin::ImageHoldersControllerTest < ActionController::TestCase
+
+  setup do
+    admin_sign_in
+  end
+
+  test "create polymorphic association" do
+    bird = FactoryGirl.create(:bird)
+
+    assert_difference('bird.image_holders.count') do
+      post :create, { :image_holder => { :name => "ImageHolder" },
+                      :resource => "Bird", :resource_id => bird.id }
+    end
+
+    assert_response :redirect
+    assert_redirected_to "http://test.host/admin/birds/edit/#{bird.id}"
+    assert_equal "Bird successfully updated.", flash[:notice]
+  end
+
+  ##
+  # We are in:
+  #
+  #   /admin/birds/edit/1
+  #
+  # And we see a list of comments under it:
+  #
+  #   /admin/image_holders/unrelate/1?resource=Bird&resource_id=1
+  #   /admin/image_holders/unrelate/2?resource=Bird&resource_id=1
+  #   ...
+  #
+  # TODO: Eventually this code should be run in the Original model, so ideally
+  #       a Bird unrelates ImageHolder and not ImageHolder unrelates Bird.
+  #
+  test "unrelate" do
+    image_holder = FactoryGirl.create(:image_holder)
+    bird = FactoryGirl.create(:bird)
+    bird.image_holders << image_holder
+    @request.env['HTTP_REFERER'] = "/admin/birds/edit/#{bird.id}"
+
+    assert_difference('bird.image_holders.count', -1) do
+      post :unrelate, :id => image_holder.id, :resource => "Bird", :resource_id => bird.id
+    end
+  end
+
+end

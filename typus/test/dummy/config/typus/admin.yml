@@ -1,0 +1,22 @@
+AdminUser: &ADMIN_USER
+  fields:
+    default: first_name, last_name, role, email, locale
+    list: email, role, status
+    form: first_name, last_name, role, email, password, password_confirmation, locale, status
+    options:
+      selectors: role, locale
+      booleans:
+        status: Active, Inactive
+  filters: status, role
+  search: first_name, last_name, email, role
+  application: Admin
+  description: System Users Administration
+
+TypusUser:
+  <<: *ADMIN_USER
+
+DeviseUser:
+  fields:
+    default: email
+    form: email, password
+  application: Admin

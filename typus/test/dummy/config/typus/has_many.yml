@@ -1,0 +1,58 @@
+Project:
+  fields:
+    default: name, user
+    form: name, user
+  relationships: tasks, project_collaborators
+  filters: user
+  application: HasMany
+
+ProjectCollaborator:
+  fields:
+    default: user
+    form: user, project
+  filters: project, user
+  application: HasMany
+  options:
+    hide_from_sidebar: true
+    hide_from_dashboard: true
+
+Task:
+  fields:
+    default: name, description
+    form: name, description, status
+  filters: project
+  application: HasMany
+  options:
+    hide_from_sidebar: true
+    hide_from_dashboard: true
+
+User:
+  fields:
+    default: name, email
+    list: name, email, projects
+  relationships: projects #, third_party_projects
+  application: HasMany
+  filters: projects
+  order_by: name
+
+##
+# Polymorphic
+#
+
+Animal: &ANIMAL_BASE
+  fields:
+    default: name
+  relationships: image_holders
+  application: Polymorphic
+
+Bird:
+  <<: *ANIMAL_BASE
+
+Dog:
+  <<: *ANIMAL_BASE
+
+ImageHolder:
+  fields:
+    default: name, imageable_id, imageable_type
+    # form: name
+  application: Polymorphic

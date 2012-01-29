@@ -1,0 +1,9 @@
+admin:
+  Project: all
+  ProjectCollaborator: all
+  Task: all
+  User: all
+  # Polymorphic
+  Bird: all
+  Dog: all
+  ImageHolder: all

@@ -1,0 +1,18 @@
+<!-- dashboard#_sidebar.html.erb -->
+
+<%
+  code = link_to('GitHub', 'https://github.com/typus/typus/tree/master/test/dummy')
+  typus = link_to('Typus', 'http://www.typuscmf.com/')
+  mailing_list = link_to('mailing list', 'http://groups.google.com/group/typus')
+  user_guide = link_to('user guide', 'http://docs.typuscmf.com/')
+%>
+
+<h2>Welcome!</h2>
+
+<p>This is the collection of models, organized by functionality, I use to
+<strong>test</strong> <%= typus %>.</p>
+
+<p>Code for this application is available at <%= code %>.</p>
+
+<p>If you need help don't hesitate in joining the <%= mailing_list %> or use
+the <%= user_guide %>.</p>

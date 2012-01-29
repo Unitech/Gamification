@@ -1,0 +1,2 @@
+class EntryDefault < Entry
+end

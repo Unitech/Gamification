@@ -1,0 +1,8 @@
+build/*
+!build/.gitkeep
+
+# Ignore .md files
+*.md
+
+# Ignore .old files
+*.old

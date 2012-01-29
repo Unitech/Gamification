@@ -1,0 +1,16 @@
+defaults: &defaults
+  :address: mail.messagingengine.com
+  :port: 25
+  :authentication: plain
+  :user_name: fesplugas@fastmail.fm
+  :password: YOUR_PASSWORD
+  :domain: fastmail.fm
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

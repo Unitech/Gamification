@@ -1,0 +1,120 @@
+Asset:
+  fields:
+    default: caption, dragonfly, dragonfly_required
+    special: caption, dragonfly, dragonfly_required
+    form: caption, dragonfly, dragonfly_required, paperclip, paperclip_required
+    new: dragonfly, dragonfly_required, paperclip, paperclip_required
+    virtual: caption, original_file_name
+  application: CRUD Extended
+
+Case:
+  fields:
+    default: title
+    form: title, content, categories
+  application: CRUD Extended
+
+Comment:
+  fields:
+    list: email, post, post_id, spam, post.title
+    form: name, email, body, post
+    csv: email, post_id
+    relationship: name, email, spam
+    options:
+      booleans:
+        spam: ["Yes, it's spam", "No, it's not spam"]
+  filters: post
+  search: email, body, posts.title
+  application: CRUD Extended
+
+Page:
+  fields:
+    list: title, parent_id
+    form: title, body, parent_id
+  actions:
+    index: rebuild_all
+    edit: rebuild
+  options:
+    form_rows: 25
+    sortable: false
+    export: csv
+  application: CRUD Extended
+
+Post:
+  fields:
+    default: title, body, created_at, status, published_at
+    list: title, created_at, status
+    form: title, body, created_at, status, numeric_status, published_at, categories
+    relationship: title, created_at
+    csv: title, status
+    xml: title, status
+    show: title, body, status, published, created_at
+    options:
+      selectors: status, numeric_status
+      date_formats:
+        created_at: short
+      templates:
+        body: text_with_ckeditor_and_assets
+        published_at: datepicker
+  relationships: categories, comments, views
+  actions:
+    index: cleanup
+    edit: send_as_newsletter, preview
+  filters: status, numeric_status, created_at
+  search: title
+  order_by: title, -created_at
+  scopes: published, draft, unexisting
+  application: CRUD Extended
+
+Article::Entry:
+  fields:
+    default: title, published
+    form: title, content, published
+    options:
+      booleans:
+        published: ["Yes", "No"]
+  search: title
+  filters: published
+  application: CRUD Extended
+
+EntryDefault:
+  fields:
+    options:
+      booleans:
+        published: ["Yes", "No"]
+  filters: published
+  application: CRUD Extended
+
+ReadOnlyEntry:
+  fields:
+    default: title, content, published
+  application: CRUD Extended
+
+Category:
+  fields:
+    default: name, position
+    form: name, permalink, position
+  order_by: position
+  search: name
+  application: CRUD Extended
+
+EntryBulk:
+  fields:
+    default: title, published
+    form: title, content, published
+    options:
+      booleans:
+        published: ["Yes", "No"]
+  search: title
+  filters: published
+  application: CRUD Extended
+
+EntryTrash:
+  fields:
+    default: title, published
+    form: title, content, published
+    options:
+      booleans:
+        published: ["Yes", "No"]
+  search: title
+  filters: published
+  application: CRUD Extended

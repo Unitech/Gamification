@@ -1,0 +1,2 @@
+class EntryTrash < Entry
+end

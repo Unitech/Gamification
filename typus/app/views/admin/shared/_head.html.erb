@@ -1,0 +1,15 @@
+<meta charset="utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="generator" content="Typus <%= Typus::VERSION %>" />
+
+<%= favicon_link_tag %>
+
+<title><%= Typus.admin_title %> &mdash; <%= yield :title %></title>
+
+<%= stylesheet_link_tag 'typus/application' %>
+<%= javascript_include_tag 'typus/application' %>
+
+<%= yield :stylesheets -%>
+<%= yield :javascripts -%>
+
+<%= csrf_meta_tag %>

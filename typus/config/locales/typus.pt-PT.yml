@@ -1,0 +1,83 @@
+# Portuguese (pt-PT) translations for Typus by:
+# - Nuno Baldaia <http://nunobaldaia.com/>
+
+"pt-PT":
+
+  "Actions": "Acções"
+  "Active": "Activo"
+  "Add": "Adicionar"
+  "Add New": "Adicionar novo"
+  "Are you sure?": "Tem a certeza?"
+  "Are you sure you want to sign out and end your session?": "Tem certeza que quer sair e encerrar sua sessão?"
+
+  "Change %{attribute}?": "Mudar %{attribute}?"
+  "Create %{resource}": "Criar %{resource}"
+
+  "Dashboard": "Painel"
+  "Down": "Descer"
+
+  "Edit": "Editar"
+  "Edit %{resource}": "Editar %{resource}"
+  "Enter your email below to create the first user": "Introduza o seu email para criar o primeiro utilizador"
+
+  "False": "Falso"
+  "Filter": "Filtrar"
+
+  "I remember my password": "Lembro-me da minha senha"
+  "If you didn't request a password update, you can ignore this message": "Se não pediu uma renovação de senha, por favor ignore esta mensagem."
+  "If you have made any changes to the fields without clicking the Save/Update entry button, your changes will be lost": "Se fez alterações nos campos e não clicou no botão de Salvar/Atualizar, as suas alterações serão perdidas"
+  "Inactive": "Inactivo"
+
+  "Last few days": "Últimos dias"
+  "Last 30 days": "Últimos 30 dias"
+  "Last 7 days": "Últimos 7 dias"
+  "List": "Lista"
+  "Logged in as": "Logado como"
+  "Login": "Login"
+
+  "New": "Novo"
+  "New %{resource}": "Novo %{resource}"
+  "Next": "Próximo"
+  "No %{resources} found": "Nenhum resultado encontrado em %{resources}"
+
+  "Password recovery link sent to your email": "Foi enviado para o seu email um link para recuperação da senha."
+  "Previous": "Anterior"
+
+  "Record moved %{to}": "Registro movido %{to}."
+  "Recover password": "Recuperar senha"
+  "Remove": "Remover"
+  "Remove %{resource}?": "Remover %{resource}?"
+  "Reset password": "Trocar senha"
+  "Resources": "Recursos"
+
+  "Save %{resource}": "Salvar %{resource}"
+  "Search": "Procurar"
+  "Show": "Mostrar"
+  "Show all dates": "Mostrar todas as datas"
+  "Show by %{attribute}": "Mostrar por %{attribute}"
+  "Show %{resource}": "Mostrar %{resource}"
+  "Sign in": "Entrar"
+  "Sign out": "Sair"
+  "Sign up": "Criar conta"
+  "System Users Administration": "Administração de utilizadores de sistema"
+
+  "Today": "Hoje"
+  "True": "Verdadeiro"
+
+  "Unrelate": "Desvincular"
+  "Up": "Subir"
+
+  "View all %{attribute}": "Ver todos  %{attribute}"
+  "View site": "Ver site"
+
+  "You can't toggle your status": "Não pode trocar o seu estado."
+  "You can update your password at": "Pode atualizar a sua senha em"
+  "You can't change your role": "Não pode mudar sua própria função no sistema."
+
+  "%{errors} prohibited this page from being saved:":
+  "%{model} successfully created": "%{model} criado com sucesso."
+  "%{model} successfully removed": "%{model} removido com sucesso."
+  "%{model} successfully updated": "%{model} atualizado com sucesso."
+
+  "Top": "Topo"
+  "Bottom": "Fundo"

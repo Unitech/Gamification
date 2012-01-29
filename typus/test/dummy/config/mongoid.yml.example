@@ -1,0 +1,32 @@
+##
+#
+# Mongo Console:
+#
+#     mongo staff.mongohq.com:10051/typus_development -u <user> -p<password>
+#
+# Mongo URI:
+#
+#     mongodb://<user>:<password>@staff.mongohq.com:10051/typus_development
+#
+# Connection Details:
+#
+# - Database: typus_development
+# - Username: typus
+# - Password:
+#
+
+defaults: &defaults
+  host: <%= ENV['MONGOID_HOST'] || 'staff.mongohq.com' %>
+  port: <%= ENV['MONGOID_PORT'] || 10051 %>
+  username: <%= ENV['MONGOID_USERNAME'] || 'typus' %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] || 'typus_development' %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

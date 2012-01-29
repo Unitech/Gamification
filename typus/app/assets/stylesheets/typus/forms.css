@@ -1,0 +1,64 @@
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset ol {
+  margin: 0!important;
+}
+
+fieldset ol li {
+  line-height: 1.5em;
+  list-style: none!important;
+  margin: 1em 0;
+}
+
+fieldset small {
+  font-size: 0.85em;
+  font-weight: normal;
+  margin: 0 0 0 0.5em;
+}
+
+fieldset small a {
+  text-decoration: none;
+}
+
+fieldset.inputs {}
+
+  /* I know I can use input[type='text'] but for some reason this is not 
+     working with "Chosen".
+  */
+  fieldset.inputs input.text {
+    font-size: 1.25em;
+    width: 100%;
+  }
+
+  fieldset.inputs textarea {
+    font-size: 1.25em;
+    padding: 3px;
+  }
+
+  fieldset.inputs select {
+    font-size: 1.25em;
+  }
+
+  fieldset.inputs label.inline_label {
+    display: inline;
+  }
+
+fieldset.buttons {
+  margin-top: 1.5em;
+}
+
+  fieldset.buttons ol li {
+    display: inline;
+  }
+
+fieldset ol ul {
+  margin: 0!important;
+}
+
+  fieldset ol ul label.inline_label {
+    display: inline;
+    font-weight: normal;
+  }

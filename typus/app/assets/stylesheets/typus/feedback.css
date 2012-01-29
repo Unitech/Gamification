@@ -1,0 +1,39 @@
+#errorExplanation,
+.alert,
+.notice {
+  padding: 0.8em;
+  margin: 1em 0;
+  border: 1px solid #ddd;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  line-height: 1.5em;
+}
+
+#errorExplanation p,
+#errorExplanation li,
+#errorExplanation h3 {
+  color: #D12F19!important;
+}
+
+#errorExplanation h3 { margin: 5px 0 0 0; }
+
+#errorExplanation ul { margin: 10px 0 0 20px!important; }
+
+#errorExplanation,
+.alert { background: #FBE3E4; border-color: #FBC2C4; color: #D12F19; }
+.alert a { color: #D12F19; text-decoration: underline; }
+
+.notice { background: #FFF6BF; border-color: #FFD324; color: #817134; }
+.notice a { color: #817134; text-decoration: underline; }
+
+.fieldWithErrors label { color: #CD0A0A;}
+.fieldWithErrors input { background: #FEF8F6; }
+
+#errorExplanation ul { margin: 1em 1.5em; }
+#errorExplanation ul li { list-style: square!important; margin: 0!important; }
+
+.notice p,
+.alert p {
+  margin: 0;
+  padding: 5px 0;
+}

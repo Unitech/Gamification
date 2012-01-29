@@ -1,0 +1,4 @@
+admin:
+  AdminUser: all
+  DeviseUser: all
+  TypusUser: all

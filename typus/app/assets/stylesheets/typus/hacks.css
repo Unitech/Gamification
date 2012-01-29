@@ -1,0 +1,33 @@
+.box {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: #FFF;
+  border: 1px solid #AAA;
+  margin: 1em 0;
+  padding: 0.5em 1em ;
+}
+
+.box h3 {
+  margin: 0.5em 0!important;
+}
+
+.clear {
+  clear: both;
+}
+
+.box_relationships {
+  margin-top: 2.5em;
+}
+
+.search-choice span {
+  color: black!important;
+}
+
+/* frikin' forms hacks */
+
+.chzn-search input {
+ -webkit-box-sizing: content-box;
+ -moz-box-sizing: content-box;
+ box-sizing: content-box;
+ height:1em;
+}

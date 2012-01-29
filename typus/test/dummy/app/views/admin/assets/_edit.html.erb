@@ -1,0 +1,26 @@
+<% if headless_mode? %>
+
+  <%
+    attachment, caption = @item.dragonfly_required, @item.caption
+
+    files = if attachment.mime_type =~ /^image\/.+/
+      { :large_image => image_tag(attachment.thumb("500x").url, :title => caption, :alt => caption),
+        :medium_image => image_tag(attachment.thumb("250x").url, :title => caption, :alt => caption),
+        :small_image => image_tag(attachment.thumb("100x").url, :title => caption, :alt => caption), }
+    else
+      { :document => link_to(caption, @item.data.url) }
+    end
+  %>
+
+  <div class="notice">
+    <ul>
+      <% files.each do |key, value| %>
+        <li>
+          <%= link_to_function "Insert #{key} into entry.",
+                               "window.parent.CKEDITOR.instances['#{params[:_input]}'].insertHtml('#{value}'); parent.$.fancybox.close();" %></li>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+<% end %>

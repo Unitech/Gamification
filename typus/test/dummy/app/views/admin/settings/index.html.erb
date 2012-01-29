@@ -1,0 +1,29 @@
+<h2>Settings</h2>
+
+<%= display_flash_message %>
+
+<%= form_for :settings do %>
+
+  <fieldset class="inputs">
+    <ol>
+
+      <li id="settings_name">
+        <%= label_tag "settings[admin_title]", 'Admin Title' %>
+        <%= text_field_tag "settings[admin_title]", Admin::Setting.find_by_key('admin_title').try(:value) %>
+      </li>
+
+      <li id="settings_name">
+        <%= label_tag "settings[per_page]", 'Items per page' %>
+        <%= text_field_tag "settings[per_page]", Admin::Setting.find_by_key('per_page').try(:value) %>
+      </li>
+
+    </ol>
+  </fieldset>
+
+  <fieldset class="buttons">
+    <ol>
+      <li><%= submit_tag Typus::I18n.t("Save") %></li>
+    </ol>
+  </fieldset>
+
+<% end %>

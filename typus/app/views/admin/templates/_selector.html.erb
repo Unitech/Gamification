@@ -1,0 +1,4 @@
+<li id="<%= attribute_id %>">
+  <%= form.label attribute, label_text %>
+  <%= form.select attribute, @resource.send(attribute.pluralize), options, html_options %>
+</li>

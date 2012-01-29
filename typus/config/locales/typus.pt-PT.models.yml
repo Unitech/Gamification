@@ -1,0 +1,17 @@
+# Portuguese (pt-PT) translations for Typus by:
+# - Nuno Baldaia <http://nunobaldaia.com/>
+
+"pt-PT":
+  activerecord:
+    models:
+      admin_user: "Utilizador"
+    attributes:
+      admin_user:
+        email:
+        first_name: "Primeiro nome"
+        last_name: "Último nome"
+        locale: "Linguagem"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
+        role: "Função no sistema"
+        status: "Estado"

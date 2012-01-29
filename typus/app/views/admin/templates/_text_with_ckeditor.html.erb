@@ -1,0 +1,27 @@
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+    var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+  </script>
+
+  <%= javascript_include_tag 'ckeditor/ckeditor' %>
+  <%= javascript_include_tag 'ckeditor/adapters/jquery' %>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      // var config = { toolbar: 'Basic', };
+      // var config = { toolbar: 'Full', };
+      var config = { toolbar: [['Source', '-', 'Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList', '-', 'Undo', 'Redo', '-', 'Maximize']] };
+      $(".rich_text").ckeditor(config);
+    });
+  </script>
+<% end %>
+
+<%
+  custom = { :rows => @resource.typus_options_for(:form_rows), :class => "rich_text" }
+  options = options.merge!(custom)
+%>
+
+<li id="<%= attribute_id %>">
+  <%= form.label attribute, label_text %>
+  <%= form.text_area attribute, options %>
+</li>
