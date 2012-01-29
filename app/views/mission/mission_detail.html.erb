@@ -7,7 +7,6 @@
   
 <% end %>
 
-<%= stylesheet_link_tag 'markdown' %>
 
 <% content_for :ext_javascript do %>
   
@@ -20,7 +19,7 @@
   $('.apply-btn').html('<%= image_tag 'spinner_20.gif' %> Processing...');
   },
   success : function(data) {
-  $('.apply-btn').html('Votre demande a bien été prise en compte');
+  $('.apply-btn').html('Un mail vous a été envoyé');
   }
   
   });
@@ -39,10 +38,8 @@
 
 <div class="block" id="block-text">
   <div class="content mission-descr">
-    <h2 class="title"><%= @mission.title %></h2>
-
-    
     <div class="inner">
+      <h2 class="title"><%= @mission.title %></h2>
       <% if @mission.image? %>
 	<center>
 	  <%= image_tag @mission.image.url(:big), :id => 'mission_image' %>
@@ -57,7 +54,10 @@
       Fin : <b><%= @mission.end_date.strftime('%d/%m/%Y %H:%M') %></b>
       <br/>
       
-      <%= markdown @mission.description %>
+      <div id="mission_description">
+	<h2 id="expl">Détail de mission</h2>
+	<%= markdown @mission.description %>
+      </div>
 
 
       
@@ -76,10 +76,10 @@
 <div class="block" id="block-text">
   <div id="comments-anchor"></div>
   <div class="content sized-content">
-    <h2 class="title">Commentaires</h2>
 
 
     <div class="inner">
+      <h2 class="title">Commentaires</h2>
       <ul class="list">
 	
 	<% @mission.comments.each do |c| %>

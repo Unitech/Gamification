@@ -3,10 +3,9 @@
  */
  #markdown {font-family:Helvetica;}
  #markdown h1,h2,h3,h4,h5,h6{border:0;}
- #markdown h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
-// #markdown h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
- #markdown h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
- #markdown h3{margin-top:1em;}
+ #markdown h1{font-size:170% !important;border-top:4px solid #aaa;padding-top:.5em;margin-top:0.5em;}
+ #markdown h2{font-size:150% !important;margin-top:0.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+ #markdown h3{margin-top:1em !important;}
  #markdown p{margin:1em 0;line-height:1.5em;}
  #markdown ul{margin:1em 0 1em 2em;}
  #markdown ol{margin:1em 0 1em 2em;}
@@ -26,32 +25,3 @@
  #markdown a code,a:link code,a:visited code{color:#4183c4;}
  #markdown img{max-width:100%;}
 
-/*
- * Markdown less
- */
- #markdown_min {font-family:Helvetica;}
- #markdown_min h1,h2,h3,h4,h5,h6{border:0;}
- #markdown_min h1{font-size:120%;padding-top:.5em;margin-top:1.5em;}
-// #markdown_min h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
- #markdown_min h2{font-size:110%;margin-top:1em;padding-top:.5em;}
- #markdown_min h3{margin-top:1em;}
- #markdown_min p{margin:1em 0;line-height:1.2em;}
- #markdown_min img{display: block;   margin-left: 50px; margin-top : 20px; margin-bottom : 5px; }
- #markdown_min ul{margin:1em 0 1em 0em;}
- #markdown_min ol{margin:1em 0 1em 2em;}
- #markdown_min ul li{list-style : none; margin-top:.5em;margin-bottom:.5em;}
- #markdown_min li:before {  content:'\2022';  color : #77d004; font-size : 130%; position: relative;   left: -10px; top: 1px;}
- #markdown_min ul ul,ul ol,ol ol,ol ul,{margin-top:0;margin-bottom:0;}
- #markdown_min blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
- #markdown_min dt{font-weight:bold;margin-left:1em;}
- #markdown_min dd{margin-left:2em;margin-bottom:1em;}
- #markdown_min table{margin:1em 0;}
- #markdown_min table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
- #markdown_min table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
- #markdown_min pre{margin:1em 0;font-size:12px;background-color:#f8f8ff;border:1px solid #dedede;padding:.5em;line-height:1.5em;color:#444;overflow:auto;}
- #markdown_min pre code{padding:0;font-size:12px;background-color:#f8f8ff;border:none;}
- #markdown_min code{font-size:12px;background-color:#f8f8ff;color:#444;padding:0 .2em;border:1px solid #dedede;}
- #markdown_min a{color:#4183c4;text-decoration:none;}
- #markdown_min a:hover{text-decoration:underline;}
- #markdown_min a code,a:link code,a:visited code{color:#4183c4;}
- #markdown_min img{max-width:100%;}
