@@ -1,0 +1,19 @@
+
+<%
+  @mail_title = 'Vous avez été retenu'
+  @mail_mini_text = @mail_title
+  @mail_full_url = @url_site + mission_detail_path(@mission)
+%>
+
+<h2 class="h2">Vous avez été retenu pour - <%= @mission.title %></h2>
+
+Vous devez terminer cette mission d'ici le : <%= @mission.end_date %><br/>
+Vous gagnerez : <%= @mission.reward_description %>
+<br/><br/>
+<center>
+  <h4 class="h4">
+    <a href="<%= @mail_full_url %>" target="_blank">
+      Revoir la mission
+    </a>
+  </h4>
+</center>

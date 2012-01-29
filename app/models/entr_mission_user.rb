@@ -1,5 +1,5 @@
 class EntrMissionUser < ActiveRecord::Base
-  belongs_to :mission #, :order_by => 'begin_date ASC'
+  belongs_to :mission
   belongs_to :user
 
   class Status < ReferenceData
@@ -9,10 +9,10 @@ class EntrMissionUser < ActiveRecord::Base
     CANCELED = 3
   end
 
-  STATES = [['Applied', 0], 
-            ['Confirmed', 1], 
-            ['Finished', 2],
-            ['Canceled', 3]]
+  STATES = [['<span style="color : OrangeRed ">Applied</span>'.html_safe, 0], 
+            ['<span style="color : green">Confirmed</span>'.html_safe, 1], 
+            ['<span style="color : blue">Finished</span>'.html_safe, 2],
+            ['<span style="color : red">Canceled</span>'.html_safe, 3]]
 
   def self.states
     STATES

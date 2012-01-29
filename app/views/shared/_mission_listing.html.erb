@@ -5,8 +5,7 @@
       <ul class="list">
 	
 	<% if missions.count == 0 %>
-	  <center id="no-mission">
-	    
+	  <center id="no-mission">	    
 	    Vous n'avez pas encore de missions en cours, <b><u><%= link_to "Postulez !", mission_available_path %></u></b>
 	  </center>
 	<% end %>
@@ -19,9 +18,8 @@
 	      <% end %>
 	      <div id="reward">
 		<span id="amount">
-		  <%= m.amount %>
+		  <%= m.reward_description %>
 		</span>
-		<br/> Euros
 	      </div>
             </div>
             <div class="item">

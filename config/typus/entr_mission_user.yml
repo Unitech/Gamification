@@ -10,6 +10,8 @@ EntrMissionUser:
     form: user, mission, state
     options:
       selectors: state
+      templates:
+        state: status
   relationships: user, mission
   application: Missions Management
   

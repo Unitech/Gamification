@@ -2,6 +2,8 @@
 class Mission < ActiveRecord::Base
   has_attached_file :image, :styles => { :small => "50x50#", :big => "500x500>" }
 
+  default_scope :order => 'missions.updated_at ASC'
+
   has_many :comments
   
   has_many :entr_mission_users
@@ -23,7 +25,9 @@ class Mission < ActiveRecord::Base
             ['Confirmed', 1], 
             ['Finished', 2]]
 
+  #
   # Validators
+  #
   validates_presence_of :title
   validates_presence_of :resume
   validates_presence_of :description
@@ -60,6 +64,22 @@ class Mission < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def reward_description
+    string = ""
+
+    if self.euros > 0 
+      string += "#{self.euros}<br/>euros<br/>"
+    end
+    if self.epices > 0 
+      string += "#{self.epices}<br/>epices<br/>"
+    end
+    if self.points > 0 
+      string += "#{self.points}<br/>points<br/>"
+    end
+
+    string.html_safe
   end
   
   # Typus default

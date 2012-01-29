@@ -14,6 +14,9 @@
   $.ajax({
   url : '<%= mission_apply_path(@mission) %>',
   type : 'POST',
+  beforeSend : function() {
+  $('.apply-btn').html('<%= image_tag 'spinner_20.gif' %> Processing...');
+  },
   success : function(data) {
   $('.apply-btn').html('Votre demande a bien été prise en compte');
   }
