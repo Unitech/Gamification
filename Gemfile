@@ -27,6 +27,8 @@ gem 'paperclip'
 gem 'devise'
 gem 'basic_active_model'
 gem 'typus', :path => './typus'
+gem 'redcarpet', '1.17.2'
+gem 'gollum'
 
 gem 'jquery-rails'
 

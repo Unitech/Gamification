@@ -47,37 +47,38 @@ class Admin::MissionsController < Admin::ResourcesController
     super
   end
 
+  #
+  # Finish mission (change entr_mission_user and mission status + send mail to each user + credit user accounts)
+  #
   def set_mission_as_done
     mission = Mission.find(params[:id].to_i)
     entr_missions = mission.entr_mission_users
 
-    #
     # No users attached to the mission
-    #
     if entr_missions.empty?
       flash[:success] = "<h2>La mission < #{mission.title} > <span style='color:red'>ne peut pas être terminée (aucun utilisateur)</span></h2>".html_safe
       redirect_to :back
       return
     end
     
-    #
     # Set each user link as done
-    #
     entr_missions.each do |entr|
       entr.state = EntrMissionUser::Status::DONE
       entr.save
     end
     
-    #
     # Set mission state as finished
-    #
     mission.state = Mission::Status::FINISHED
     mission.save
 
+    # End
     flash[:success] = "<h2>La mission < #{mission.title} > a bien été terminée</h2>".html_safe
     redirect_to :back
   end
 
+  #
+  # BROADCAST functionnality
+  #
   def send_mail_to_users
     mission = Mission.find(params[:id].to_i)
 

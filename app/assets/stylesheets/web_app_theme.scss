@@ -120,17 +120,23 @@
 
 
 .mission-descr {
-    min-height : 400px;
-    position : relative;
-    .apply-btn {
-	position : absolute;
-	bottom : 25px;
-	height : 24px;
-	width : 700px;
-	text-align : center;
-	font-size : 20px !important;
-	left : 50%;
-	margin-left : -350px !important;
+    //min-height : 400px;
+    //position : relative;
+.apply-btn {
+    display : block;
+}
+    /* .apply-btn { */
+    /* 	position : absolute; */
+    /* 	bottom : 25px; */
+    /* 	height : 24px; */
+    /* 	width : 700px; */
+    /* 	text-align : center; */
+    /* 	font-size : 20px !important; */
+    /* 	left : 50%; */
+    /* 	margin-left : -350px !important; */
+    /* } */
+    img#mission_image{
+	margin : 20px 0 10px 0;
     }
 }
 
