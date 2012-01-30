@@ -53,18 +53,18 @@
       <br/>
       Fin : <b><%= @mission.end_date.strftime('%d/%m/%Y %H:%M') %></b>
       <br/>
-      
+      <br/>
       <div id="mission_description">
-	<h2 id="expl">Détail de mission</h2>
+	<h2 class="title">Détail de mission</h2>
 	<%= markdown @mission.description %>
       </div>
 
 
       
       <% if current_user.has_link_with_mission @mission.id %>
-	<%= link_to 'Déjà apply', '#/', :class => 'button apply-btn' %>
+	<%= link_to 'En attente de confirmation', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais." %>
       <% else %>
-	<%= link_to 'Postuler', '#/apply', :class => 'button apply-btn apply-action' %>
+	<%= link_to 'Postuler', '#/apply', :class => 'button apply-btn apply-action', :title => "Vous êtes interessé par cette mission ? Postulez ! Votre dossier sera envoyé aux administrateurs du laboratoire et vous serez tenu vite au courant de l'avancée de votre candidature !" %>
       <% end %>
 
 

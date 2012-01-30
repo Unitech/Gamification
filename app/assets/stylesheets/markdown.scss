@@ -1,10 +1,10 @@
 /*
  * Markdown normal
  */
- #markdown {font-family:Helvetica;}
+ #markdown {font-family:Helvetica; margin-bottom : 40px;}
  #markdown h1,h2,h3,h4,h5,h6{border:0;}
- #markdown h1{font-size:170% !important;border-top:4px solid #aaa;padding-top:.5em;margin-top:0.5em;}
- #markdown h2{font-size:150% !important;margin-top:0.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+ #markdown h1{font-size:170% !important;padding-top:.5em; border-bottom:2px solid #e0e0e0;}
+ #markdown h2{font-size:150% !important;margin-top:0.5em;border-bottom:2px solid #e0e0e0;padding-top:.5em;}
  #markdown h3{margin-top:1em !important;}
  #markdown p{margin:1em 0;line-height:1.5em;}
  #markdown ul{margin:1em 0 1em 2em;}

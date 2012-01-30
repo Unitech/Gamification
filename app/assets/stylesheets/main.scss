@@ -45,6 +45,14 @@
 }
 
 .content {
+    .title {
+	font-family: 'Play', sans-serif;
+	font-size : 25px;
+	margin-top : 10px;
+	margin-bottom : 22px;
+	padding-bottom : 4px;
+	border-bottom : 1px solid #666;
+    }
     font-family: helvetica, arial, sans-serif;
     ul {
 	a {

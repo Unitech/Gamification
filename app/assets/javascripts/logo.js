@@ -96,7 +96,7 @@
 	    'position : absolute;' +
 	    'width : ' + o.elSize + 'px;'+
 	    'height : ' + o.elSize + 'px;' +
-	    'background-color : #3a3a3a;' +
+	    'background-color : white;' +
 	    'left : 40px;' +
 	    'top : 40px;' +
 	    '}  ' +
@@ -110,7 +110,7 @@
 	    'position : absolute;' +
 	    'width : ' + o.elSize + 'px;'+
 	    'height : ' + o.elSize + 'px;' +
-	    'background-color : #8bc53e;' +
+	    'background-color : white;' +
 	    'left : 40px;' +
 	    'top : 40px;' +
 	    '}' +
