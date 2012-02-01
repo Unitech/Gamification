@@ -15,6 +15,10 @@ Gamification::Application.routes.draw do
     post '/apply_for_mission/:mission_id' => :apply_for_mission, :as => :apply
   end
 
+  scope :controller => :user, :as => :user, :path => '/user/' do
+    get '/private_profile' => :private_profile, :as => :private_profile
+    get '/account_historic' => :account_historic, :as => :account_historic
+  end
   # scope :controller => :home, :as => :home, :path => '/' do
   #   post '/mission/comment' => :submit_comment, :as => :submit_comment
   #   get '/mission/:mission_id' => :mission_detail, :as => :mission_detail

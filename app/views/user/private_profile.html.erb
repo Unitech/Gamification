@@ -1,0 +1,29 @@
+<% content_for :page_title do %>
+  My Dashboard
+<% end %>
+
+<% content_for :sidebar do %>
+  
+<% end %>
+
+<% content_for :ext_javascripts do %>
+  <%= javascript_include_tag 'highchart' %>
+<% end %>
+
+<% content_for :ext_stylesheets do %>
+  <%= stylesheet_link_tag 'profile' %>
+<% end %>
+
+<%= render :partial => 'shared/menu_my_dashboard' %>
+
+<div class="block" id="block-text">
+  <div class="content sized-content">
+    <div class="inner">
+      <h2 class="title">My Profile</h2>
+      
+      <ul class="list">
+	
+      </ul>
+    </div>
+  </div>
+</div>

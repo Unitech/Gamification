@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag :application %>
     <%= javascript_include_tag :application %>
+    <%= yield :ext_stylesheets %>
     <script>
       $(document).ready(function() {
       <%= yield :ext_javascript %>

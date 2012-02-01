@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 1
+  euros: 1
+  epices: 1
+  points: 1
+  user: 
+
+two:
+  type: 1
+  euros: 1
+  epices: 1
+  points: 1
+  user: 

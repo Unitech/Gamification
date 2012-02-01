@@ -18,6 +18,10 @@ class EntrMissionUser < ActiveRecord::Base
     STATES
   end
 
+  def self.euros_total_on date
+    where("date(updated_at) = ?", date).count
+  end
+
   scope :get_from_user_and_missions_id, lambda { |mission, user|
     where("mission_id = ? AND user_id = ?", 
           mission,

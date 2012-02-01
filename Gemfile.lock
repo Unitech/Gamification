@@ -75,6 +75,7 @@ GEM
       redcarpet
       sanitize (~> 2.0.0)
       sinatra (~> 1.0)
+    googlecharts (1.6.8)
     grit (2.4.1)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
@@ -188,6 +189,7 @@ DEPENDENCIES
   factory_girl
   faker
   gollum
+  googlecharts
   jquery-rails
   paperclip
   rails (= 3.1.3)

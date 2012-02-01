@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 
   has_one :user_ressource
 
+  has_many :wallet_operation
 
   # Typus
   def to_label
@@ -46,6 +47,11 @@ class User < ActiveRecord::Base
     self.entr_mission_users.where(:state => EntrMissionUser::Status::CANCELED).count
   end
 
+
+  def credit_user mission
+    WalletOperation.credit_user self, mission
+    
+  end
   
   # Some validations
   validates_uniqueness_of :username

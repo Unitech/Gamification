@@ -10,8 +10,8 @@
 
 <%= render :partial => 'shared/rewards' %>
 
-<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions en cours', :missions => @missions} %>
+<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions en cours', :subtitle => 'Les missions que vous êtes entrain d\'effectuer', :missions => @missions} %>
 
-<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions en attente de confirmation', :missions => @waiting_missions} %>
+<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions en attente de confirmation', :subtitle => 'Ici ce sont les missions auxquelles vous avez postulé', :missions => @waiting_missions} %>
 
-<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions sans suite', :missions => @canceled_missions} %>
+<%= render :partial => 'shared/mission_listing', :locals => {:title => 'Mes missions sans suite', :subtitle => 'Les missions reffusées', :missions => @canceled_missions} %>

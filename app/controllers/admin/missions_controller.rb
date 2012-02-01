@@ -63,6 +63,11 @@ class Admin::MissionsController < Admin::ResourcesController
     
     # Set each user link as done
     entr_missions.each do |entr|
+      # If the user was doing the mission
+      if entr.state == EntrMissionUser::Status::CONFIRMED
+        # Credit him
+        entr.user.credit_user mission
+      end
       entr.state = EntrMissionUser::Status::DONE
       entr.save
     end

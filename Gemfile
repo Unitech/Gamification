@@ -30,6 +30,9 @@ gem 'typus', :path => './typus'
 gem 'redcarpet', '1.17.2'
 gem 'gollum'
 
+# http://googlecharts.rubyforge.org/
+gem 'googlecharts'
+
 gem 'jquery-rails'
 
 
