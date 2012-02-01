@@ -19,8 +19,9 @@
   $('.apply-btn').html('<%= image_tag 'spinner_20.gif' %> Processing...');
   },
   success : function(data) {
-  $('.apply-btn').html('Un mail vous a été envoyé');
-  }
+  $('.apply-btn').html(data.info);
+  },
+  
   
   });
   });
@@ -60,13 +61,16 @@
       </div>
 
 
-      
-      <% if current_user.has_link_with_mission @mission.id %>
-	<%= link_to 'En attente de confirmation', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais." %>
+      <% case current_user.has_link_with_mission(@mission.id) %>
+      <% when EntrMissionUser::Status::APPLIED %>
+      <%= link_to 'En attente de confirmation', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais." %>
+      <% when EntrMissionUser::Status::CONFIRMED %>
+      <%= link_to 'La mission est en cours', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais." %>
+      <% when EntrMissionUser::Status::DONE %>
+      <%= link_to 'La mission est terminée', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais." %>
       <% else %>
 	<%= link_to 'Postuler', '#/apply', :class => 'button apply-btn apply-action', :title => "Vous êtes interessé par cette mission ? Postulez ! Votre dossier sera envoyé aux administrateurs du laboratoire et vous serez tenu vite au courant de l'avancée de votre candidature !" %>
       <% end %>
-
 
     </div>
   </div>

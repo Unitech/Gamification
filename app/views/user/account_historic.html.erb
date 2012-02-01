@@ -40,30 +40,26 @@
 	  text : 'Euros'
 	  }
 	  },
-	  series : [{
+	  series : [
+
+	  {
 	  name : "Epices",
 	  pointInterval : <%= 1.day * 1000 %>,
 	  pointStart : <%= 3.weeks.ago.to_i * 1000 %>,
-	  data : <%= (3.weeks.ago.to_date..Date.today).map { |date| WalletOperation.epices_total_on date
-}.inspect  %>
+	  data : <%= series 3.weeks.ago.to_date, 'epices', @historic %>
 	  },
 	  {
 	  name : "Points",
 	  pointInterval : <%= 1.day * 1000 %>,
 	  pointStart : <%= 3.weeks.ago.to_i * 1000 %>,
-	  data : <%= (3.weeks.ago.to_date..Date.today).map { |date| WalletOperation.points_total_on date
-}.inspect  %>
+	  data : <%= series 3.weeks.ago.to_date, 'points', @historic  %>
 	  },
 	  {
 	  name : "Euros",
 	  pointInterval : <%= 1.day * 1000 %>,
 	  pointStart : <%= 3.weeks.ago.to_i * 1000 %>,
-	  data : <%= (3.weeks.ago.to_date..Date.today).map { |date| WalletOperation.euros_total_on date
-}.inspect  %>
-	  }]
-	  
-	  
-	  
+	  data : <%= series 3.weeks.ago.to_date, 'euros', @historic  %>
+	  }]	  
 	  });
 	  });
 	</script>
@@ -90,11 +86,10 @@
 	  }
 	  },
 	  series : [{
-	  name : "Epices",
+	  name : "Actions réalisées",
 	  pointInterval : <%= 1.day * 1000 %>,
 	  pointStart : <%= 3.weeks.ago.to_i * 1000 %>,
-	  data : <%= (3.weeks.ago.to_date..Date.today).map { |date| EntrMissionUser.euros_total_on date
-}.inspect  %>
+	  data : <%= actions_series 3.weeks.ago.to_date, @actions  %>
 	  }
 	  ]
 	  

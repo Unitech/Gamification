@@ -1,6 +1,9 @@
 class EntrMissionUser < ActiveRecord::Base
   belongs_to :mission
   belongs_to :user
+  
+  # Only one relationship can be made
+  validates_uniqueness_of :user_id, :scope => :mission_id
 
   class Status < ReferenceData
     APPLIED = 0
@@ -18,7 +21,7 @@ class EntrMissionUser < ActiveRecord::Base
     STATES
   end
 
-  def self.euros_total_on date
+  def self.actions_total_on date
     where("date(updated_at) = ?", date).count
   end
 

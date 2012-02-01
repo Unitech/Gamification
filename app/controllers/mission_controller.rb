@@ -13,9 +13,9 @@ class MissionController < ApplicationController
     if mission.attach_new_user current_user
       MissionMailer.apply_confirmation(current_user, 
                                        Mission.find(mission.id)).deliver
-      render :json => {:success => true}
+      render :json => {:success => true, :info => 'Un mail vous a été envoyé'}
     else
-      render :json => {:success => false}
+      render :json => {:success => false, :info => 'Vous avez déjà postulé'}
     end
   end
 

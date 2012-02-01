@@ -3,6 +3,7 @@ require 'typus/orm/active_record/user/instance_methods_more'
 
 class User < ActiveRecord::Base
   before_create :default_values
+  after_create :gift_user
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
@@ -49,8 +50,7 @@ class User < ActiveRecord::Base
 
 
   def credit_user mission
-    WalletOperation.credit_user self, mission
-    
+    WalletOperation.credit_user self, mission    
   end
   
   # Some validations
@@ -62,7 +62,8 @@ class User < ActiveRecord::Base
     if entr.empty?
       return false
     end
-    return true
+
+    return entr.first.state
   end
 
   def is_admin?
@@ -70,9 +71,14 @@ class User < ActiveRecord::Base
   end
 
   protected  
+  
+  def gift_user
+    WalletOperation.direct_credit_user self, 10, 10
+  end
+  
   def default_values
     self.cash = 0
     self.epices = 0
-    self.points = 20
+    self.points = 0
   end
 end

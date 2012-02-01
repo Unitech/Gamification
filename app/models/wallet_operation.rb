@@ -1,12 +1,23 @@
 class WalletOperation < ActiveRecord::Base
   belongs_to :user
-  # scope :euros, where("euros > 0").sum(:euros)
-  # scope :epices, where("epices > 0").sum(:epices)
-  # scope :points, where("points > 0").sum(:points)
+  # scope :euros, where("euros > 0")
+  # scope :epices, where("epices > 0")
+  # scope :points, where("points > 0")
   
   class Status < ReferenceData
     CREDIT = 0
     WITHDRAW = 1
+  end
+
+  def self.direct_credit_user user, epices, points
+    create :user => user, 
+           :euros => 0,
+           :epices => epices,
+           :points => points,
+           :historic_type => WalletOperation::Status::CREDIT
+    user.epices += epices
+    user.points += points
+    user.save
   end
 
   def self.credit_user user, mission
