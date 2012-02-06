@@ -5,8 +5,8 @@ set :application, "Skynet"
 
 # Must change
 set :user, 'root'
-set :domain, 'skynet.p3ee.com'
-set :applicationdir, "/var/www/#{application}"
+set :domain, 'skynet.hemca.net'
+set :applicationdir, "/var/www/#{domain}"
 
 set :scm, :git
 set :repository,  "git@github.com:Alexandre-Strzelewicz/Gamification.git"
@@ -37,7 +37,12 @@ set :rvm_ruby_string, '1.9.2-p290'
 after "deploy:update_code", "deploy:migrate", "deploy:pipeline_precompile"
 
 namespace :deploy do
-  task :start do ; end
+
+  desc "Start thin"
+  task :start do
+    run "cd #{release_path}; bundle exec thin start -C config/thin.yml"
+  end
+  
   task :stop do ; end
   task :migrate do
     run "cd #{release_path}; RAILS_ENV=production bundle exec rake db:migrate"
