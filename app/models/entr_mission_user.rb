@@ -25,6 +25,10 @@ class EntrMissionUser < ActiveRecord::Base
     where("date(updated_at) = ?", date).count
   end
 
+  def contextualize_state    
+    STATES[self.state][0]
+  end
+
   scope :get_from_user_and_missions_id, lambda { |mission, user|
     where("mission_id = ? AND user_id = ?", 
           mission,

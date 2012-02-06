@@ -6,7 +6,7 @@
   
 <% end %>
 
-<% content_for :ext_javascripts do %>
+<% content_for :ext_javascript do %>
   <%= javascript_include_tag 'highchart' %>
 <% end %>
 
@@ -16,13 +16,44 @@
 
 <%= render :partial => 'shared/menu_my_dashboard' %>
 
+<%= render :partial => 'shared/rewards' %>
+
 <div class="block" id="block-text">
   <div class="content sized-content">
     <div class="inner">
       <h2 class="title">My Profile</h2>
       
       <ul class="list">
-	
+	<table>
+	  <tr>
+	    <td>First name</td>
+	    <td><%= current_user.f_name %></td>
+	  </tr>
+	  <tr>
+	    <td>Last name</td>
+	    <td><%= current_user.l_name %></td>
+	  </tr>
+	  <tr>
+	    <td>Mail</td>
+	    <td><%= current_user.email %></td>
+	  </tr>
+	  <tr>
+	    <td>Epitech Grade</td>
+	    <td><%= current_user.grade %></td>
+	  </tr>
+	  <tr>
+	    <td>Numéro mobile</td>
+	    <td><%= current_user.phone_number %></td>
+	  </tr>
+
+	  <tr>
+	    <td>Missions réalisées</td>
+	    <td><%= current_user.missions_done %></td>
+	  </tr>
+
+
+
+	</table>
       </ul>
     </div>
   </div>

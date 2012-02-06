@@ -18,6 +18,7 @@ Gamification::Application.routes.draw do
   scope :controller => :user, :as => :user, :path => '/user/' do
     get '/private_profile' => :private_profile, :as => :private_profile
     get '/account_historic' => :account_historic, :as => :account_historic
+    get '/actions_historic' => :actions_historic, :as => :actions_historic
   end
   # scope :controller => :home, :as => :home, :path => '/' do
   #   post '/mission/comment' => :submit_comment, :as => :submit_comment

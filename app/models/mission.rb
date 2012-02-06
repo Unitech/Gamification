@@ -67,18 +67,19 @@ class Mission < ActiveRecord::Base
   end
 
   def reward_description
-    string = ""
+    string = "<div id='reward_description'>"
 
     if self.euros > 0 
-      string += "#{self.euros}<br/>euros<br/>"
+      string += "#{self.euros} euros<br/>"
     end
     if self.epices > 0 
-      string += "#{self.epices}<br/>epices<br/>"
+      string += "#{self.epices} epices<br/>"
     end
     if self.points > 0 
-      string += "#{self.points}<br/>points<br/>"
+      string += "#{self.points} points<br/>"
     end
-
+    
+    string += '</div>'
     string.html_safe
   end
   
@@ -153,5 +154,15 @@ class Mission < ActiveRecord::Base
       .where("entr_mission_users.user_id = ? AND entr_mission_users.state = ?", user.id, EntrMissionUser::Status::DONE)
       .collect { |l| l.mission }
   }
-  
+
+  #
+  # Global methode to get all users linked to mission
+  #
+  def user_doing_missions
+    EntrMissionUser
+      .includes(:user)
+      .where("entr_mission_users.mission_id = ? AND entr_mission_users.state = ?", self.id, EntrMissionUser::Status::CONFIRMED)
+      .collect { |l| l.user }
+  end
+
 end

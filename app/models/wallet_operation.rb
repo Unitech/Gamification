@@ -56,8 +56,6 @@ class WalletOperation < ActiveRecord::Base
     where("date(created_at) = ?", date).sum(:points)
   end
 
-
-
   def contextualize_type
     if self.historic_type == WalletOperation::Status::CREDIT
       return "Credit"
@@ -65,4 +63,5 @@ class WalletOperation < ActiveRecord::Base
       return "Retrait"
     end
   end
+
 end

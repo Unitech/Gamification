@@ -48,6 +48,12 @@ class User < ActiveRecord::Base
     self.entr_mission_users.where(:state => EntrMissionUser::Status::CANCELED).count
   end
 
+  #
+  # Attribute override
+  #
+  def username 
+    self.to_label
+  end
 
   def credit_user mission
     WalletOperation.credit_user self, mission    

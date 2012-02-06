@@ -7,24 +7,31 @@
   
 <% end %>
 
+<% 
+   #
+   # This helper fill all yields
+   #
+   fill_page  
+   %>
 
 <% content_for :ext_javascript do %>
-  
-  $('.apply-action').click(function(e) {
-  e.preventDefault();
-  $.ajax({
-  url : '<%= mission_apply_path(@mission) %>',
-  type : 'POST',
-  beforeSend : function() {
-  $('.apply-btn').html('<%= image_tag 'spinner_20.gif' %> Processing...');
-  },
-  success : function(data) {
-  $('.apply-btn').html(data.info);
-  },
-  
-  
-  });
-  });
+<script>
+$().ready(function() {
+    $('.apply-action').click(function(e) {
+	e.preventDefault();
+	$.ajax({
+	    url : '<%= mission_apply_path(@mission) %>',
+	    type : 'POST',
+	    beforeSend : function() {
+		$('.apply-btn').html('<%= image_tag 'spinner_20.gif' %> Processing...');
+	    },
+	    success : function(data) {
+		$('.apply-btn').html(data.info);
+	    }	    
+	});
+    });
+});
+</script>
 <% end %>
 
 <div class="block" id="block-text">
@@ -55,22 +62,17 @@
       Fin : <b><%= @mission.end_date.strftime('%d/%m/%Y %H:%M') %></b>
       <br/>
       <br/>
+      
+      <h2 class="title">Autres étudiants</h2>
+      <%= yield :many_user %>
+
       <div id="mission_description">
 	<h2 class="title">Détail de mission</h2>
 	<%= markdown @mission.description %>
       </div>
 
 
-      <% case current_user.has_link_with_mission(@mission.id) %>
-      <% when EntrMissionUser::Status::APPLIED %>
-      <%= link_to 'En attente de confirmation', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais." %>
-      <% when EntrMissionUser::Status::CONFIRMED %>
-      <%= link_to 'La mission est en cours', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais." %>
-      <% when EntrMissionUser::Status::DONE %>
-      <%= link_to 'La mission est terminée', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais." %>
-      <% else %>
-	<%= link_to 'Postuler', '#/apply', :class => 'button apply-btn apply-action', :title => "Vous êtes interessé par cette mission ? Postulez ! Votre dossier sera envoyé aux administrateurs du laboratoire et vous serez tenu vite au courant de l'avancée de votre candidature !" %>
-      <% end %>
+      <%= yield :button_style %>
 
     </div>
   </div>

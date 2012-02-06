@@ -62,6 +62,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :my_profile, 'My Profile', user_account_historic_path, :if => Proc.new { user_signed_in? } do |my_profile|
       my_profile.item :historic, 'Historiques comptes', user_account_historic_path
+      my_profile.item :actions_historic, 'Historiques actions', user_actions_historic_path
       my_profile.item :profile, 'My Profile', user_private_profile_path
       
       

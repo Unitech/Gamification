@@ -9,8 +9,11 @@ class UserController < ApplicationController
   
   def account_historic
     @historic = current_user.wallet_operation.order('created_at DESC')
+  end
+
+  def actions_historic
     @actions = current_user.entr_mission_users
-
-
+      .order('updated_at DESC')
+      .includes(:mission)
   end
 end

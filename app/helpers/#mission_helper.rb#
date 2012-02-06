@@ -2,7 +2,7 @@
 module MissionHelper
   
   #
-  # Fill all yield for the meta page mission/mission_detail.html.erb
+  # Fill all yield for the meta page mission/mission_detail.html.er
   #
   # = yield button_style
   # = yield many_user     // If other users are linked to the mission

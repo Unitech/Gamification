@@ -7,14 +7,14 @@
       <ol>
 	<% @u = User.limit(5).order('points DESC') %>
 	<% @u.each do |u| %>
-	  <li><%= u.username %> <span style="float : right"><%= u.points %></span></li>
+	  <li><%= u %> <span style="float : right"><%= u.points %></span></li>
 	<% end %>
       </ol>
 
       <h4>Les nouveaux</h4>
       <ol>
-      <% User.limit(5).order('created_at ASC').each do |u| %>
-	<li><%= u.username %></li>
+      <% User.limit(5).order('created_at DESC').each do |u| %>
+	<li><%= u %></li>
       <% end %>
       </ol>
     </p>

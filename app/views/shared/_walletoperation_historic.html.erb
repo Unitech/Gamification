@@ -1,0 +1,67 @@
+
+<h2 class="title">Crédits Fluctuation <small>Stats about your money flow</small></h2>
+
+<script>
+  $(function() {
+  new Highcharts.Chart({
+  chart : {
+  renderTo : 'historic_chart'
+  },
+  title :  {
+  text : 'Crédit'
+  },
+  xAxis : {
+  type : "datetime"
+  },
+  yAxis : {
+  title : {
+  text : 'Euros'
+  }
+  },
+  series : [
+
+  {
+  name : "Epices",
+  pointInterval : <%= 1.day * 1000 %>,
+  pointStart : <%= 3.weeks.ago.to_i * 1000 %>,
+  data : <%= series 3.weeks.ago.to_date, 'epices', @historic %>
+  },
+  {
+  name : "Points",
+  pointInterval : <%= 1.day * 1000 %>,
+  pointStart : <%= 3.weeks.ago.to_i * 1000 %>,
+  data : <%= series 3.weeks.ago.to_date, 'points', @historic  %>
+  },
+  {
+  name : "Euros",
+  pointInterval : <%= 1.day * 1000 %>,
+  pointStart : <%= 3.weeks.ago.to_i * 1000 %>,
+  data : <%= series 3.weeks.ago.to_date, 'euros', @historic  %>
+  }]	  
+  });
+  });
+</script>
+
+<div id="historic_chart" style="width : 100%;height : 300px;"></div>      
+
+
+<h2 class="title">Account historic <small>Bank account like, efficient</small></h2>
+
+<table id="historic_resume" style="width : 100%;" border="1">
+  <tr>
+    <th>Type</th>
+    <th>Date</th>
+    <th>Euro</th>
+    <th>Epices</th>
+    <th>Points</th>
+  </tr>
+  <% @historic.each do |h| %>
+    <tr>
+      <td class="color-<%= h.historic_type %>"><%= h.contextualize_type %></td>
+      <td><%= h.created_at.strftime("%D à %R") %></td>
+      <td><%= h.euros %></td>
+      <td><%= h.epices %></td>
+      <td><%= h.points %></td>
+    </tr>
+  <% end %>
+</table>
