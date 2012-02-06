@@ -5,8 +5,8 @@ set :application, "Skynet"
 
 # Must change
 set :user, 'root'
-set :domain, 'skynet.hemca.net'
-set :applicationdir, "/var/www/#{domain}"
+set :domain, 'skynet.p3ee.com'
+set :applicationdir, "/var/www/#{application}"
 
 set :scm, :git
 set :repository,  "git@github.com:Alexandre-Strzelewicz/Gamification.git"
@@ -43,7 +43,10 @@ namespace :deploy do
     run "cd #{release_path}; bundle exec thin start -C config/thin.yml"
   end
   
-  task :stop do ; end
+  task :stop do
+    run "cd #{release_path}; bundle exec thin stop -C config/thin.yml"
+  end
+
   task :migrate do
     run "cd #{release_path}; RAILS_ENV=production bundle exec rake db:migrate"
   end
