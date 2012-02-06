@@ -30,6 +30,7 @@ gem 'typus', :path => './typus'
 gem 'redcarpet', '1.17.2'
 gem 'gollum'
 
+gem 'thin'
 gem 'capistrano'
 
 # http://googlecharts.rubyforge.org/
