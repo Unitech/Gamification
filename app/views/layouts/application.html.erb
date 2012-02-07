@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WebLab Missions</title>
+    <title>EWL Missions | <%= yield :page_title %></title>
 
     <link href='http://fonts.googleapis.com/css?family=Syncopate|Play' rel='stylesheet' type='text/css'>
 
@@ -17,20 +17,12 @@
       <div id="header">
 	
 	<h1>
-	  <%= link_to 'Web Lab Missions' , root_path %> | 
+	  <%= link_to 'EWL Missions' , root_path %> | 
 	  <%= yield :page_title %>
 	</h1> 
 	
 	<div id="main-navigation">
-	  <% if user_signed_in? %>
-	    <ul class="wat-cf">
-	      <li class="first">
-		<a href="<%= user_account_historic_path %>">
-		  Vous êtes loggé en tant que <b><%= current_user %></b>
-		</a>
-	      </li>
-	    </ul>
-	  <% end %>
+	  <%= render_navigation :level => 2 %>
 	</div>
 	
 	<div id="user-navigation">

@@ -1,3 +1,4 @@
+@import 'functions';
 
 #header {
     height : 65px;
@@ -26,6 +27,11 @@
     }
     #main-navigation {
 	padding-top : 20px;
+	@include transition(0.5);
+	a.selected, a:hover {
+	    border-bottom : 1px solid white;
+	}
+
     }
 }
 
@@ -43,6 +49,7 @@
 	padding-top: 0px;
 	background-color: white;
 	text-shadow: 0 1px 0 white;
+	font-size : 15px;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
@@ -174,6 +181,7 @@
 
 .reward-dashboard {
     padding-top : 10px !important;
+
     table {
 	width : 100%;
 	text-align : center;
@@ -197,4 +205,42 @@
 
 #reward_description {
     font-size : 13px;
+}
+
+a.cta-register {
+    display : block;
+    height : 40px;
+    width : 300px;
+    padding: 5px;
+    color: black;
+    background-color: white;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+    font-family: 'Play', sans-serif;
+    text-decoration : none;
+    line-height : 37px;
+    font-size : 25px;
+    text-align : center;
+    @include transition(2s);
+    &:hover {
+	background-color : #333;
+	color : white;
+    }
+}
+
+.logout-btn {
+    padding : 5px;
+    color : black;
+    background-color: red;
+
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
 }

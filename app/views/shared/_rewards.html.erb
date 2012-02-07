@@ -1,3 +1,7 @@
+<% 
+@img_size = "15x15"
+%>
+
 <div class="block" id="block-text">
   <div class="content reward-dashboard">
     <div class="inner">
@@ -7,19 +11,19 @@
 	  <th>Euro</th>
 	  <th>Epices</th>
 	  <th>Points</th>
-	  <th>Badges</th>
+	  <!-- <th>Badges</th> -->
 	</tr>
 	<tr>
-	  <td><span id="val"><%= current_user.cash %></span> <%= image_tag 'coin.png' %></td>
-	  <td><%= current_user.epices %> <%= image_tag 'spice.png' %></td>
+	  <td><span id="val"><%= current_user.cash %></span> <%= image_tag 'coin.png', :size => "30x30" %></td>
+	  <td><%= current_user.epices %> <%= image_tag 'spice.png', :size => "30x30" %></td>
 	  
-	  <td><%= current_user.points %> <%= image_tag 'gift.png' %></td>	  
+	  <td><%= current_user.points %> <%= image_tag 'gift.png', :size => "30x30" %></td>	  
 
-	  <td class="medals">
-	    <%= image_tag 'medals/medal-bronze-1-icon.png', :title => 'Meilleur conférencier de la semaine' %>
-	    <%= image_tag 'medals/medal-bronze-2-icon.png', :title => 'Missionaire' %>
-	    <%= image_tag 'medals/medal-silver-1-icon.png', :title => 'Chercheur de tête' %>
-	  </td>
+	  <!-- <td class="medals"> -->
+	  <!--   <%= image_tag 'medals/medal-bronze-1-icon.png', :title => 'Meilleur conférencier de la semaine' %> -->
+	  <!--   <%= image_tag 'medals/medal-bronze-2-icon.png', :title => 'Missionaire' %> -->
+	  <!--   <%= image_tag 'medals/medal-silver-1-icon.png', :title => 'Chercheur de tête' %> -->
+	  <!-- </td> -->
 
 	</tr>
       </table>

@@ -6,4 +6,5 @@
  *= require style
  *= require main
  *= require markdown
+ *= require devise
 */

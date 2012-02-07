@@ -1,3 +1,5 @@
+
+<% if user_signed_in? %>
 <div class="block  rank">
   <h3>Leaderboard</h3>
   <div class="content">
@@ -21,13 +23,13 @@
   </div>
 
 </div>
-
+<% end %>
 
 <div class="block rank">
   <h3>Web Lab Mission</h3>
   <div class="content">
     <p>	
-      Postulez pour les missions et <b>gagnez des points/épices/argent</b> !
+      Ici vous avez accès aux missions proposées par le Web Lab. 
     </p>
   </div>
 
@@ -35,16 +37,16 @@
   <h3>Comment ca marche ?</h3>
   <div class="content">
     <p>
-      Authentifiez vous avec vos identifiants p3ee.com et choisissez la mission qu vous intéresse !
+      <ol>
+	<li>Inscrivez-vous</li>
+	<li>Postulez aux missions <%= link_to 'ici', mission_available_path %></li>
+	<li>Vous recevrez un mail quand la mission sera validée</li>
+	<li>Réalisez la mission</li>
+	<li>Et empochez le reward !</li>
+      </ol>
     </p>
   </div>
 
-  <h3>Comment je me fais payer ?</h3>
-  <div class="content">
-    <p>
-      Ajoutez votre RIB et votre SIRET à votre compte et tous les mois vous recevrez vos gains !
-    </p>
-  </div>
   
 </div>
 

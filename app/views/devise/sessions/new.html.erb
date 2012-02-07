@@ -1,4 +1,8 @@
 
+<% content_for :page_title do %>
+  Identification
+<% end %>
+
 <div id="box">
   <div class="block" id="block-login">
     <h2>Sign In</h2>
@@ -38,5 +42,9 @@
   </div>
 </div>
 
+
+<center>
+<%= link_to "S'enregistrer", new_registration_path(resource_name), :class => 'cta-register' %>
+</center>
 
 <%= render :partial => "devise/shared/links" %>

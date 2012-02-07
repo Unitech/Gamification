@@ -1,11 +1,10 @@
 <% content_for :page_title do %>
-  My Dashboard
+  Available Missions
 <% end %>
 
 <% content_for :sidebar do %>
   
 <% end %>
 
-<%= render :partial => 'shared/menu_my_dashboard' %>
 
 <%= render :partial => 'shared/mission_listing', :locals => {:title => 'Missions disponibles', :missions => @missions} %>
