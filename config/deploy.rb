@@ -34,7 +34,7 @@ require "rvm/capistrano"
 # Set ruby version for rvm
 set :rvm_ruby_string, '1.9.2-p290'
 
-after "deploy:update_code", "deploy:migrate", "deploy:pipeline_precompile", "deploy:start"
+after "deploy:update_code", "deploy:migrate", "deploy:pipeline_precompile", "deploy:stop", "deploy:start"
 
 namespace :deploy do
 
