@@ -25,7 +25,7 @@ Gamification::Application.configure do
 
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -58,4 +58,43 @@ Gamification::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  #
+  # Gmail email sending for devise
+  #
+  require 'tlsmail'
+  config.action_mailer.default_url_options = { :host => 'vote-system.com' }
+
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+  
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
+  
+  ActionMailer::Base.smtp_settings = {
+    :enable_starttls_auto => true,  #this is the important shit!
+    :address        => 'smtp.gmail.com',
+    :port           => 587,
+    :domain         => 'xtargets.com',
+    :authentication => :plain,
+    :user_name      => 'votes.system@gmail.com',
+    :password       => 'qko96e12'
+  }
+
+  #
+  # Mail Jet conf
+  #
+  # config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.perform_deliveries = true
+
+  # config.action_mailer.smtp_settings = {
+  #     :address => "in.mailjet.com",
+  #     :enable_starttls_auto => true,
+  #     :port => 587,
+  #     :authentication => 'plain',
+  #     :user_name => "4b4b2adc80739934884f3c0b513176cd",
+  #     :password => "321dbb305be1d8d0d888185d5505d5da"
+  # }
+
+  URL_SITE = 'http://skynet.p3ee.com/'
 end

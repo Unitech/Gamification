@@ -1,10 +1,11 @@
 
-/* .login { */
-/*     .group { */
-/* 	height : 25px; */
-/*     } */
-/*     input { */
-/* 	border: solid 1px #E5E5E5; */
-/* 	height : 20px; */
-/*     } */
-/* } */
+.login {
+    height : 150px;
+    .group {
+	height : 25px;
+    }
+    input[type="email"], input[type="password"] {
+	border: solid 1px #E5E5E5;
+	height : 20px;
+    }
+}

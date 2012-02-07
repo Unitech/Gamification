@@ -54,7 +54,7 @@ SimpleNavigation::Configuration.run do |navigation|
     # Add an item which has a sub navigation (same params, but with block)
     # primary.item :dash_menu, 'Dashboard', root_path
 
-    primary.item :dashboard_menu, 'Dashboard', root_path, :if => Proc.new{ user_signed_in? } do |my_dash|
+    primary.item :dashboard_menu, 'Missions', root_path, :if => Proc.new{ user_signed_in? } do |my_dash|
       my_dash.item :missions_todo, 'Missions Dashboard', root_path
       my_dash.item :missions_waiting, 'Missions disponibles', mission_available_path
       my_dash.item :missions_waiting, 'Missions terminées', mission_finished_path
@@ -64,9 +64,8 @@ SimpleNavigation::Configuration.run do |navigation|
       my_profile.item :historic, 'Historiques comptes', user_account_historic_path
       my_profile.item :actions_historic, 'Historiques actions', user_actions_historic_path
       my_profile.item :profile, 'My Profile', user_private_profile_path
-      
-      
     end
+
     #primary.item :logout, 'Comment ca marche ?', '#'
     primary.item :logout, 'Logout', destroy_user_session_path, :type => :post, :if => Proc.new { user_signed_in? }, :class => 'logout-btn'
     primary.item :login, 'Login', new_user_session_path, :unless => Proc.new { user_signed_in? }
