@@ -10,4 +10,6 @@
 
 # Demo
 
- RAILS_ENV=demo rake db:migrate
+RAILS_ENV=demo rake demo:reset
+
+

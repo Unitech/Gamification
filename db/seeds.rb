@@ -57,6 +57,8 @@ if demo_user == nil
 end
   
 
+missions[0].attach_new_user demo_user
+
 21.times do |date_rand|
   rand(4).times do
     WalletOperation.create(:user => demo_user,
@@ -67,4 +69,3 @@ end
                            :created_at => date_rand.days.ago)
   end
 end
-

@@ -32,7 +32,21 @@
         <div class="group navform wat-cf" style=" margin : 10px auto; width : 100px; ">
 	  <%= f.submit "Entrer" %>
         </div>
-
+	<% if Rails.env == 'demo' %>
+	  <script>
+	    $().ready(function() {
+	    $('#demo-enter').click(function() {
+	    $('#user_email').val('weblab@epitech.eu');
+	    $('#user_password').val('123456');
+	    $('#user_new').submit();
+	    });
+	    });
+	  </script>
+	  <br/>
+	  <center>
+	    <input type="button" id="demo-enter" class="cta-register" value="Login with the demo account !"/>
+	  </center>
+	<% end %>
       <% end %>
 
     </div>
