@@ -1,3 +1,4 @@
+@import 'functions';
 
 .login {
     height : 150px;
@@ -8,4 +9,9 @@
 	border: solid 1px #E5E5E5;
 	height : 20px;
     }
+}
+
+.registration {
+    @include normalize-inputs();   
+    @include normalize-labels();
 }

@@ -1,4 +1,4 @@
-	    //-webkit-animation: fontbulger 5s infinite;
+//-webkit-animation: fontbulger 5s infinite;
 
 @mixin rounded_bottom_left($amount) {
     -moz-border-radius-bottomleft: $amount;
@@ -12,6 +12,17 @@
     -khtml-border-radius: $amount;
     border-radius: $amount;
 }
+
+
+@mixin rounded_bottom($amount) {
+    -moz-border-radius-bottomleft: $amount;
+    -moz-border-radius-bottomright: $amount;
+    -moz-border-radius-topright: 0px;
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-radius: 0px 0px $amount $amount;
+    border-radius: 0px 0px $amount $amount;
+}
+
 
 @mixin transition($amount) {
     -webkit-transition: all $amount ease-out;
@@ -107,72 +118,49 @@
     box-shadow: 0 0 45px rgba(82, 168, 236, 0.6);	
 }
 
-@mixin rounded_bottom($amount) {
-    -moz-border-radius-bottomleft: $amount;
-    -moz-border-radius-bottomright: $amount;
-    -moz-border-radius-topright: 0px;
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-radius: 0px 0px $amount $amount;
-    border-radius: 0px 0px $amount $amount;
-}
+@mixin btn-style($width) {
+    text-shadow : none;
+    display : block;
+    width : $width;
+    border : 1px solid silver;
+    padding: 2px 20px;
+    color: black;
+    background-color: white;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
 
-
-@mixin nice_inputs() {
-    input[type=text], textarea, input[type=email], input[type=password] {
-	padding : 5px;
-	border : 2px solid $main_color;
-	@include rounded(4px);
-	box-shadow : inset 1px 1px 1px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow : inset 1px 1px 1px rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow : inset 1px 1px 1px rgba(0, 0, 0, 0.1);
-    }
-    input[type=submit], input[type=button] {
-	text-align : center;
-	padding : 3px 12px 3px 12px;
-	margin-top : 8px;
-	background-color : $main_color;
-	color : #222;
-	font-weight : bold;
-	font-size : 1.1em;
-	cursor : pointer;
-	border : 1px solid black;    
-	@include rounded(3px);
+    font-family: 'Play', sans-serif;
+    text-decoration : none;
+    line-height : 37px;
+    font-size : 20px;
+    text-align : center;
+    cursor : pointer;
+    @include transition(0.2s);
+    &:hover {
+	background-color : #333;
+	color : white;
     }
     
-    input[type=submit]:hover {   
-	background-color : $main_color;
-	color : #222;
+}
+
+
+@mixin normalize-inputs() {
+    input[type="email"], input[type="password"], input[type="text"] {
+	border: solid 1px #E5E5E5;
+	height : 20px;
+	padding : 5px 8px;
+	font-size : 16px;
     }
 }
 
-@mixin nice_form() {
-    .form {
-	@include nice_inputs();
-	#mini {
-	        text-transform : none;
-		    font-size : 9px;
-		    }
-	.field_with_errors {
-	        color : red;
-		}
-
-
-	p {margin:.5em 0;}
-
-	label{
-	    text-transform : uppercase;
-	    font-weight : bold;
-	    display:block;}
-
-	.fields input, textarea{
-	        border:2px solid $main_color;
-		    padding:5px;
-		        @include rounded(4px);
-			}
-
-	.submit_btn {
-	        margin-top : 20px;
-		}
+@mixin normalize-labels() {
+    label {
+	display : block;
+	font-size : 15px;
+	margin-top : 10px;
+	margin-bottom : 3px;
+	color : #222;
+	font-weight : bold;
     }
-
 }

@@ -4,37 +4,36 @@
 <% end %>
 
 <div class="block" id="block-text">
-  <div class="content sized-content">
+  <div class="content sized-content registration">
     <div class="inner">
       <h2 class="title">S'enregistrer</h2>
 
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 	<%= devise_error_messages! %>
 
-	<div><%= f.label :email %><br />
+	<div><%= f.label :email %>
 	  <%= f.email_field :email %></div>
 
-	<div><%= f.label :f_name %><br />
+	<div><%= f.label :f_name %>
 	  <%= f.text_field :f_name %></div>
 
-	<div><%= f.label :l_name %><br />
+	<div><%= f.label :l_name %>
 	  <%= f.text_field :l_name %></div>
 
-	<div><%= f.label :grade, :text => 'Votre promotion' %><br />
+	<div><%= f.label :grade, :text => 'Votre promotion' %>
 	  <%= f.text_field :grade %></div>
 
 
-	<div><%= f.label :password %><br />
+	<div><%= f.label :password %>
 	  <%= f.password_field :password %></div>
 	
-	<div><%= f.label :password_confirmation %><br />
+	<div><%= f.label :password_confirmation %>
 	  <%= f.password_field :password_confirmation %></div>
 
 	<br/>
 	<div><%= f.submit "Confirmer" %></div>
 	<br/>
       <% end %>
-
       <%= render :partial => "devise/shared/links" %>
     </div>
   </div>

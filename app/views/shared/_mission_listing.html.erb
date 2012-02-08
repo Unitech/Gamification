@@ -14,7 +14,8 @@
 	
 	<% if missions.count == 0 %>
 	  <center id="no-mission">	    
-	    Vous n'avez pas encore de missions en cours, <b><u><%= link_to "Postulez !", mission_available_path %></u></b>
+	    Vous n'avez pas encore de missions en cours, 
+	    <%= link_to "Postulez !", mission_available_path, :class => 'apply-btn'  %>
 	  </center>
 	<% end %>
 	<% missions.each do |m| %>

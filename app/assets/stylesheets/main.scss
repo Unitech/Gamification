@@ -8,9 +8,7 @@
     #user-navigation {
 	top : 22px;
 	a:hover {
-	    color : white;
-	    padding-bottom : 2px;
-	    border-bottom : 2px solid white;
+	    -webkit-animation: fontbulger 1s infinite;
 	}
 	a.selected {
 	    padding : 5px;
@@ -64,7 +62,11 @@
     min-height : 300px;
     #no-mission {
 	font-size : 16px;
-	margin-top : 108px;
+	margin-top : 88px;
+    }
+    .apply-btn {
+	margin-top : 10px;
+	@include btn-style(200px);
     }
 }
 
@@ -150,29 +152,7 @@
 
 .mission-descr {
     .apply-btn {
-	display : block;
-	border : 1px solid silver;
-	padding: 2px 20px;
-	color: black;
-	background-color: white;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px;
-	
-	font-family: 'Play', sans-serif;
-	text-decoration : none;
-	line-height : 37px;
-	font-size : 20px;
-	text-align : center;
-	cursor : pointer;
-	@include transition(0.2s);
-	&:hover {
-	    background-color : #333;
-	    color : white;
-	}
-	
-	margin : 40px 0 40px 0 !important;
-	width : 350px;
+	@include btn-style(350px);
 	margin : 0 auto !important;
 	
     }
