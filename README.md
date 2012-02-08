@@ -8,3 +8,6 @@
 - spork testunit
 - testdrb test/integration/admin/missions_links_integration_test.rb | less
 
+# Demo
+
+ RAILS_ENV=demo rake db:migrate

@@ -12,7 +12,7 @@ end
 
 missions = []
 
-7.times do 
+10.times do 
   missone = Mission.new(:title => Faker::Lorem.sentence,
                         :euros => rand(500),
                         :points => rand(500),
@@ -38,25 +38,6 @@ users = []
                       :password => '123456')
 end
 
-# user_first = User.first
-
-# (3.weeks.ago.to_date..Date.today).map { |date|
-#   m = Mission.new(:title => Faker::Lorem.sentence,
-#                         :euros => rand(500),
-#                         :points => rand(500),
-#                         :epices => rand(50),
-#                         :resume => Faker::Lorem.paragraph,
-#                         :description => Faker::Lorem.paragraphs(6),
-#                         :begin_date => time_rand(Time.now, 2.days.from_now),
-#                         :end_date => time_rand(Time.now, 10.days.from_now),
-#                         :state => rand(2),
-#                         :category => rand(5),
-#                         :image => File.open(File.join(Rails.root, '/db/seed_sample/' + (rand(3) + 1).to_s + '.jpg')))
-  
-  
-# }
-
-
 missions.each do |m|
   5.times do
     Comment.create(:content => Faker::Lorem.paragraph,
@@ -64,3 +45,26 @@ missions.each do |m|
                    :mission_id => missions[rand(missions.length)].id)
   end
 end
+
+
+demo_user = User.where(:email => 'weblab@epitech.eu').first
+if demo_user == nil
+  demo_user = User.create(:f_name => 'Web',
+                          :l_name => 'Lab',
+                          :username => 'EWTL',
+                          :email => 'weblab@epitech.eu',
+                          :password => '123456')
+end
+  
+
+21.times do |date_rand|
+  rand(4).times do
+    WalletOperation.create(:user => demo_user,
+                           :euros => rand(30),
+                           :epices => rand(70),
+                           :points => rand(50),
+                           :historic_type => WalletOperation::Status::CREDIT,
+                           :created_at => date_rand.days.ago)
+  end
+end
+

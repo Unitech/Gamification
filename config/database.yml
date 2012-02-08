@@ -25,3 +25,9 @@ production:
   pool: 5
   username: root
   password: <%= begin IO.read("/var/pss") rescue "" end %>
+
+demo:
+  adapter: sqlite3
+  database: db/demo.sqlite3
+  pool: 5
+  timeout: 5000

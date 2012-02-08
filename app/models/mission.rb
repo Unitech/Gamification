@@ -121,7 +121,7 @@ class Mission < ActiveRecord::Base
   
   scope :processing_missions,
         where('missions.state = ?', Mission::Status::CONFIRMED)
-
+  
   scope :finished_missions,
         where('missions.state = ?', Mission::Status::FINISHED)
 
