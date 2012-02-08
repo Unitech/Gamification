@@ -91,12 +91,14 @@ class Admin::MissionsController < Admin::ResourcesController
     #
     # Send mail to each user (must use delayed_job !)
     #
-    User.all.each do |u|
-      MissionMailer.new_mission(u, mission).deliver
-      i = i + 1
-    end
-
-    flash[:success] = i.to_s + " mails ont bien été envoyés"
+    # User.all.each do |u|
+    #   MissionMailer.new_mission(u, mission).deliver
+    #   i = i + 1
+    # end
+    MissionMailer.broadcast_new_mission(mission).deliver
+    
+    
+    flash[:success] = "Les mails ont bien été envoyés"
     redirect_to :back
   end
 
