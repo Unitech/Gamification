@@ -5,8 +5,8 @@ set :application, "Skynet"
 
 # Must change
 set :user, 'root'
-set :domain, 'skynet.p3ee.com'
-set :applicationdir, "/var/www/#{application}"
+set :domain, 'missions.p3ee.com'
+set :applicationdir, "/var/www/#{domain}"
 
 set :scm, :git
 set :repository,  "git@github.com:Alexandre-Strzelewicz/Gamification.git"
@@ -50,15 +50,17 @@ namespace :deploy do
   task :migrate do
     run "cd #{release_path}; RAILS_ENV=production bundle exec rake db:migrate"
   end
+
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+
   task :pipeline_precompile do
     run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
   end
+
   task :set_rights do 
     run "cd #{applicationdir}/current; chown -R www-data .; mkdir public/system; chmod -R 655 public/system "
   end
+
 end
-
-
