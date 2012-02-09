@@ -11,4 +11,4 @@ environment: production
 max_persistent_conns: 512
 servers: 3
 daemonize: true
-chdir: /var/www/missions.p3ee.com/current
+chdir: /var/www/Skynet/current

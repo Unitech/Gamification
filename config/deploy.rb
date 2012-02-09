@@ -6,7 +6,7 @@ set :application, "Skynet"
 # Must change
 set :user, 'root'
 set :domain, 'missions.p3ee.com'
-set :applicationdir, "/var/www/#{domain}"
+set :applicationdir, "/var/www/#{application}"
 
 set :scm, :git
 set :repository,  "git@github.com:Alexandre-Strzelewicz/Gamification.git"
