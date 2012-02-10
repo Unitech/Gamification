@@ -1,5 +1,8 @@
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
+
+require 'omniauth/strategies/labz'
+
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -197,6 +200,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  config.omniauth :labz, "5Ju4BBAZvf1Ivno5NMb0nG7BscE60J5HDHgSsEWO", "TkRcdzkNBrSMzaQpupbRDQs4E8sX9W5AX4YCuCJ1"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

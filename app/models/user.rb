@@ -5,32 +5,28 @@ class User < ActiveRecord::Base
   before_create :default_values
   after_create :gift_user
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable#, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :f_name, :l_name, :username, :website
 
-  #attr_accessible :email, :password, :password_confirmation, :remember_me, :f_name, :l_name, :username, :website, :as => :admin
-
   include Typus::Orm::ActiveRecord::User::InstanceMethods
   include Typus::Orm::ActiveRecord::User::InstanceMethodsMore
-  
 
   has_many :comments
-
   has_many :entr_mission_users
   has_many :missions, :through => :entr_mission_users
-
   has_one :user_ressource
-
   has_many :wallet_operation
+
+  alias :to_s :to_label
+
+
 
   # Typus
   def to_label
     "#{self.f_name} #{self.l_name}"
   end
-
-  alias :to_s :to_label
 
   def missions_applied
     self.entr_mission_users.where(:state => EntrMissionUser::Status::APPLIED).count
@@ -48,17 +44,19 @@ class User < ActiveRecord::Base
     self.entr_mission_users.where(:state => EntrMissionUser::Status::CANCELED).count
   end
 
+
+
   #
   # Attribute override
   #
-  def username 
+  def username
     self.to_label
   end
 
   def credit_user mission
-    WalletOperation.credit_user self, mission    
+    WalletOperation.credit_user self, mission
   end
-  
+
   # Some validations
   validates_uniqueness_of :username
 
@@ -76,12 +74,28 @@ class User < ActiveRecord::Base
     self.admin || false
   end
 
-  protected  
-  
+  ## OAuth
+  def self.find_for_labz_oauth(info, signed_in_ressource=nil)
+    # You can also propagate admin rights from labz,
+    # ex : user.admin = true if info.groups.include? "root"
+
+    if user = User.where(:email => info.login_mail).first
+      user
+      # Uncomment to allow automatic merging of account with labz (untested)
+      # elsif signed_in_ressource
+      #   signed_in_ressource.email = data.login_mail
+      #   signed_in_ressource.save
+    else # Create a user with a stub password.
+      User.create!(:email => info.login_mail, :password => Devise.friendly_token[0,20])
+    end
+  end
+
+  protected
+
   def gift_user
     WalletOperation.direct_credit_user self, 10, 10
   end
-  
+
   def default_values
     self.cash = 0
     self.epices = 0

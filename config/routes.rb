@@ -1,11 +1,11 @@
 Gamification::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "oa_callbacks" }
 
-  scope :controller => :home, :as => :home, :path => '/misc' do 
-    
+  scope :controller => :home, :as => :home, :path => '/misc' do
+
   end
-  
+
   scope :controller => :mission, :as => :mission, :path => '/mission/' do
     get '/waiting_missions' => :waiting_missions, :as => :waiting
     get '/available_missions' => :available_missions, :as => :available

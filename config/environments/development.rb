@@ -5,14 +5,14 @@ Gamification::Application.configure do
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
 
+  config.log_level = :debug
 
-  
   #
   # Mail catcher (dev)
   #
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
-  
+
   config.cache_classes = false
 
   # Log error messages when you accidentally call methods on nil.

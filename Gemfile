@@ -23,7 +23,7 @@ gem 'simple-navigation'
 gem 'static_list'
 gem 'faker'
 gem 'paperclip'
-gem 'devise'
+gem 'devise', '~> 1.5.0'
 gem 'basic_active_model'
 gem 'typus', :path => './typus'
 gem 'redcarpet', '1.17.2'
@@ -31,6 +31,8 @@ gem 'gollum'
 gem 'tlsmail'
 gem 'thin'
 gem 'capistrano'
+gem 'omniauth-oauth'
+gem 'rest-client'
 
 # http://googlecharts.rubyforge.org/
 # gem 'googlecharts'
@@ -43,3 +45,4 @@ group :test do
   gem 'webrat'
   gem 'factory_girl'
 end
+gem 'therubyracer'
