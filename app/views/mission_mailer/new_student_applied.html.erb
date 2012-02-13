@@ -1,0 +1,17 @@
+
+<%
+  @mail_title = 'Un étudiant a postuler'
+  @mail_mini_text = 'Nouvelle postulation'
+  @mail_full_url = @url_site + mission_detail_path(@mission)
+%>
+
+<%= @user.username %> a postulé pour <%= @mission.title %>
+<br/><br/>
+<center>
+  <h4 class="h4">
+    <a href="<%= @mail_full_url %>" target="_blank">
+      Revoir la mission
+    </a>
+  </h4>
+</center>
+

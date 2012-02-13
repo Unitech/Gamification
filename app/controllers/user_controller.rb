@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 class UserController < ApplicationController
   def private_profile
-    
+    @actions = current_user.entr_mission_users
+      .order('updated_at DESC')
   end
 
   def pulic_profile

@@ -4,15 +4,17 @@ class MissionController < ApplicationController
 
   def mission_detail
     @mission = Mission.find(params[:mission_id], :include => [:comments])
-    @comment = Comment.new    
+    @comment = Comment.new
   end
 
   def apply_for_mission
     mission = Mission.find(params[:mission_id].to_i)
 
     if mission.attach_new_user current_user
-      MissionMailer.apply_confirmation(current_user, 
-                                       Mission.find(mission.id)).deliver
+      # Mail for user
+      MissionMailer.apply_confirmation(current_user, mission).deliver
+      # Mail to admin
+      MissionMailer.new_student_applied(current_user, mission).deliver 
       render :json => {:success => true, :info => 'Un mail vous a été envoyé'}
     else
       render :json => {:success => false, :info => 'Vous avez déjà postulé'}

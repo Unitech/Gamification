@@ -60,8 +60,11 @@ class User < ActiveRecord::Base
   end
   
   # Some validations
+  validates_presence_of :f_name
+  validates_presence_of :l_name
   validates_uniqueness_of :username
   validates_uniqueness_of :email
+  validates_format_of :email, :with => /^[\w\d]+$/
 
   # Some Methods
   def has_link_with_mission mission_id

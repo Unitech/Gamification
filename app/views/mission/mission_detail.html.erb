@@ -62,9 +62,11 @@ $().ready(function() {
       Fin : <b><%= @mission.end_date.strftime('%d/%m/%Y %H:%M') %></b>
       <br/>
       <br/>
-      
-      <h2 class="title">Autres étudiants</h2>
-      <%= yield :many_user %>
+
+      <% if @mission.is_in_process? %>
+	<h2 class="title">Composition du groupe de mission</h2>
+	<%= yield :many_user %>
+      <% end %>
 
       <div id="mission_description">
 	<h2 class="title">Détail de mission</h2>

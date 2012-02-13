@@ -1,14 +1,11 @@
 <% content_for :page_title do %>
-  My Dashboard
+  My Profile
 <% end %>
 
 <% content_for :sidebar do %>
   
 <% end %>
 
-<% content_for :ext_javascript do %>
-  <%= javascript_include_tag 'highchart' %>
-<% end %>
 
 <% content_for :ext_stylesheets do %>
   <%= stylesheet_link_tag 'profile' %>
@@ -19,42 +16,47 @@
 <%= render :partial => 'shared/rewards' %>
 
 <div class="block" id="block-text">
-  <div class="content sized-content">
+  <div class="content sized-content resume_profile">
     <div class="inner">
-      <h2 class="title">My Profile</h2>
+      <h2 class="title">My Profile <small>Your life, zipped in 8 fields</small></h2>
       
-      <ul class="list">
-	<table>
-	  <tr>
-	    <td>First name</td>
-	    <td><%= current_user.f_name %></td>
-	  </tr>
-	  <tr>
-	    <td>Last name</td>
-	    <td><%= current_user.l_name %></td>
-	  </tr>
-	  <tr>
-	    <td>Mail</td>
-	    <td><%= current_user.email %></td>
-	  </tr>
-	  <tr>
-	    <td>Epitech Grade</td>
-	    <td><%= current_user.grade %></td>
-	  </tr>
-	  <tr>
-	    <td>Numéro mobile</td>
-	    <td><%= current_user.phone_number %></td>
-	  </tr>
+      
+      <%= form_for current_user, :url => edit_user_registration_path, :html => { :method => :put } do |f| %>
 
-	  <tr>
-	    <td>Missions réalisées</td>
-	    <td><%= current_user.missions_done %></td>
-	  </tr>
+      <div><%= f.label :mail_missions, 'Être tenu informé par mail des nouvelles mission ?' %>
+	<%= f.check_box :mail_missions %></div>
+
+      <div><%= f.label :mail_comments, 'Être tenu informé par mail des nouveaux commentaires liés aux miens ?' %>
+	<%= f.check_box :mail_comments %></div>
+
+	<div><%= f.label :email %>
+	  <%= f.email_field :email, :placeholder => 'mymail@skynet.com' %></div>
+
+	<div><%= f.label :f_name, 'Prénom' %>
+	  <%= f.text_field :f_name %></div>
+
+	<div><%= f.label :l_name, 'Nom' %>
+	  <%= f.text_field :l_name %></div>
+
+	<div><%= f.label :grade, 'Votre promotion' %>
+	  <%= f.text_field :grade, :placeholder => '2014' %></div>
 
 
 
-	</table>
-      </ul>
+	<div><%= f.label :password %> 
+	  <%= f.password_field :password %></div>
+
+<i>Laissez les deux champs pass vide si vous ne voulez pas le modifier</i>	
+	<div><%= f.label :password_confirmation %>
+	  <%= f.password_field :password_confirmation %></div>
+
+	<br/>
+	<div><%= f.submit "Mettre à jour" %></div>
+	<br/>
+      
+      <% end %>
+
+
     </div>
   </div>
 </div>

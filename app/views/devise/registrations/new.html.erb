@@ -12,16 +12,16 @@
 	<%= devise_error_messages! %>
 
 	<div><%= f.label :email %>
-	  <%= f.email_field :email %></div>
+	  <%= f.email_field :email, :placeholder => 'mymail@skynet.com' %></div>
 
-	<div><%= f.label :f_name %>
+	<div><%= f.label :f_name, 'Prénom' %>
 	  <%= f.text_field :f_name %></div>
 
-	<div><%= f.label :l_name %>
+	<div><%= f.label :l_name, 'Nom' %>
 	  <%= f.text_field :l_name %></div>
 
-	<div><%= f.label :grade, :text => 'Votre promotion' %>
-	  <%= f.text_field :grade %></div>
+	<div><%= f.label :grade, 'Votre promotion' %>
+	  <%= f.text_field :grade, :placeholder => '2014' %></div>
 
 
 	<div><%= f.label :password %>

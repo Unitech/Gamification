@@ -55,6 +55,14 @@ class Mission < ActiveRecord::Base
     "#{self.title}"
   end
 
+  def is_in_process?
+    if self.state == Mission::Status::CONFIRMED
+      return true
+    else
+      return false
+    end
+  end
+
   def attach_new_user user
     link = EntrMissionUser.new(:user => user,
                                :mission_id => self.id,

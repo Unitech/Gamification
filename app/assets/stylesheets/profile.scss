@@ -1,3 +1,4 @@
+@import 'functions';
 
 .profile {
 
@@ -17,4 +18,23 @@
 	    color : white;
 	}
     }
+}
+
+.resume_profile {
+
+    .login {
+	height : 150px;
+	.group {
+	    height : 25px;
+	}
+	input[type="email"], input[type="password"] {
+	    border: solid 1px #E5E5E5;
+	    height : 20px;
+	}
+    }
+    
+    @include normalize-inputs();   
+    @include normalize-labels();
+    
+    
 }

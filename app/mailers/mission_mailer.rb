@@ -11,7 +11,7 @@ class MissionMailer < ActionMailer::Base
     @mission = mission
     @url_site = URL_SITE
     attachments.inline['logo.png'] = File.read('app/assets/images/logo-slogan-600.png')
-    mail(:bcc => User.all.map(&:email), :subject => 'Nouvelle mission - ' + mission.title)
+    mail(:bcc => User.where('mail_missions = ?', true).map(&:email), :subject => 'Nouvelle mission - ' + mission.title)
   end
 
 
@@ -46,6 +46,17 @@ class MissionMailer < ActionMailer::Base
     @url_site = URL_SITE
     attachments.inline['logo.png'] = File.read('app/assets/images/logo-slogan-600.png')
     mail(:to => user.email, :subject => 'Vous avez été retenu pour - ' + mission.title)
+  end
+
+  #
+  # New student has apply for mission
+  #
+  def new_student_applied(user, mission)
+    @user = user
+    @mission = mission
+    @url_site = URL_SITE
+    attachments.inline['logo.png'] = File.read('app/assets/images/logo-slogan-600.png')
+    mail(:to => 'strzelewicz.alexandre@gmail.com', :subject => '[EWTL] Nouveau postulant ' + mission.title)
   end
 
 end
