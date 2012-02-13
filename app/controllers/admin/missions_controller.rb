@@ -95,7 +95,7 @@ class Admin::MissionsController < Admin::ResourcesController
     #   MissionMailer.new_mission(u, mission).deliver
     #   i = i + 1
     # end
-    MissionMailer.broadcast_new_mission(mission).deliver
+    MissionMailer.delay.broadcast_new_mission(mission)
     
     
     flash[:success] = "Les mails ont bien été envoyés"

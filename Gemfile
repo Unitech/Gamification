@@ -28,10 +28,12 @@ gem 'basic_active_model'
 gem 'typus', :path => './typus'
 gem 'redcarpet', '1.17.2'
 gem 'gollum'
-gem 'tlsmail'
+gem 'tlsmail', :git => 'https://github.com/derdewey/tlsmail.git'
 gem 'thin'
 gem 'capistrano'
 gem 'exception_notification'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 # http://googlecharts.rubyforge.org/
 # gem 'googlecharts'

@@ -34,7 +34,7 @@ require "rvm/capistrano"
 # Set ruby version for rvm
 set :rvm_ruby_string, '1.9.2-p290'
 
-after "deploy:update_code", "deploy:migrate", "deploy:pipeline_precompile", "deploy:stop", "deploy:start"
+after "deploy:update_code", "deploy:migrate", "deploy:pipeline_precompile", "deploy:stop", "deploy:start", "deploy:launch_delayed_job"
 
 namespace :deploy do
 
@@ -63,4 +63,8 @@ namespace :deploy do
     run "cd #{applicationdir}/current; chown -R www-data .; mkdir public/system; chmod -R 655 public/system "
   end
 
+  task :launch_delayed_job do
+    run "RAILS_ENV=production script/delayed_job stop"
+    run "RAILS_ENV=production script/delayed_job start"
+  end
 end
