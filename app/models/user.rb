@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :f_name, :l_name, :username, :website
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :f_name, :l_name, :username, :website, :mail_missions, :mail_comments
 
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :f_name, :l_name, :username, :website, :as => :admin
 
@@ -64,7 +64,6 @@ class User < ActiveRecord::Base
   validates_presence_of :l_name
   validates_uniqueness_of :username
   validates_uniqueness_of :email
-  validates_format_of :email, :with => /^[\w\d]+$/
 
   # Some Methods
   def has_link_with_mission mission_id

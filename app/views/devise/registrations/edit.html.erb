@@ -1,25 +1,60 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit "Update" %></div>
+<% content_for :ext_stylesheets do %>
+  <%= stylesheet_link_tag 'profile' %>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+<div class="block" id="block-text">
+  <div class="content sized-content resume_profile">
+    <div class="inner">
+      <h2 class="title">My Profile <small>Your life, zipped in 8 fields</small></h2>
+      
 
-<%= link_to "Back", :back %>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	
+	<%= devise_error_messages! %>
+
+      <div><%= f.label :mail_missions, 'Être tenu informé par mail des nouvelles mission ?' %>
+	<%= f.check_box :mail_missions %></div>
+
+      <div><%= f.label :mail_comments, 'Être tenu informé par mail des nouveaux commentaires liés aux miens ?' %>
+	<%= f.check_box :mail_comments %></div>
+
+	<div><%= f.label :email %>
+	  <%= f.email_field :email, :placeholder => 'mymail@skynet.com' %></div>
+
+	<div><%= f.label :f_name, 'Prénom' %>
+	  <%= f.text_field :f_name %></div>
+
+	<div><%= f.label :l_name, 'Nom' %>
+	  <%= f.text_field :l_name %></div>
+
+	<div><%= f.label :grade, 'Votre promotion' %>
+	  <%= f.text_field :grade, :placeholder => '2014' %></div>
+
+
+	<div><%= f.label :password %> 
+	  <%= f.password_field :password %></div>
+	<i>(leave blank if you don't want to change it)</i>
+
+	<div><%= f.label :password_confirmation %>
+	  <%= f.password_field :password_confirmation %></div>
+
+	<div><%= f.label :current_password %> 
+	  <%= f.password_field :current_password %></div>
+	<i>(we need your current password to confirm your changes)</i>
+	
+
+	<br/>
+	<br/>
+	<div><%= f.submit "Mettre à jour" %></div>
+	<br/>
+      
+
+
+      <% end %>
+
+
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 Gamification::Application.routes.draw do
 
   devise_for :users
+  
 
   scope :controller => :home, :as => :home, :path => '/misc' do 
     
