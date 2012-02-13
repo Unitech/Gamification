@@ -31,6 +31,7 @@ gem 'gollum'
 gem 'tlsmail'
 gem 'thin'
 gem 'capistrano'
+gem 'exception_notification'
 
 # http://googlecharts.rubyforge.org/
 # gem 'googlecharts'

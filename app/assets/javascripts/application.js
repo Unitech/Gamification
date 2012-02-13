@@ -8,4 +8,3 @@
 //= require jquery_ujs
 //= require logo
 //= require main
-

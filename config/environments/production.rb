@@ -96,5 +96,16 @@ Gamification::Application.configure do
   #     :password => "321dbb305be1d8d0d888185d5505d5da"
   # }
 
-  URL_SITE = 'http://skynet.p3ee.com/'
+  
+  #
+  # Exception notification
+  #
+  config.middleware.use ExceptionNotifier,
+                        :email_prefix => "[EWTL Error] ",
+                        :sender_address => %{"notification " <votes.system@gmail.com>},
+                        :exception_recipients => %w{strzelewicz.alexandre@gmail.com}
+
+
+
+  URL_SITE = 'http://missions.p3ee.com/'
 end

@@ -1,0 +1,106 @@
+
+body {
+    z-index : 0;
+}
+
+#mask {
+    -webkit-transition: background 0s ease-in-out;
+    -moz-transition: background 0s ease-in-out;
+    -o-transition: background 0s ease-in-out;
+    transition: background 0s ease-in-out;
+    position : fixed;
+    top : 0%;
+    left : 0%;
+    width : 100%;
+    height : 100%;
+    background-color : black;
+    opacity : 0.8;
+    z-index : 500;
+    display : none;
+}
+
+#launch-tuto {
+    cursor : pointer;
+}
+
+#descr-tutorial {
+    display : none;
+    position : absolute;
+    right : 50%;
+    bottom : 0px;
+
+    height : 140px;
+    width : 700px;
+    margin-right : -350px;
+
+    
+    background-color : white;
+
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-topright: 8px;
+    -moz-border-radius-bottomright: 0px;
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-radius: 8px 8px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
+    
+    border : 3px solid #222;
+    text-align : center;
+    
+    color : #222;
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-weight : bold;
+    padding : 20px;
+    font-size : 20px;
+    z-index : 501;
+}
+
+#descr-tutorial #internal {
+    position : relative;
+    width : inherit;
+    height : inherit;
+}
+
+#descr-tutorial #internal #descr-content {
+    width : 85%;
+}
+
+#descr-tutorial #internal #descr-next {
+    position : absolute;
+    right : 0px;
+    top : 0px;
+    cursor : pointer;
+    border-left : 2px solid #222;
+    padding-left : 10px;
+}
+
+#descr-tutorial #internal #descr-next:hover {
+    opacity : 0.5;
+}
+
+.tuto {
+    -webkit-transition: all 0s ease-in-out;
+    -moz-transition: all 0s ease-in-out;
+    -o-transition: all 0s ease-in-out;
+    transition: all 0s ease-in-out;
+    position : relative;
+}
+
+#selected {    
+    z-index : 9999;
+    color : white;
+}
+
+#content {
+    margin : 100px 280px;
+}
+
+
+#canvas-tuto {
+    position :absolute; 
+    top : 0%; 
+    left : 0%; 
+    z-index : 501; 
+    height : 100%;
+    width : 100%; 
+    display : none;
+}
