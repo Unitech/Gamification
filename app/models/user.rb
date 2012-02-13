@@ -61,6 +61,7 @@ class User < ActiveRecord::Base
   
   # Some validations
   validates_uniqueness_of :username
+  validates_uniqueness_of :email
 
   # Some Methods
   def has_link_with_mission mission_id
