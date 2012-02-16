@@ -52,6 +52,9 @@
     <th>Last update</th>
   </tr>
   <% @actions.each do |h| %>
+    <% if h.mission.title == nil %>
+      <% next %>
+    <% end %>
     <tr>
       <td><%= h.mission.title %></td>
       <td>

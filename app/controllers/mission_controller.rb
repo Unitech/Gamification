@@ -12,9 +12,9 @@ class MissionController < ApplicationController
 
     if mission.attach_new_user current_user
       # Mail for user
-      MissionMailer.apply_confirmation(current_user, mission).deliver
+      MissionMailer.delay.apply_confirmation(current_user, mission)
       # Mail to admin
-      MissionMailer.new_student_applied(current_user, mission).deliver 
+      MissionMailer.delay.new_student_applied(current_user, mission)
       render :json => {:success => true, :info => 'Un mail vous a été envoyé'}
     else
       render :json => {:success => false, :info => 'Vous avez déjà postulé'}

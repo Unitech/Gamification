@@ -28,7 +28,7 @@ class Admin::EntrMissionUsersController < Admin::ResourcesController
     mission.state = Mission::Status::CONFIRMED
     mission.save
 
-    MissionMailer.mission_confirmed_for_the_user(user, mission).deliver
+    MissionMailer.delay.mission_confirmed_for_the_user(user, mission)
 
     flash[:success] = user.to_s + " bien confirmé pour " + mission.to_s
     redirect_to :back
