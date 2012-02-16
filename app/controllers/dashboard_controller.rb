@@ -17,6 +17,7 @@ class DashboardController < ApplicationController
     @canceled_missions = Mission.user_canceled_missions current_user
     @canceled_missions = @canceled_missions
       .paginate(:page => params[:page], :per_page => 5)
+    
   end
   
 end

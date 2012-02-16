@@ -20,7 +20,7 @@
 	  <% if Rails.env == 'demo' %>
 	    EWL <span style="color : red">DEMONSTRATION</span>
 	  <% else %> 
-	    <%= link_to 'EWL Missions' , root_path %>
+	    <%= link_to 'EWL Missions' , root_path, :id => 'go-to-home', :title => 'Back to home' %>
 	  <% end %>| 
 	  <%= yield :page_title %>
 	</h1> 

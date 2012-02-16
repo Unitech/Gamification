@@ -1,4 +1,6 @@
 @import 'functions';
+@import 'variables';
+
 
 * {
   margin: 0;
@@ -309,14 +311,11 @@ a.button,  {
       color: #222;
     display: block;
 
-    //background-color: #eee;
-    border: 1px solid #bfbfbf;
-    //font-size: 1em;
     line-height: 1.3em;
     font-weight: bold;
     cursor: pointer;
     text-align : center;
-    padding: 5px 10px 6px 7px;
+    padding: 15px 10px;
     text-decoration: none;
 
     height : 25px;
@@ -405,7 +404,8 @@ button.button:active, a.button:active {
 
 body {
   color: #111111;
-  background: #c4c4c4 url("bgd.jpg");
+  
+  background: $background-color;
   font-family: helvetica; }
 
 h1, h2, h3 {
@@ -424,7 +424,7 @@ hr {
 
 #header {
   height: 80px;
-  background-color: #333333;
+  background-color: $header-color;
   font-family: 'Play', sans-serif;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
@@ -448,14 +448,17 @@ hr {
   float: left;
   .block {
     padding-top: 0px;
-    background-color: white;
+    
+    background-color: $box-color;
     text-shadow: 0 1px 0 white;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
+
+
     .content {
       padding-top: 1px;
       .inner {
@@ -472,7 +475,7 @@ hr {
         line-height: 1.45em; } } } }
 
 #main-navigation {
-  padding-top: 30px;
+  top: 33px;
   width: auto;
   ul li {
     padding-left: 20px;
@@ -544,6 +547,7 @@ hr {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    text-shadow : none;
     background: none; }
   p {
     margin: 0;

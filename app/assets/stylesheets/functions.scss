@@ -1,3 +1,5 @@
+@import 'variables';
+
 //-webkit-animation: fontbulger 5s infinite;
 
 @mixin rounded_bottom_left($amount) {
@@ -123,9 +125,9 @@
     display : block;
     width : $width;
     border : 1px solid silver;
-    padding: 2px 20px;
+    padding: 10px 20px;
     color: black;
-    background-color: white;
+    background-color: $apply-btn-color;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
@@ -136,9 +138,10 @@
     font-size : 20px;
     text-align : center;
     cursor : pointer;
+    border : none;
     @include transition(0.2s);
     &:hover {
-	background-color : #333;
+	background-color : $background-color;
 	color : white;
     }
     

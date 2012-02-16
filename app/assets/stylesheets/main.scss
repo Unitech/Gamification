@@ -1,22 +1,27 @@
 @import 'functions';
 
+@import 'variables';
+
 #header {
     height : 65px;
     h1 {
 	font-size : 30px;
     }
+    #go-to-home {
+	&:hover {
+	    -webkit-animation: fontbulger 3s infinite;
+	}
+    }
     #user-navigation {
-	top : 22px;
+	top : 20px;
 	a:hover {
 	    -webkit-animation: fontbulger 1s infinite;
 	}
 	a.selected {
-	    padding : 5px;
+	    padding : 15px 10px;
 	    color : black;
-	    background-color: white;
-	    text-shadow: 0 1px 0 white;
-	    -moz-border-radius: 6px;
-	    -webkit-border-radius: 6px;
+	    background-color: $menu-btn-color;
+	    text-shadow : none;
 	    border-radius: 6px;
 	    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
 	    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -24,18 +29,17 @@
 	}
     }
     #main-navigation {
-	padding-top : 20px;
+	padding-top : 7px;
 	@include transition(0.5);
 	margin-top : 3px;
 	a {
-	  padding : 5px;
+	    padding : 15px 10px;
 	}
 	a.selected, a:hover {
+	    padding : 15px 10px;
 	    color : black;
-	    background-color: white;
-	    text-shadow: 0 1px 0 white;
-	    -moz-border-radius: 6px;
-	    -webkit-border-radius: 6px;
+	    background-color: $menu-btn-color;
+	    text-shadow : none;
 	    border-radius: 6px;
 	    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
 	    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -58,7 +62,7 @@
     }
     .rank {
 	padding-top: 0px;
-	background-color: white;
+	background-color: $right-box-color;
 	text-shadow: 0 1px 0 white;
 	font-size : 15px;
 	-moz-border-radius: 6px;
@@ -69,13 +73,34 @@
 	-webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
 	
     }
+    .activity-board {
+	
+	ul {
+	    
+	}
+	li {
+
+	    border-bottom : 1px solid #C2C2C2;
+	    padding : 4px 0px 6px 0px;
+	}
+	#title-activity {
+	    padding-top : 3px;
+
+	    a {
+		margin-left : 0px;
+		&:hover {
+		    text-decoration : underline;
+		}
+	    }
+	}
+    }
 }
 
 .sized-content {
     min-height : 300px;
     #no-mission {
 	font-size : 16px;
-	margin-top : 88px;
+	margin-top : 73px;
     }
     .apply-btn {
 	margin-top : 10px;
@@ -90,7 +115,7 @@
 	margin-top : 10px;
 	margin-bottom : 22px;
 	padding-bottom : 4px;
-	border-bottom : 1px solid #666;
+	border-bottom : 1px solid #657E84;
 	small {
 	    font-size : 16px;
 	    font-style : italic;
@@ -249,9 +274,9 @@ a.cta-register {
 }
 
 .logout-btn {
-    padding : 5px;
+    padding : 15px 10px;
     color : black;
-    background-color: #D14836;
+
 
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
