@@ -35,6 +35,7 @@
       </div>  
   
       <div id="wrapper" class="wat-cf">
+
 	<div class="flash">
           <% flash.each do |type, message| -%>
             <div class="message <%= type %>">
@@ -42,14 +43,21 @@
             </div>
           <% end -%>
 	</div>
+
 	<div id="main">
           <%= yield %>
+
+	  
           <div id="footer">
-            <div class="block notice">
-              <p>Copyright &copy; <%= Time.now.year %> Web Lab</p>
-            </div>      
+	    <%= render :partial => 'shared/lab_links' %>
+	    <div class="copyright">
+	      <p>Copyright &copy; <%= Time.now.year %> Web Lab</p>
+	    </div>
           </div>
+
 	</div>
+
+	
 	<div id="sidebar">
 	  <%= yield :sidebar %>
 	  <%= render :partial => 'shared/sidebar' %>

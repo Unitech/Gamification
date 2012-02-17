@@ -8,7 +8,7 @@
       <ol>
 	<% @u = User.limit(5).order('points DESC') %>
 	<% @u.each do |u| %>
-	  <li><%= u %> <span style="float : right"><%= u.points %></span></li>
+	  <li><a href="<%= user_public_profile_path(u) %>"><%= u %></a> <span style="float : right"><%= u.points %></span></li>
 	<% end %>
       </ol>
 

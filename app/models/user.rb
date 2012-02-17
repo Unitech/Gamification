@@ -30,7 +30,8 @@ class User < ActiveRecord::Base
     "#{self.f_name} #{self.l_name}"
   end
 
-  alias :to_s :to_label
+  alias :to_s :to_label 
+  alias :to_param :to_label
 
   def missions_applied
     self.entr_mission_users.where(:state => EntrMissionUser::Status::APPLIED).count
@@ -77,6 +78,12 @@ class User < ActiveRecord::Base
 
   def is_admin?
     self.admin || false
+  end
+
+  def self.search_by_username username
+    f_name = username.split(' ')[0]
+    l_name = username.split(' ')[1]
+    where("f_name = ? AND l_name = ?", f_name, l_name).first
   end
 
   protected  

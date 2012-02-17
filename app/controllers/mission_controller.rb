@@ -7,6 +7,10 @@ class MissionController < ApplicationController
     @comment = Comment.new
   end
 
+  def processing_mission
+    @missions = Mission.processing_missions.paginate(:page => params[:page], :per_page => 10)
+  end
+
   def apply_for_mission
     mission = Mission.find(params[:mission_id].to_i)
 

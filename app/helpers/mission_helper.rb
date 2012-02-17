@@ -15,19 +15,12 @@ module MissionHelper
         link_to 'En attente de confirmation', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais."
       end
    
-    #
-    # Mission is in action !
-    #
-   when EntrMissionUser::Status::CONFIRMED
-      
-      # Show all user doing the mission in the same time 
-     @mission.user_doing_missions.each do |user|
-       content_for :many_user do
-	   user.to_label + " "
-       end
-     end
-     content_for :button_style do
-       link_to 'La mission est en cours', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais."
+      #
+      # Mission is in action !
+      #
+    when EntrMissionUser::Status::CONFIRMED
+      content_for :button_style do
+        link_to 'La mission est en cours', '#/', :class => 'button apply-btn', :title => "Vous avez postulé pour cette mission, le laboratoire est entrain de délibérer. Vous serez contacté via mail dans les plus brefs délais."
      end
 
    when EntrMissionUser::Status::DONE

@@ -39,35 +39,35 @@
 	linear, left top, left bottom, 
 	from($color),
 	to(lighten($color, $percent)));
-   background: -moz-linear-gradient(
+    background: -moz-linear-gradient(
    	top,
    	$main_color $percent,
    	lighten($color, $percent));
-   background-color : $color;
+    background-color : $color;
 }
 
 @mixin text-effect() {
     background: -webkit-gradient(linear, left top, right top,
- color-stop(0, #999),
- color-stop(0.375, #999),
- color-stop(0.5, white),
- color-stop(0.625, #999),
- color-stop(1, #999));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
--webkit-animation: shimmer 3s infinite;
+				 color-stop(0, #999),
+				 color-stop(0.375, #999),
+				 color-stop(0.5, white),
+				 color-stop(0.625, #999),
+				 color-stop(1, #999));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: shimmer 3s infinite;
 }
 
 @-webkit-keyframes fontbulger {
-        0% {
-            opacity : 1;
-        }
-        50% {
-            opacity : 0.2;
-        }
-        100% {
-            opacity : 1;
-        }
+    0% {
+        opacity : 1;
+    }
+    50% {
+        opacity : 0.2;
+    }
+    100% {
+        opacity : 1;
+    }
 }
 
 @-webkit-keyframes morph {
@@ -106,11 +106,11 @@
 }
 
 @mixin shake-it() {
-    		-webkit-animation-name: spaceboots;
-		-webkit-animation-duration: 0.8s;
-		-webkit-transform-origin:50% 50%;
-		-webkit-animation-iteration-count: infinite;
-		-webkit-animation-timing-function: linear;
+    -webkit-animation-name: spaceboots;
+    -webkit-animation-duration: 0.8s;
+    -webkit-transform-origin:50% 50%;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
 }
 
 @mixin special-border() {
@@ -166,4 +166,90 @@
 	color : #222;
 	font-weight : bold;
     }
+}
+
+
+@mixin wobble() {
+    @-webkit-keyframes wobble {
+	0% { -webkit-transform: translateX(0%); }
+	15% { -webkit-transform: translateX(-25%) rotate(-5deg); }
+	30% { -webkit-transform: translateX(20%) rotate(3deg); }
+	45% { -webkit-transform: translateX(-15%) rotate(-3deg); }
+	60% { -webkit-transform: translateX(10%) rotate(2deg); }
+	75% { -webkit-transform: translateX(-5%) rotate(-1deg); }
+	100% { -webkit-transform: translateX(0%); }
+    }
+
+    @-moz-keyframes wobble {
+	0% { -moz-transform: translateX(0%); }
+	15% { -moz-transform: translateX(-25%) rotate(-5deg); }
+	30% { -moz-transform: translateX(20%) rotate(3deg); }
+	45% { -moz-transform: translateX(-15%) rotate(-3deg); }
+	60% { -moz-transform: translateX(10%) rotate(2deg); }
+	75% { -moz-transform: translateX(-5%) rotate(-1deg); }
+	100% { -moz-transform: translateX(0%); }
+    }
+
+    @-ms-keyframes wobble {
+	0% { -ms-transform: translateX(0%); }
+	15% { -ms-transform: translateX(-25%) rotate(-5deg); }
+	30% { -ms-transform: translateX(20%) rotate(3deg); }
+	45% { -ms-transform: translateX(-15%) rotate(-3deg); }
+	60% { -ms-transform: translateX(10%) rotate(2deg); }
+	75% { -ms-transform: translateX(-5%) rotate(-1deg); }
+	100% { -ms-transform: translateX(0%); }
+    }
+
+    @-o-keyframes wobble {
+	0% { -o-transform: translateX(0%); }
+	15% { -o-transform: translateX(-25%) rotate(-5deg); }
+	30% { -o-transform: translateX(20%) rotate(3deg); }
+	45% { -o-transform: translateX(-15%) rotate(-3deg); }
+	60% { -o-transform: translateX(10%) rotate(2deg); }
+	75% { -o-transform: translateX(-5%) rotate(-1deg); }
+	100% { -o-transform: translateX(0%); }
+    }
+
+    @keyframes wobble {
+	0% { transform: translateX(0%); }
+	15% { transform: translateX(-25%) rotate(-5deg); }
+	30% { transform: translateX(20%) rotate(3deg); }
+	45% { transform: translateX(-15%) rotate(-3deg); }
+	60% { transform: translateX(10%) rotate(2deg); }
+	75% { transform: translateX(-5%) rotate(-1deg); }
+	100% { transform: translateX(0%); }
+    }
+
+    .wobble {
+	-webkit-animation-name: wobble;
+	-moz-animation-name: wobble;
+	-ms-animation-name: wobble;
+	-o-animation-name: wobble;
+	animation-name: wobble;
+    }
+}
+
+@mixin animation-special() {
+    
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: .2s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: 1s;
+    -moz-animation-delay: .2s;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: both;
+    -ms-animation-duration: 1s;
+    -ms-animation-delay: .2s;
+    -ms-animation-timing-function: ease;
+    -ms-animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-delay: .2s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
 }

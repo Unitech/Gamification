@@ -426,7 +426,7 @@ hr {
   height: 80px;
   background-color: $header-color;
   font-family: 'Play', sans-serif;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+
   box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
   -moz-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
@@ -450,7 +450,7 @@ hr {
     padding-top: 0px;
     
     background-color: $box-color;
-    text-shadow: 0 1px 0 white;
+
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
@@ -541,18 +541,29 @@ hr {
   float: left; }
 
 #footer {
-  color: #261f1f;
-  text-shadow: none;
-  .block {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    text-shadow : none;
-    background: none; }
-  p {
-    margin: 0;
-    padding: 0;
-    text-align: center; } }
+  .lab-links {
+      height : 114px;
+      table {
+	  width : 100%;
+      }
+      td {
+	  font-size : 17px;
+	  text-align : center;
+
+	  font-weight : bold;
+	  a {
+	      text-decoration : none;
+	      &:hover {
+		  -webkit-animation: fontbulger 1.5s infinite;
+	      }
+	  }
+      }
+  }
+  .copyright {
+      text-align : center;
+      color : white;
+  }
+}
 
 #sidebar {
   width: 20%;
@@ -564,12 +575,12 @@ hr {
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+
     h4 {
       font-weight: normal; } }
   .notice {
     color: white;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+
     background-color: rgba(0, 0, 0, 0.3);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0)));
     background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
@@ -608,7 +619,8 @@ hr {
     a {
       margin-left: 10px;
       text-decoration: none;
-      text-shadow: 0 1px 0 white; }
+    
+    }
     &.active a {
       color: #a4a4a4; } } }
 
@@ -618,6 +630,7 @@ hr {
   margin-top: 11px; }
 
 .pagination {
+
   a, span {
     border: 1px solid #c3c4ba;
     -moz-border-radius: 2px;
@@ -639,7 +652,7 @@ hr {
     color: white;
     border: 1px solid #261f1f; }
   a:active {
-    background-image: url("images/button-background-active.png");
+
     outline: none; } }
 
 .table {
@@ -695,7 +708,7 @@ hr {
     text-align: center;
     margin: 0 auto 15px;
     color: white;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+
     p {
       margin: 8px; } }
   .error, .error-list {
@@ -734,7 +747,7 @@ ul.list li {
   width: 480px;
   .block {
     background: white;
-    text-shadow: 0 1px 0 white;
+
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);

@@ -34,15 +34,15 @@ $().ready(function() {
 </script>
 <% end %>
 
-<div class="block" id="block-text">
-  <div class="content my-dashboard-menu">
-    <ul>
-      <li><a href="/">Back</a></li>
-      <li><a href="#comments-anchor">Commentaires</a></li>
-      <li><a href="#post-comments-anchor">Poster un commentaire</a></li>
-    </ul>
-  </div>
-</div>
+<!-- <div class="block" id="block-text"> -->
+<!--   <div class="content my-dashboard-menu"> -->
+<!--     <ul> -->
+<!--       <li><a href="/">Back</a></li> -->
+<!--       <li><a href="#comments-anchor">Commentaires</a></li> -->
+<!--       <li><a href="#post-comments-anchor">Poster un commentaire</a></li> -->
+<!--     </ul> -->
+<!--   </div> -->
+<!-- </div> -->
 
 <div class="block" id="block-text">
   <div class="content mission-descr">
@@ -65,7 +65,10 @@ $().ready(function() {
 
       <% if @mission.is_in_process? %>
 	<h2 class="title">Composition du groupe de mission</h2>
-	<%= yield :many_user %>
+	<% @mission.user_doing_missions.each do |user| %>	  
+	  <%= user %>
+	  <br/>
+	<% end %>
       <% end %>
 
       <div id="mission_description">
@@ -122,7 +125,7 @@ $().ready(function() {
         </div>
 	  
         <div class="group navform wat-cf">
-	  <%= f.submit "Poster", :class => 'button' %>
+	  <%= f.submit "Poster", :class => 'button post-btn' %>
 	</div>
 
       <% end %>

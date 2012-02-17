@@ -1,0 +1,27 @@
+<% content_for :page_title do %>
+  <% if @user.nil? %>
+    User not found
+  <% else %>
+    <%= @user %>'s profile
+  <% end %>
+<% end %>
+
+<% content_for :ext_stylesheets do %>
+  <%= stylesheet_link_tag 'profile' %>
+<% end %>
+
+
+<div class="block" id="block-text">
+    <div class="content sized-content resume_profile">
+      <div class="inner">
+	<% if @user.nil? %>
+	  <div class="user-not-found wobble" onclick="window.location='/'">
+	    <center>User not found !</center>
+	  </div>
+	<% else %>
+	  <h2 class="title"><%= @user %></h2>
+	  
+	<% end %>
+      </div>
+    </div>
+</div>

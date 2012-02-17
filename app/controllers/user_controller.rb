@@ -5,7 +5,8 @@ class UserController < ApplicationController
       .order('updated_at DESC')
   end
 
-  def pulic_profile
+  def public_profile
+    @user = User.search_by_username params[:username]
   end
   
   def account_historic
