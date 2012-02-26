@@ -15,122 +15,119 @@
    %>
 
 <% content_for :ext_javascript do %>
-<script>
-$().ready(function() {
+  <script>
+    $().ready(function() {
     $('.apply-action').click(function(e) {
-	e.preventDefault();
-	$.ajax({
-	    url : '<%= mission_apply_path(@mission) %>',
-	    type : 'POST',
-	    beforeSend : function() {
-		$('.apply-btn').html('<%= image_tag 'spinner_20.gif' %> Processing...');
-	    },
-	    success : function(data) {
-		$('.apply-btn').html(data.info);
-	    }	    
-	});
+    e.preventDefault();
+    $.ajax({
+    url : '<%= mission_apply_path(@mission) %>',
+    type : 'POST',
+    beforeSend : function() {
+    $('.apply-btn').html('<%= image_tag 'spinner_20.gif' %> Processing...');
+    },
+    success : function(data) {
+    $('.apply-btn').html(data.info);
+    }	    
     });
-});
-</script>
+    });
+    });
+  </script>
 <% end %>
 
-<!-- <div class="block" id="block-text"> -->
-<!--   <div class="content my-dashboard-menu"> -->
-<!--     <ul> -->
-<!--       <li><a href="/">Back</a></li> -->
-<!--       <li><a href="#comments-anchor">Commentaires</a></li> -->
-<!--       <li><a href="#post-comments-anchor">Poster un commentaire</a></li> -->
-<!--     </ul> -->
-<!--   </div> -->
-<!-- </div> -->
-
-<div class="block" id="block-text">
-  <div class="content mission-descr">
-    <div class="inner">
-      <h2 class="title"><%= @mission.title %></h2>
-      <% if @mission.image? %>
-	<center>
-	  <%= image_tag @mission.image.url(:big), :id => 'mission_image' %>
-	</center>
-      <% end %>
-
-
-      Reward : <b><%= @mission.reward_description %></b>
-      <br/>
-      Début : <b><%= @mission.begin_date.strftime('%d/%m/%Y %H:%M') %></b>
-      <br/>
-      Fin : <b><%= @mission.end_date.strftime('%d/%m/%Y %H:%M') %></b>
-      <br/>
-      <br/>
-
-      <% if @mission.is_in_process? %>
-	<h2 class="title">Composition du groupe de mission</h2>
-	<% @mission.user_doing_missions.each do |user| %>	  
-	  <%= user %>
-	  <br/>
+<div class="mission-descr">
+  <div class="block" id="block-text">
+    <div class="content">
+      <div class="inner">
+	<h2 class="title"><%= @mission.title %></h2>
+	<% if @mission.image? %>
+	  <center>
+	    <%= image_tag @mission.image.url(:big), :id => 'mission_image' %>
+	  </center>
 	<% end %>
-      <% end %>
-
-      <div id="mission_description">
-	<h2 class="title">Détail de mission</h2>
-	<%= markdown @mission.description %>
-      </div>
 
 
-      <%= yield :button_style %>
+	Reward : <b><%= @mission.reward_description %></b>
+	<br/>
+	Début : <b><%= @mission.begin_date.strftime('%d/%m/%Y %H:%M') %></b>
+	<br/>
+	Fin : <b><%= @mission.end_date.strftime('%d/%m/%Y %H:%M') %></b>
+	<br/>
+	<br/>
 
-    </div>
-  </div>
-</div>
-
-
-<div class="block" id="block-text">
-  <div id="comments-anchor"></div>
-  <div class="content sized-content">
-
-
-    <div class="inner">
-      <h2 class="title">Commentaires</h2>
-      <ul class="list">
-	
-	<% @mission.comments.each do |c| %>
-	  <li class="comment">
-	    <div class="left">
-	      
-	    </div>
-            <div class="item">
-	      Par <b><%= c.user.username %></b> <i>le <%= c.created_at.strftime('%d/%m/%Y à %H:%M') %></i>
-	      <br/>
-	      <br/>
-	      <%= c.content %>
-	    </div>
-	  </li>
+	<% if @mission.is_in_process? %>
+	  <div class="other-user-doin-mission">
+	    <h2 class="title">Composition du groupe de mission</h2>
+	    <ul>
+	      <% @mission.user_doing_missions.each do |user| %>	  
+		<li><%= user %></li>
+	      <% end %>
+	    </ul>
+	  </div>
 	<% end %>
-      </ul>
 
-      <br/>
-      <div id="post-comments-anchor"></div>
-      <h3>Postez un commentaire</h3>
-      
-      <%= form_for :comment, :url => mission_submit_comment_path do |f| %>
-      
-	<%= f.hidden_field :mission, :value => @mission.id %>
-	
-        <div class="columns wat-cf">
-          <div class="column left">
-            <div class="group">
-	      <%= f.text_area :content, :rows => 10, :cols => 80, :class => 'text_area' %>
-            </div>
-          </div>
-        </div>
-	  
-        <div class="group navform wat-cf">
-	  <%= f.submit "Poster", :class => 'button post-btn' %>
+	<div id="mission_description">
+	  <h2 class="title">Détail de mission</h2>
+	  <%= markdown @mission.description %>
 	</div>
 
-      <% end %>
 
+	<%= yield :button_style %>
+
+	<br/>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="block" id="block-text">
+    <div id="comments-anchor"></div>
+    <div class="content sized-content">
+
+
+      <div class="inner">
+	<h2 class="title">Commentaires</h2>
+
+	<ul class="comment">
+	  
+	  <% @mission.comments.each do |c| %>
+	    <li>
+	      <div class="left">
+		
+	      </div>
+              <div>
+		<span id="author"><%= c.user.username %></span>
+		<span id="date">le <%= c.created_at.strftime('%d/%m/%Y à %H:%M') %></span>
+		<div id="content-comment">
+		  <%= c.content %>
+		</div>
+	      </div>
+	    </li>
+	  <% end %>
+	</ul>
+
+	<br/>
+	<div id="post-comments-anchor"></div>
+	<h3>Postez un commentaire</h3>
+	
+	<%= form_for :comment, :url => mission_submit_comment_path do |f| %>
+	  
+	  <%= f.hidden_field :mission, :value => @mission.id %>
+	  
+          <div class="columns wat-cf">
+            <div class="column left">
+              <div class="group">
+		<%= f.text_area :content, :rows => 10, :cols => 80, :class => 'text_area' %>
+              </div>
+            </div>
+          </div>
+	  
+          <div class="group navform wat-cf">
+	    <%= f.submit "Poster", :class => 'button post-btn' %>
+	  </div>
+
+	<% end %>
+
+      </div>
     </div>
   </div>
 </div>
-

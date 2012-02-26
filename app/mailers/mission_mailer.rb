@@ -11,7 +11,7 @@ class MissionMailer < ActionMailer::Base
     @mission = mission
     @url_site = URL_SITE
     attachments.inline['logo.png'] = File.read('app/assets/images/logo-slogan-600.png')
-    mail(:bcc => User.where('mail_missions = ?', true).map(&:email), :subject => 'Nouvelle mission - ' + mission.title)
+    mail(:bcc => User.where('mail_missions = ?', true).map(&:email), :subject => '[EWTL] New mission - ' + mission.title)
   end
 
 
@@ -23,7 +23,7 @@ class MissionMailer < ActionMailer::Base
     @mission = mission
     @url_site = URL_SITE
     attachments.inline['logo.png'] = File.read('app/assets/images/logo-slogan-600.png')
-    mail(:to => user.email, :subject => 'Nouvelle mission - ' + mission.title)
+    mail(:to => user.email, :subject => '[EWTL] New mission - ' + mission.title)
   end
 
   #
@@ -34,7 +34,7 @@ class MissionMailer < ActionMailer::Base
     @mission = mission
     @url_site = URL_SITE
     attachments.inline['logo.png'] = File.read('app/assets/images/logo-slogan-600.png')
-    mail(:to => user.email, :subject => 'Vous avez bien postulé pour - ' + mission.title)
+    mail(:to => user.email, :subject => '[EWTL] Postulation confirmée - ' + mission.title)
   end
 
   #
@@ -45,7 +45,7 @@ class MissionMailer < ActionMailer::Base
     @mission = mission
     @url_site = URL_SITE
     attachments.inline['logo.png'] = File.read('app/assets/images/logo-slogan-600.png')
-    mail(:to => user.email, :subject => 'Vous avez été retenu pour - ' + mission.title)
+    mail(:to => user.email, :subject => '[EWTL] Confirmation - ' + mission.title)
   end
 
   #
@@ -55,8 +55,30 @@ class MissionMailer < ActionMailer::Base
     @user = user
     @mission = mission
     @url_site = URL_SITE
-    attachments.inline['logo.png'] = File.read('app/assets/images/logo-slogan-600.png')
     mail(:to => 'strzelewicz.alexandre@gmail.com', :subject => '[EWTL] Nouveau postulant ' + mission.title)
+  end
+  
+  #
+  # New comment was posted
+  #
+  def new_comment_broadcast(writter_user, send_users, mission, comment)
+    @user = writter_user
+    @mission = mission
+    @comment = comment
+    @url_site = URL_SITE
+    mail(:to => send_users, 
+         :subject => '[EWTL] Nouveau commentaire - ' + mission.title)
+  end
+
+  #
+  #
+  #
+  def mission_finished(user, mission)
+    @user = user
+    @mission = mission
+    @url_site = URL_SITE
+    attachments.inline['logo.png'] = File.read('app/assets/images/logo-slogan-600.png')
+    mail(:to => user.email, :subject => '[EWTL] Success')
   end
 
 end

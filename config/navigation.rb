@@ -57,7 +57,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :dashboard_menu, 'Missions', root_path, :highlights_on => /\/mission/, :if => Proc.new{ user_signed_in? } do |my_dash|
       my_dash.item :missions_todo, 'Dashboard', root_path
       my_dash.item :missions_waiting, 'Missions disponibles', mission_available_path
-      my_dash.item :missions_waiting, 'Missions en cours', mission_processing_path
+      my_dash.item :missions_waiting, 'Missions du lab', mission_processing_path
     end
 
     primary.item :my_profile, 'My Profile', user_private_profile_path, :if => Proc.new { user_signed_in? } do |my_profile|

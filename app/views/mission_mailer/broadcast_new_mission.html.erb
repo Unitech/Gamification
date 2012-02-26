@@ -5,6 +5,11 @@
   @mail_full_url = @url_site + mission_detail_path(@mission)
 %>
 
+<% content_for :logo do %>
+  <%= image_tag attachments['logo.png'].url %>
+<% end %>
+
+
 <h2 class="h2">Nouvelle mission - <%= @mission.title %></h2>
 
 <h4 class="h4">Résumé</h4>

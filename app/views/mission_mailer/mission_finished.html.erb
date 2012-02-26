@@ -1,0 +1,25 @@
+
+<%
+  @mail_title = 'Success'
+  @mail_mini_text = 'Mission terminée'
+  @mail_full_url = @url_site + user_account_historic_path
+%>
+
+<% content_for :logo do %>
+  <%= image_tag attachments['logo.png'].url %>
+<% end %>
+
+
+<h2 class="h2">Success pour : <%= @mission.title %></h2>
+Merci et bravo, vous avez validé et vous avez bien été crédité des euros/epices/points !
+<br/><br/>
+<center>
+  <h4 class="h4">
+    <a href="<%= @mail_full_url %>" target="_blank">
+      -> Consulter ma fluctuation de crédits <-
+    </a>
+  </h4>
+</center>
+
+Cordialement,
+Le Laboratoire de Technologies Web d'Epitech

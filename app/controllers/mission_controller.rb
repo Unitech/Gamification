@@ -13,10 +13,13 @@ class MissionController < ApplicationController
 
   def apply_for_mission
     mission = Mission.find(params[:mission_id].to_i)
-
-    if mission.attach_new_user current_user
+    
+    if mission.is_in_process?
+      # Mission is in process so the user can't apply
+      render :json => {:success => false, :info => 'La mission est déjà en cours'}  
+    elsif mission.attach_new_user current_user
       # Mail for user
-      MissionMailer.delay.apply_confirmation(current_user, mission)
+      # MissionMailer.delay.apply_confirmation(current_user, mission)
       # Mail to admin
       MissionMailer.delay.new_student_applied(current_user, mission)
       render :json => {:success => true, :info => 'Un mail vous a été envoyé'}
@@ -58,11 +61,26 @@ class MissionController < ApplicationController
     comment = Comment.new(:content => params[:comment][:content],
                           :user => current_user,
                           :mission => mission)
+    
     if comment.save
+      if mission.state == Mission::Status::NEW
+        # Send to all user linked to the mission
+        MissionMailer.delay.new_comment_broadcast(current_user,
+                                                  mission.user_want_notified_new_comment(current_user).map(&:email),
+                                                  mission,
+                                                  comment)
+      elsif mission.state == Mission::Status::CONFIRMED
+        # Send to user confirmed for the mission
+        MissionMailer.delay.new_comment_broadcast(current_user,
+                                                  mission.user_want_notified_new_comment_advanced(current_user).map(&:email),
+                                                  mission,
+                                                  comment)
+      end
+
       redirect_to :back, :info => 'Votre commentaire a bien été posté'
       return
     else
-      render :action => 'mission_detail'
+      redirect_to :back, :info => 'Le commentaire ne doit pas être vide'
       return 
     end
   end

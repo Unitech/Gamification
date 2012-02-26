@@ -1,10 +1,10 @@
 <hr>
 <br/>
 <center>
-  <!-- <a href="#">Undo all user applications</a> /  -->
-  <a href="#">Broadcast event</a> / 
-  <a href="#">Cancel event</a> /
-  <a href="#">Set as finished</a>
+  <%= link_to 'Edit', {:action => "edit", :id => params[:id]} %> /
+  <%= link_to 'Show in platform', mission_detail_path(params[:id]) %> /
+  <%= link_to 'Broadcast mission', {:action => "send_mail_to_users", :id => params[:id]}, :confirm => "Êtes vous sur de vouloir broadcaster par mail cette mission ?" %> /
+  <%= link_to 'Set as finished', {:action => "send_mission_as_done", :id => params[:id]}, :confirm => "Cette mission a bien été terminée ?" %>
 </center>
 
 <br/>

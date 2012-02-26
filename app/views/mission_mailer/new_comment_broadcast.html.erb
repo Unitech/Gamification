@@ -1,0 +1,22 @@
+
+<%
+  @mail_title = 'Nouveau commentaire'
+  @mail_mini_text = 'Comment '
+  @mail_full_url = @url_site + mission_detail_path(@mission)
+  %>
+
+<h4 class="h4">Nouveau commentaire <%= @mission.title %></h4>
+<br/>
+<b><%= @user %></b> a posté : <br/>
+<%= @comment.content %>
+<br/>
+<br/>
+<center>
+  <h4 class="h4">
+    <a href="<%= @mail_full_url %>" target="_blank">
+      Répondre au commentaire
+    </a>
+    
+  </h4>
+</center>
+

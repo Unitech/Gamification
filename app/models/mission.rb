@@ -164,12 +164,36 @@ class Mission < ActiveRecord::Base
   }
 
   #
-  # Global methode to get all users linked to mission
+  # Global method to get all users linked to mission
   #
   def user_doing_missions
     EntrMissionUser
       .includes(:user)
       .where("entr_mission_users.mission_id = ? AND entr_mission_users.state = ?", self.id, EntrMissionUser::Status::CONFIRMED)
+      .collect { |l| l.user }
+  end
+
+  # user eject because we dont send a mail to the comment writter
+  def user_want_notified_new_comment user_eject
+    EntrMissionUser
+      .includes(:user)
+      .where("entr_mission_users.mission_id = ? AND users.mail_comments = ? AND users.id != ?", 
+             self.id, 
+             true, 
+             user_eject.id)
+      .collect { |l| l.user }
+  end
+
+  # user eject because we dont send a mail to the comment writter
+  # when mission is validated only send to confirmed users
+  def user_want_notified_new_comment_advanced user_eject
+    EntrMissionUser
+      .includes(:user)
+      .where("entr_mission_users.mission_id = ? AND users.mail_comments = ? AND users.id != ? AND entr_mission_users.state = ?", 
+             self.id, 
+             true, 
+             user_eject.id, 
+             EntrMissionUser::Status::CONFIRMED)
       .collect { |l| l.user }
   end
 

@@ -7,15 +7,21 @@ class Admin::MissionsController < Admin::ResourcesController
       prepend_resources_action(action.titleize, {:action => action, :id => nil})
     end
     
-    #raise @resource_actions.inspect
-    
     respond_to do |format|
       format.html do
         #set_default_action
-        add_resource_action("Show", {:action => "show"}, {})
-        add_resource_action("Broadcast", {:action => "send_mail_to_users"}, {:confirm => 'Êtes vous sur de vouloir broadcaster par mail cette mission ?'}) 
-        add_resource_action("Set as finished", {:action => "set_mission_as_done"}, {:confirm => 'Êtes vous sur de confirmer la fin de cette mission ?'}) 
-        add_resource_action("<span style='color:red'>Trash</span>".html_safe, {:action => "destroy"}, {:confirm => "#{Typus::I18n.t("Trash")}?", :method => 'delete'})
+        add_resource_action("Show", 
+                            {:action => "show"}, {})
+        add_resource_action("Broadcast", 
+                            {:action => "send_mail_to_users"}, 
+                            {:confirm => 'Êtes vous sur de vouloir broadcaster par mail cette mission ?'}) 
+        add_resource_action("Set as finished", 
+                            {:action => "set_mission_as_done"}, 
+                            {:confirm => 'Êtes vous sur de confirmer la fin de cette mission ?'}) 
+        add_resource_action("<span style='color:red'>Trash</span>".html_safe, 
+                            {:action => "destroy"}, 
+                            {:confirm => "#{Typus::I18n.t("Trash")}?", 
+                              :method => 'delete'})
         generate_html
       end
       
@@ -67,6 +73,7 @@ class Admin::MissionsController < Admin::ResourcesController
       if entr.state == EntrMissionUser::Status::CONFIRMED
         # Credit him
         entr.user.credit_user mission
+        MissionMailer.delay.mission_finished(entr.user, mission)
       end
       entr.state = EntrMissionUser::Status::DONE
       entr.save
@@ -86,18 +93,7 @@ class Admin::MissionsController < Admin::ResourcesController
   #
   def send_mail_to_users
     mission = Mission.find(params[:id].to_i)
-
-    i = 0
-    #
-    # Send mail to each user (must use delayed_job !)
-    #
-    # User.all.each do |u|
-    #   MissionMailer.new_mission(u, mission).deliver
-    #   i = i + 1
-    # end
     MissionMailer.delay.broadcast_new_mission(mission)
-    
-    
     flash[:success] = "Les mails ont bien été envoyés"
     redirect_to :back
   end
