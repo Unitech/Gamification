@@ -58,4 +58,31 @@
 <%= link_to "S'enregistrer", new_registration_path(resource_name), :class => 'cta-register' %>
 </center>
 
+
 <%= render :partial => "devise/shared/links" %>
+
+
+<% 
+   @actions = EntrMissionUser
+      .order('updated_at DESC')
+      .includes(:mission)
+
+   Mission.all.each do |m|
+   @actions << m
+   end
+
+   User.all.each do |m|
+     @actions << m
+   end
+   
+   Comment.all.each do |m|
+     @actions << m
+   end
+%>
+<div class="block profile" id="block-text">
+  <div class="content sized-content private_profile">
+    <div class="inner">
+<%= render :partial => 'shared/home_lab_activity' %>
+    </div>
+  </div>
+</div>
