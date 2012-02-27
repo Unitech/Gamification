@@ -14,10 +14,11 @@ class MissionController < ApplicationController
   def apply_for_mission
     mission = Mission.find(params[:mission_id].to_i)
     
-    if mission.is_in_process?
-      # Mission is in process so the user can't apply
-      render :json => {:success => false, :info => 'La mission est déjà en cours'}  
-    elsif mission.attach_new_user current_user
+    # if mission.is_in_process?
+    #   # Mission is in process so the user can't apply
+    #   render :json => {:success => false, :info => 'La mission est déjà en cours'}  
+    # els
+    if mission.attach_new_user current_user
       # Mail for user
       # MissionMailer.delay.apply_confirmation(current_user, mission)
       # Mail to admin
