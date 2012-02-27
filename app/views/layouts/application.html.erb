@@ -48,19 +48,23 @@
           <%= yield %>
 
 	  
-          <div id="footer">
-	    <%= render :partial => 'shared/lab_links' %>
-	    <div class="copyright">
-	      <p>Copyright &copy; <%= Time.now.year %> Web Lab</p>
-	    </div>
-          </div>
+	  <% if !@no_footer.presence %>
+            <div id="footer">
+	      <%= render :partial => 'shared/lab_links' %>
+	      <div class="copyright">
+		<p>Copyright &copy; <%= Time.now.year %> Web Lab</p>
+	      </div>
+            </div>
+	  <% end %>
 
 	</div>
 
 	
 	<div id="sidebar">
 	  <%= yield :sidebar %>
-	  <%= render :partial => 'shared/sidebar' %>
+	  <% if !@no_sidebar.presence %>
+	    <%= render :partial => 'shared/sidebar' %>
+	  <% end %>
 	</div>
       </div>    
     </div>

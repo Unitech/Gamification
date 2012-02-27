@@ -3,7 +3,7 @@ class Mission < ActiveRecord::Base
   has_attached_file :image, :styles => { :small => "50x50#", :big => "500x500>" }
 
   default_scope :order => 'missions.updated_at ASC'
-
+  
   has_many :comments
   
   has_many :entr_mission_users

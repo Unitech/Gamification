@@ -46,4 +46,5 @@ Gamification::Application.configure do
   config.assets.debug = true
 
   URL_SITE = 'http://localhost:3000/'
+  MAIL_ADMIN = 'strzelewicz.alexandre@gmail.com'
 end

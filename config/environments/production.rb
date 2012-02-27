@@ -108,4 +108,5 @@ Gamification::Application.configure do
 
 
   URL_SITE = 'http://missions.p3ee.com/'
+  MAIL_ADMIN = 'strzelewicz.alexandre@gmail.com'
 end

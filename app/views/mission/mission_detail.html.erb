@@ -7,6 +7,25 @@
   
 <% end %>
 
+
+<%# Override %>
+<%
+  @no_sidebar = true
+  @no_footer = true
+%>
+
+<style>
+  #main {
+  width : 100%;
+  float : none;
+  }
+</style>
+<%# End Override %>
+
+
+
+
+
 <% 
    #
    # This helper fill all yields
@@ -30,12 +49,26 @@
     }	    
     });
     });
+
+
+    $('#mission_image').load(function() {
+    var comment = $('.right-detail');
+    var mission = $('.left-detail');
+
+
+
+    if (comment.height() < mission.height()) {
+			   comment.height(mission.height());
+			   }
+    });
+
     });
   </script>
 <% end %>
 
 <div class="mission-descr">
-  <div class="block" id="block-text">
+
+  <div class="block left-detail" id="block-text">
     <div class="content">
       <div class="inner">
 	<h2 class="title"><%= @mission.title %></h2>
@@ -79,13 +112,33 @@
   </div>
 
 
-  <div class="block" id="block-text">
+  <div class="block right-detail" id="block-text">
     <div id="comments-anchor"></div>
     <div class="content sized-content">
 
 
       <div class="inner">
-	<h2 class="title">Commentaires</h2>
+
+	<h2 class="title">Postez un Commentaire</h2>
+	
+	<%= form_for :comment, :url => mission_submit_comment_path do |f| %>
+	  
+	  <%= f.hidden_field :mission, :value => @mission.id %>
+	  
+          <div class="columns wat-cf">
+            <div class="column left">
+              <div class="group">
+		<%= f.text_area :content, :rows => 10, :cols => 80, :class => 'text_area', :placeholder => 'Comment...' %>
+              </div>
+            </div>
+          </div>
+	  
+	    <%= f.submit "Poster", :class => 'button post-btn' %>
+	  
+	<% end %>
+
+
+	<h2 class="title" style="margin-bottom : 5px">Commentaires</h2>
 
 	<ul class="comment">
 	  
@@ -107,25 +160,6 @@
 
 	<br/>
 	<div id="post-comments-anchor"></div>
-	<h3>Postez un commentaire</h3>
-	
-	<%= form_for :comment, :url => mission_submit_comment_path do |f| %>
-	  
-	  <%= f.hidden_field :mission, :value => @mission.id %>
-	  
-          <div class="columns wat-cf">
-            <div class="column left">
-              <div class="group">
-		<%= f.text_area :content, :rows => 10, :cols => 80, :class => 'text_area' %>
-              </div>
-            </div>
-          </div>
-	  
-          <div class="group navform wat-cf">
-	    <%= f.submit "Poster", :class => 'button post-btn' %>
-	  </div>
-
-	<% end %>
 
       </div>
     </div>

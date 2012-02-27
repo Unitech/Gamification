@@ -193,6 +193,16 @@
 	margin : 20px 0 10px 0;
     }
 
+    .left-detail {
+	width : 65%;
+	float : left;
+    }
+    .right-detail {
+	width : 33%;
+	float : left;
+	margin-left : 20px;
+	
+    }
     
     ul.comment {
 	list-style-type : none;
@@ -212,19 +222,49 @@
 	    #content-comment {
 		margin-top : 10px;
 		font-size : 15px;
-		margin-left : 30px;
+		margin-left : 20px;
 		background-color : #EEE;
 		border : 1px solid #CCC;
 		@include rounded(5px);
 		padding : 15px;
-		width : 90%;
+		width : 80%;
 	    }
-	    padding : 12px 0px 15px 5px;
+	    padding : 12px 0px 8px 5px;
 	    
 	}
     }
+    .text_area {
+	width : 85%;
+	padding : 5px;
+	border : 1px solid #CCC;
+	margin-left : 20px;
+	@include rounded(5px);
+	height : 70px;
+    }
     .post-btn {
-	@include btn-style(140px);
+	text-shadow: none;
+	display: block;
+	width: 140px;
+	border: 1px solid silver;
+	padding: 10px 20px;
+	color: black;
+	background-color: #FF6652;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	font-family: 'Play', sans-serif;
+	text-decoration: none;
+	line-height: 14px;
+	font-size: 17px;
+	text-align: center;
+	cursor: pointer;
+	border: none;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;
+	margin: 0 auto;
+	margin-top : 5px;
     }
     .other-user-doin-mission {
 	ul {

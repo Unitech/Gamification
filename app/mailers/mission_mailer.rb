@@ -55,7 +55,8 @@ class MissionMailer < ActionMailer::Base
     @user = user
     @mission = mission
     @url_site = URL_SITE
-    mail(:to => 'strzelewicz.alexandre@gmail.com', :subject => '[EWTL] Nouveau postulant ' + mission.title)
+    mail(:to => MAIL_ADMIN, 
+         :subject => '[EWTL] Nouveau postulant ' + mission.title)
   end
   
   #
@@ -67,7 +68,7 @@ class MissionMailer < ActionMailer::Base
     @comment = comment
     @url_site = URL_SITE
     mail(:to => send_users, 
-         :cc => 'strzelewicz.alexandre@gmail.com',
+         :cc => MAIL_ADMIN,
          :subject => '[EWTL] Nouveau commentaire - ' + mission.title)
   end
 
