@@ -34,6 +34,7 @@ gem 'capistrano'
 gem 'exception_notification'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'whenever', :require => false
 
 # http://googlecharts.rubyforge.org/
 # gem 'googlecharts'

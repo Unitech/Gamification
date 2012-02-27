@@ -67,6 +67,7 @@ class MissionMailer < ActionMailer::Base
     @comment = comment
     @url_site = URL_SITE
     mail(:to => send_users, 
+         :cc => 'strzelewicz.alexandre@gmail.com',
          :subject => '[EWTL] Nouveau commentaire - ' + mission.title)
   end
 
