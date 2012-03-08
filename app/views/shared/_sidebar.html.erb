@@ -12,12 +12,12 @@
 	<% end %>
       </ol>
 
-      <h4>Les nouveaux</h4>
-      <ol>
-      <% User.limit(5).order('created_at DESC').each do |u| %>
-	<li><%= u %></li>
-      <% end %>
-      </ol>
+      <!-- <h4>Les nouveaux</h4> -->
+      <!-- <ol> -->
+      <!-- <%# User.limit(5).order('created_at DESC').each do |u| %> -->
+      <!-- 	<li><%#= u %></li> -->
+      <!-- <%# end %> -->
+      <!-- </ol> -->
     </p>
   </div>
 
@@ -32,7 +32,7 @@
 	<% @u = EntrMissionUser.limit(5).order('updated_at DESC').includes([:mission, :user]) %>
 	<% @u.each do |u| %>
 	  <li>
-	    <%= u.user %> <span style="float : right"><%= u.contextualize_state %></span>
+	    <span style="float : right"><%= u.contextualize_state %></span>
 	    <div id="title-activity"><%= link_to u.mission, mission_detail_path(u.mission) %></div>
 	  </li>
 	<% end %>
